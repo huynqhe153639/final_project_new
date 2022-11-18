@@ -1,0 +1,12 @@
+<div class="mb-8 flex-1-1 max-width-120 mright-1">
+    <div class="inline-block width-100">
+        <input [(ngModel)]="content" required name="start" #start="ngModel" type="time" id="startTime" class="width-100 border border-radius-input input-width timepicker" [placeholder]="title" >  
+        <div
+            *ngIf="start.invalid && (start.touched)"
+        >
+            <div *ngIf="start.errors?.required" class="red-danger">
+                {{title}} is required.
+            </div>
+        </div>
+    </div>
+</div>

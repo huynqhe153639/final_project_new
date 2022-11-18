@@ -1,0 +1,28 @@
+
+.lettered-avatar{
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 24px;
+}
+
+.div-icon{
+    background-color: #9572cf;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    border-radius: 48px;
+    font-size: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+.div-circle{
+    background-color: rgb(149, 114, 207);
+    width: 140px;
+    height: 140px;
+    line-height: 140px;
+    border-radius: 140px;
+    font-size: 100%;
+    color: #fff;
+    text-align: center;
+}

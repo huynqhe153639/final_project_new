@@ -1,0 +1,9 @@
+<label for="firstName">{{title}}</label>
+<input [(ngModel)]="content" required name="firstName" #firstName="ngModel" type="text" class="border-radius-input border input-width"  value="" [placeholder]="title"/>
+<div
+    *ngIf="firstName.invalid && (firstName.touched)"
+>
+    <div *ngIf="firstName.errors?.required" class="red-danger">
+        <ng-content></ng-content> is required.
+    </div>
+</div>

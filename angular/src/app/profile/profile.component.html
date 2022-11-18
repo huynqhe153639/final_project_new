@@ -1,0 +1,89 @@
+
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div class="items-center flex flex-col">
+            <app-avatar [isNavbar]="false"></app-avatar>
+            <h3 class="text-center text-x1 font-bold mt-4">Long</h3>
+            <p class="text-center text-sm text-[#7e8890]">Long</p>
+        </div>
+        <form #f="ngForm" (ngSubmit)="submit(f)">
+        <div class="div-form">
+            <app-form-table>
+                    <h3>Profile</h3>
+                    <div>
+                        <div class="flex flex-row">
+                            <div class="mb-4 flex-1-1">
+                                <app-input #appinput1 [content]="firstname" title="FirstName">FirstName</app-input>     
+                            </div>
+                            <div class="mb-4 flex-1-1">
+                                <app-input #appinput2 [content]="lastname" title="LastName">LastName</app-input>
+                            </div>
+                        </div>
+                        <div class="flex flex-row">
+                            <div class="mb-4 flex-1-1">
+                                <app-input #appinput3 [content]="lastname" title="Id">Id</app-input>
+                            </div>
+                            <div class="mb-4 flex-1-1">
+                                <app-input #appinput4 [content]="lastname" title="Position">Position</app-input>
+                            </div>
+                        </div>
+
+                        <div class="mb-4 flex-1-1">
+                            <app-input #appinput5 [content]="lastname" title="Email">Email</app-input>
+                        </div>
+
+                        <div class="mb-4 flex-1-1">
+                            <app-input #appinput6 [content]="lastname" title="Phone">Phone</app-input>
+                        </div>
+
+
+                    </div>
+                
+            </app-form-table>       
+           <app-form-table>
+                    <h3>Additional shifts register settings</h3>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="earlyStart">
+                        <label class="form-check-label" for="earlyStart">
+                            Available for Early Start(Prior to contracted start time)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input " type="checkbox" value="" id="lateFinish">
+                        <label class="form-check-label" for="lateFinish">
+                            Available for Late Finishes(Prior to contracted finish time)
+                        </label>
+                    </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="checkbox" (click)="isEnable()" value="" id="additionalShift">
+                        <label class="form-check-label" for="additionalShift">
+                            Available for Additional Shift(Days and Times)
+                        </label>
+                    </div>
+                    <div class="padding-div-enable" *ngIf="enable ? 'disable' : ''">
+                        <!-- thieu prefer day -->
+                        <div class="flex flex-col mt-1">
+                            <label>Select your available time range</label>
+                            <div class="inline-flex item-center mt-1">
+                                <app-input-time></app-input-time>
+                                <span>to</span>
+                                <app-input-time></app-input-time>
+                            </div>
+                        </div>
+                    </div>
+                </app-form-table>
+            
+            <button class="radius-button btn bgr-color-primary">Save Changes</button>
+        </div>
+    </form>
+    </div>
+    <div class="col-2"></div>
+</div>
+
+
+
+
+
+
+

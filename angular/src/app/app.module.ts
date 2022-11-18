@@ -38,6 +38,11 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AvatarComponent } from './avatar/avatar.component';
+import { FormTableComponent } from './form-table/form-table.component';
+import { InputComponent } from './input/input.component';
+import { InputTimeComponent } from './input-time/input-time.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +72,12 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
     SidebarComponent,
     SidebarLogoComponent,
     SidebarUserPanelComponent,
-    SidebarMenuComponent
+    SidebarMenuComponent,
+    ProfileComponent,
+    AvatarComponent,
+    FormTableComponent,
+    InputComponent,
+    InputTimeComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,20 @@
+.margin-top-10{
+    margin-top: 10px;
+}
+
+.border-radius-input{
+    border-radius: 0.5rem;
+}
+.border{
+    border-width: 1px;
+}
+
+.input-width{
+    width : 100%;
+    box-shadow: none;
+    
+    height: 35px;
+}
+.red-danger{
+    color: red;
+}
