@@ -1,0 +1,4 @@
+<button (click)="active()" [ngClass]="{'active':isActive,'bg-white border-0':!isActive}">
+    {{content}}
+</button>
+<div>{{isActive}}</div>
