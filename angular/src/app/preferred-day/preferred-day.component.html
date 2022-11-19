@@ -2,6 +2,6 @@
     <button (click)="isAllActive()" [ngClass]="{'active':activeAll,'bg-white border-0':!activeAll}">All Day</button>
     <div>{{activeAll}}</div>
     <ng-container *ngFor="let day of days">
-        <app-button [content]="day" [isActive]="isActive" (isAllEvent)="isBtnAllActive($event)"></app-button>
+        <app-button [content]="day" [isActive]="isChildActive" (isAllEvent)="isBtnAllActive($event)"></app-button>
     </ng-container>
 </div>

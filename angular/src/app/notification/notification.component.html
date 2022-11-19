@@ -1,0 +1,46 @@
+<ng-container>
+    <div [ngClass]="{'popup-bell':isOpenBell,'popup-close-bell':!isOpenBell}">
+        <div (clickOutside)='onClickOutsideBell($event)'
+            [ngClass]="{'content-bell':isOpenBell,'content-close-bell':!isOpenBell,'start':isOpenBell===null}">
+            <div class="fw-bold fs-6 py-3 text d-flex justify-content-between pe-4 ps-3">
+                <div class="text-white"><i class="bi bi-bell-fill me-3 fs-5"></i>Notification</div>
+                <i (click)="CloseNotification()" class="bi bi-x text-white fs-5"></i>
+            </div>
+            <div class="text-black">
+                <ul class="mx-4 mt-3 p-0">
+                    <li class="d-flex  m-0 p-0 ">
+                        <button class="rounded-circle border-0 text-white me-2 "
+                            style="width: 2.5rem; height:2.5rem;"><i class="bi bi-briefcase-fill"></i></button>
+                        <div class=" border-bottom flex-fill">
+                            <div class="mb-2">
+                                <span class=" px-1 me-1">Today shift</span>
+                                <span class=" px-1 mx-1 text-less">less than a minute</span>
+                            </div>
+                            <div class="my-2">
+                                <span class="rounded px-2 py-1 me-1 btn-time">08:00</span>
+                                <span class="rounded px-2 py-1 mx-1 btn-time">16:00</span>
+                            </div>
+                            <div class="my-2">Contracted</div>
+                        </div>
+                    </li>
+                    <li class="d-flex m-0 p-0 my-3">
+                        <button class=" rounded-circle border-0 text-white me-2 "
+                            style="width: 2.5rem; height:2.5rem;"><i class="bi bi-briefcase-fill"></i></button>
+                        <div class=" border-bottom flex-fill">
+                            <div class="mb-2">
+                                <span class=" px-1 me-1">Tomorrow shift</span>
+                                <span class=" px-1 mx-1 text-less">less than a minute</span>
+                            </div>
+                            <div class="my-2">
+                                <span class="rounded px-2 py-1 me-1 btn-time">08:00</span>
+                                <span class="rounded px-2 py-1 mx-1 btn-time">16:00</span>
+                            </div>
+                            <div class="my-2">Contracted</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</ng-container>

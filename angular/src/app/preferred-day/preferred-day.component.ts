@@ -11,15 +11,15 @@ export class PreferredDayComponent implements OnInit {
   AllDay: string = "All day";
   days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   activeAll = false;
-  isActive: boolean = false;
+  isChildActive: boolean = false;
   isAllActive() {
     this.activeAll = !this.activeAll;
 
     if (this.activeAll) {
-      this.isActive = true;
+      this.isChildActive = true;
     }
     if(!this.activeAll){
-      this.isActive = false;
+      this.isChildActive = false;
     }
   }
   isBtnAllActive(value: any) {

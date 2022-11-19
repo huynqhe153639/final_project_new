@@ -29,17 +29,11 @@ import { EditUserDialogComponent } from '@app/users/edit-user/edit-user-dialog.c
 import { ChangePasswordComponent } from './users/change-password/change-password.component';
 import { ResetPasswordDialogComponent } from './users/reset-password/reset-password.component';
 // layout
-import { HeaderComponent } from './layout/header.component';
-import { HeaderLeftNavbarComponent } from './layout/header-left-navbar.component';
-import { HeaderLanguageMenuComponent } from './layout/header-language-menu.component';
-import { HeaderUserMenuComponent } from './layout/header-user-menu.component';
-import { FooterComponent } from './layout/footer.component';
-import { SidebarComponent } from './layout/sidebar.component';
-import { SidebarLogoComponent } from './layout/sidebar-logo.component';
-import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
-import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { PreferredDayComponent } from './preferred-day/preferred-day.component';
 import { ButtonComponent } from './button/button.component';
+import { HeaderComponent } from './header/header.component';
+import { NotificationComponent } from './notification/notification.component';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 @NgModule({
   declarations: [
@@ -61,17 +55,11 @@ import { ButtonComponent } from './button/button.component';
     ChangePasswordComponent,
     ResetPasswordDialogComponent,
     // layout
-    HeaderComponent,
-    HeaderLeftNavbarComponent,
-    HeaderLanguageMenuComponent,
-    HeaderUserMenuComponent,
-    FooterComponent,
-    SidebarComponent,
-    SidebarLogoComponent,
-    SidebarUserPanelComponent,
-    SidebarMenuComponent,
+
     PreferredDayComponent,
-    ButtonComponent
+    ButtonComponent,
+    HeaderComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -87,6 +75,7 @@ import { ButtonComponent } from './button/button.component';
     ServiceProxyModule,
     SharedModule,
     NgxPaginationModule,
+    ClickOutsideModule
   ],
   providers: [],
   entryComponents: [

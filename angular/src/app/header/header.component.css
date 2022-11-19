@@ -1,0 +1,208 @@
+.btn_logout {
+    width: 13%;
+    text-align: left;
+    position: absolute;
+    top: 3%;
+    left: 83%;
+    /* animation-name: example;
+    animation-duration: 0.2s; */
+    background-color: white;
+    color: black;
+}
+
+
+.btn_time {
+    width: 18%;
+}
+
+ul {
+    list-style: none;
+}
+
+#shift,
+.btn_head {
+    border-color: #31303A;
+}
+
+header,
+#shift,
+.btn_head {
+    background-color: #31303A;
+}
+
+li>a>input {
+    color: white;
+    background-color: #31303A;
+    border: 0;
+}
+
+.btn-name {
+    background-color: #9572CF;
+}
+
+.btn-bell {
+    color: white;
+    background-color: #31303A;
+}
+
+.popup-bell {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    /* Black w/ opacity */
+}
+
+
+.popup-close-bell {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation-name: close;
+    animation-duration: 5s;
+    opacity: 0;
+}
+
+
+@keyframes close {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.content-close-bell {
+    background-color: #fefefe;
+    /* margin-left: 1089px; */
+    position: fixed;
+    left: 100%;
+    height: 100%;
+    width: 0px;
+    animation-name: content-bell-close;
+    animation-duration: 1s;
+}
+
+@keyframes content-bell-close {
+    0% {
+        left: 71%;
+        width: 100%;
+    }
+
+    100% {
+        left: 100%;
+        width: 0px;
+    }
+}
+
+
+.content-bell {
+    background-color: #fefefe;
+    /* margin-left: 1089px; */
+    position: absolute;
+    left: 71%;
+    height: 100%;
+    width: 447px;
+    animation-name: content-bell-open;
+    animation-duration: 1s;
+}
+
+@keyframes content-bell-open {
+    0% {
+        left: 100%;
+    }
+
+    100% {
+        left: 71%;
+    }
+}
+
+/* .popup-start{
+    display: none;
+  } */
+.start {
+    display: none !important;
+}
+
+.text {
+    background-color: black;
+}
+
+.bi-bell-fill {
+    color: white;
+}
+
+.bi-briefcase-fill {
+    color: #58BDC5;
+}
+
+.bi-x {
+    cursor: pointer;
+}
+
+.btn-time {
+    background-color: rgba(0, 102, 179, .1);
+}
+
+.text-less {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175/var(--tw-text-opacity));
+}
+
+.align-super {
+    position: relative;
+    left: 65%;
+    top: -60%;
+    width: 3rem;
+    height: 3rem;
+    background-color: greenyellow;
+
+}
+
+
+.image-header {
+    position: relative;
+    align-items: center;
+}
+
+.active {
+    color: #FF4200 !important;
+}
+
+@keyframes mymove1 {
+
+    100% {
+        right: 500px;
+    }
+}
+
+@keyframes mymove2 {
+
+    100% {
+        right: 0px;
+    }
+
+}
+
+.btn_logout:hover {
+    background-color: #4DC9D2;
+    color: white
+}
