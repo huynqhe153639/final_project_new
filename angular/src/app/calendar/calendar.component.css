@@ -1,0 +1,311 @@
+.option.d-flex {
+    position: relative;
+    margin-left: 200px;
+    margin-right: 200px;
+    justify-content: space-between;
+    padding-top: 3%;
+  }
+  
+  .flex.items-center.space-x-8.rounded-2xl.border.px-4.py-1 {
+    display: flex;
+  
+  }
+  
+  a.option {
+    text-decoration: none;
+    color: black;
+    padding: 5px 15px 5px 15px;
+  }
+  
+  div#roster {
+    border-radius: 10px 0px 0px 10px;
+  }
+  
+  div#leave {
+    border-radius: 0px 10px 10px 0px;
+  }
+  
+  div#week {
+    border-radius: 40px;
+  }
+  
+  a.direction {
+    padding-top: 5px;
+    color: black;
+  }
+  
+  
+  .mt-4 {
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  
+  .align-super {
+    height: 80px;
+    width: 12px;
+    background-color: #0066B3;
+  }
+  
+  .head-day {
+    background-color: #E5E7EB;
+  }
+  
+  .content-day {
+    background-color: #B3D1E8;
+    font-size: 13px;
+  }
+  
+  .button {
+    background-color: white;
+  }
+  
+  .active {
+    color: white;
+    background-color: #1ABAC5;
+  }
+  
+  .content-two {
+    height: 177px;
+    background-color: #E6F7F9;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  
+  .avai-calendar {
+    height: 170px;
+    background-color: #1ABAC5;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  .popup {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+  }
+  
+  .popup-close {
+    display: none;
+  }
+  
+  .content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    height: auto;
+    width: 576px;
+  }
+  
+  .fw-bold.fs-6.py-4.text.d-flex.justify-content-between.px-4 {
+    background-color: black;
+  }
+  
+  button.btn-save.border-0.py-2.px-4.rounded-4 {
+    background-color: #1ABAC5;
+    color: white
+  }
+  
+  .row.bg-black {
+    height: 65px;
+  }
+  
+  .basic-skill a.bg-black {
+    height: 45px;
+    margin-right: 20px;
+    margin-top: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px;
+  }
+  
+  .bill a.bg-black {
+    height: 65px;
+    padding-top: 3%;
+    color: white;
+  }
+  
+  p {
+    margin-left: 10px;
+    color: black;
+    font-size: 18px;
+    padding-top: 17px;
+  }
+  
+  p.title-name {
+    color: white;
+    padding: 8px;
+  }
+  
+  p.p-day {
+    margin: 0px;
+  }
+  
+  button.col-1.rounded-circle.text-white {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 1%;
+    margin-left: 20px;
+    margin-right: 40px;
+    background-color: purple;
+  }
+  
+  div.col-1.rounded-circle.text-white {
+    text-align: center;
+    padding-top: 50px;
+    padding-right: 0px;
+    width: 9rem;
+    height: 9rem;
+    margin-top: 1%;
+    margin-left: 20px;
+    margin-right: 40px;
+    background-color: purple;
+  }
+  
+  p[_ngcontent-uj7-c17] {
+    color: white;
+    padding-top: 1%;
+  
+    text-align: center;
+  }
+  
+  .form-info {
+    flex: 0 0 auto;
+    width: 100%;
+    border: 1px solid rgb(186, 176, 176);
+    border-radius: 15px;
+    margin-top: 40px;
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .register-settings {
+    width: 100%;
+    border: 1px solid rgb(186, 176, 176);
+    border-radius: 15px;
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 13px;
+  }
+  
+  .mb-4.form-check {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 50%;
+  }
+  
+  .mb-4.form-check-address {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  label {
+    font-weight: 500;
+  }
+  
+  p.name {
+    padding-top: 50px;
+    margin: 0 auto;
+  }
+  
+  .a-day {
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid;
+    color: black;
+  }
+  
+  .a-day:active {
+    text-decoration: none;
+    padding: 5px;
+    border: 1px solid;
+    color: white;
+    background-color: rgba(68, 168, 168, 0.971);
+  }
+  
+  .lettered-avatar {
+    font-size: 30px;
+  }
+  
+  .col-3.d-flex.lettered-avatar-wrapper.dark.justify-content-end {
+    margin-top: 40px;
+    margin-left: 10%;
+  }
+  
+  .col-5 {
+    flex: 0 0 auto;
+  }
+  
+  .a-day:active {
+    background-color: cadetblue;
+  }
+  
+  label.btn.btn-outline-primary {
+    height: 36px;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  a.bg-black.active {
+    color: red;
+  }
+  
+  a.bg-black {
+    color: white;
+  }
+  
+  .fill-icon {
+    position: relative;
+    background-color: rgb(171 171 171 / 37%);
+    border-radius: 30px;
+    height: 40px;
+    width: 40px;
+    margin-left: 20px;
+  }
+  
+  .bill-icon {
+    margin-top: 30px;
+  }
+  
+  i.bi.bi-briefcase-fill.notification {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #1ABAC5;
+  }
+  
+  .content-notification {
+    padding-left: 20px;
+    width: 100%;
+    border-bottom: 1px solid rgb(171 171 171 / 37%);
+  
+  }
+  
+  span.text-gray-400 {
+    padding-left: 10px;
+    color: gray;
+  }
+  
+  .ag-root-wrapper.ag-layout-normal.ag-ltr {
+    margin-left: 50px;
+    margin-right: 50px;
+  }

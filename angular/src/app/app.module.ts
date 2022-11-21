@@ -43,6 +43,14 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { FormTableComponent } from './form-table/form-table.component';
 import { InputComponent } from './input/input.component';
 import { InputTimeComponent } from './input-time/input-time.component';
+import { ButtonWeekComponent } from './button-week/button-week.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarTableComponent } from './calendar-table/calendar-table.component';
+import { TableItemRosterComponent } from './table-item-roster/table-item-roster.component';
+import { TableItemAvailabilityComponent } from './table-item-availability/table-item-availability.component';
+import { LoginComponent } from './login/login.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { TableWeekComponent } from './table-week/table-week.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +85,16 @@ import { InputTimeComponent } from './input-time/input-time.component';
     AvatarComponent,
     FormTableComponent,
     InputComponent,
-    InputTimeComponent
+    InputTimeComponent,
+    ButtonWeekComponent,
+    CalendarComponent,
+    CalendarTableComponent,
+    TableItemRosterComponent,
+    TableItemAvailabilityComponent,
+    LoginComponent,
+    TableWeekComponent,
+
+    
   ],
   imports: [
     CommonModule,
@@ -92,6 +109,7 @@ import { InputTimeComponent } from './input-time/input-time.component';
     AppRoutingModule,
     ServiceProxyModule,
     SharedModule,
+    AgGridModule,
     NgxPaginationModule,
   ],
   providers: [],

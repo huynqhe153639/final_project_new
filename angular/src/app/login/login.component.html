@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-5  sm:block ">
+        <img class="login-pic"
+            src="https://optimize-portal.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogin-banner.1fa296f1.png&w=3840&q=75">
+    </div>
+    <div class="col-4 ">
+        <div class="flex flex-col items-center">
+            <img class="login-logo "
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3ZZ2xzuUklqfo5TVBdYr-6WKhZauKox4Ym0dgXAOflNBLIWcjMP1UV4ad0LtGNqjH8Q&usqp=CAU">
+            <div class="flex flex-col items-center">
+                <a class="mt-10 text-center text-2xl">Sign in to your account</a>
+                <form (ngSubmit)="onSubmit()" action="#" [formGroup]="loginForm"
+                    class="mb-0 mt-4 min-w-[300px] space-y-4 md:w-[350px] text-center" novalidate="">
+                    <div class="mb-4 flex-1">
+                        <input class="text-base"
+                            [ngStyle]="{'border': (email?.errors?.required && this.checkClickOutside) || (email?.errors?.required && this.checkClick2) ? '1px solid red' : '1px solid black'}"
+                            formControlName="email" name="email" id="email" type="email"
+                            (clickOutside)="CheckClickOutside()" (click)="CheckClick()" placeholder="Email"
+                            autocomplete="off" value="" required="required">
+                        <div class="notification"
+                            *ngIf="(email?.errors?.required && this.checkClickOutside) || (email?.errors?.required && this.checkClick2) ">
+                            <a class="text-noti">Email is required.</a>
+                        </div>
+                    </div>
+                    <div class="mb-4 flex-1">
+                        <input class="text-base"
+                            [ngStyle]="{'border': (password?.errors?.required && this.checkClickOutside1) || (password?.errors?.required && this.checkClick2) ? '1px solid red' : '1px solid black'}"
+                            name="password" formControlName="password" (clickOutside)="CheckClickOutside1()"
+                            (click)="CheckClick1()" id="password" type="password" placeholder="Password"
+                            autocomplete="off" value="" required="required">
+                        <div class="notification"
+                            *ngIf="(password?.errors?.required && this.checkClickOutside1) || (password?.errors?.required && this.checkClick2)">
+                            <a class="text-noti">Password is required.</a>
+                        </div>
+                    </div>
+                    <li *ngIf="!email?.errors?.required && !password?.errors?.required">
+                        <div class="text-right">
+                            <button type="submit" [routerLink]="['']" (click)="CheckClick2()"
+                                class="inline-flex items-center justify-center space-x-2 rounded-full "><span
+                                    class="mr-1">Sign in</span> </button>
+                        </div>
+                    </li>
+                    <li *ngIf="email?.errors?.required || password?.errors?.required">
+                        <div class="text-right">
+                            <button type="submit" [routerLink]="['/login']" (click)="CheckClick2()"
+                                class="inline-flex items-center justify-center space-x-2 rounded-full "><span
+                                    class="mr-1">Sign in</span> </button>
+                        </div>
+                    </li>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

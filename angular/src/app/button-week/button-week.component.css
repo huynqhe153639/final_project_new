@@ -1,0 +1,25 @@
+div#week {
+    border-radius: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+a.direction {
+    padding-top: 8px;
+    color: black;
+}
+
+a.direction.left {
+    padding-left: 20px;
+}
+
+a.direction.right {
+    padding-right: 20px;
+}
+
+a.option {
+    text-decoration: none;
+    color: black;
+    padding: 5px 15px 5px 15px;
+}
+

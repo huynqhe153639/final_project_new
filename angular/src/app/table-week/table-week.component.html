@@ -1,0 +1,15 @@
+
+<ul class="d-flex border boder-black rounded-3 p-0">
+    <li *ngFor="let day of infoUpdate" class="flex-fill border-1 border-start">
+        <div class="head-day ps-3 py-2 ">{{this.day}}</div>
+        <div *ngIf="this.changeCalendar == 1">
+            <app-table-item-roster></app-table-item-roster>
+        </div>
+        <div *ngIf="this.changeCalendar == 2">
+            <div class="avai-calendar">
+                <app-table-item-availability></app-table-item-availability>
+            </div>
+        </div>
+    </li>
+
+</ul>

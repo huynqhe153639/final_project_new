@@ -1,0 +1,82 @@
+button.inline-flex.items-center.justify-center.space-x-2.rounded-full {
+    background-color: orangered;
+    width: 150px;
+    border-radius: 30px;
+    color: white;
+    border: none;
+}
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    height: 43px;
+    width: 350px;
+    border-radius: 10px;
+}
+.flex.flex-col.items-center {
+    width: 400px;
+    padding-top: 50px;
+}
+.text-right {
+    margin-left: 230px;
+    display: flex;
+}
+a.mt-10.text-center.text-2xl {
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    margin-left: 80px;
+}
+a.text-noti {
+    position: absolute;
+    text-decoration: none;
+    color: red;
+    left: 25px;
+}
+.notification {
+    position: relative;
+    margin-bottom: 34px;
+    margin-top: 4px;
+}
+li {
+    list-style: none;
+}
+img.login-pic {
+    width: 500px;
+}
+.col-5 {
+    margin-right: 150px;
+}
+.col-4 {
+    padding-top: 200px;
+}
+img.login-logo {
+    width: 300px;
+    margin-left: 50px;
+}
+.flex-col {
+    flex-direction: column;
+}
+
+@media (max-width: 1000px)
+{
+    .sm\:block{
+        display: none;
+    }
+    .col-4 {
+        padding-top: 0px;
+        display: flex;
+        justify-content: center;
+    }
+    .row{
+        
+        justify-content: center;
+    }
+
+    
+}
+.items-center {
+    align-items: center;
+}
+
