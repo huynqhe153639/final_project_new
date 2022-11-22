@@ -7,6 +7,9 @@ using final_project_new.Notifications;
 using final_project_new.RosterAndAvais;
 using final_project_new.ShiftOffers;
 using final_project_new.Leaves;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace final_project_new.EntityFrameworkCore
 {
@@ -24,6 +27,12 @@ namespace final_project_new.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+               .Property(x => x.prefferDays)
+               .HasConversion(new ValueConverter<List<string>, string>(
+                   v => JsonConvert.SerializeObject(v),
+                   v => JsonConvert.DeserializeObject<List<string>>(v)));
 
         }
 

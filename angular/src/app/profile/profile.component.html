@@ -3,9 +3,9 @@
     <div class="col-2"></div>
     <div class="col-8">
         <div class="items-center flex flex-col">
-            <app-avatar [isNavbar]="false"></app-avatar>
-            <h3 class="text-center text-x1 font-bold mt-4">Long</h3>
-            <p class="text-center text-sm text-[#7e8890]">Long</p>
+            <span (click)="updateImage()"><app-avatar [isNavbar]="false" [user]="user"></app-avatar></span>
+            <h3 class="text-center text-x1 font-bold mt-4">{{this.user.name}}</h3>
+            <p class="text-center text-sm text-[#7e8890]">{{this.user.surname}}</p>
         </div>
         <form #f="ngForm" (ngSubmit)="submit(f)">
         <div class="div-form">
@@ -14,43 +14,40 @@
                     <div>
                         <div class="flex flex-row">
                             <div class="mb-4 flex-1-1">
-                                <app-input #appinput1 [content]="firstname" title="FirstName">FirstName</app-input>     
+                                <app-input #firstname [content]="user.name" title="FirstName">FirstName</app-input>     
                             </div>
                             <div class="mb-4 flex-1-1">
-                                <app-input #appinput2 [content]="lastname" title="LastName">LastName</app-input>
+                                <app-input #lastname [content]="user.surname" title="LastName">LastName</app-input>
                             </div>
                         </div>
                         <div class="flex flex-row">
                             <div class="mb-4 flex-1-1">
-                                <app-input #appinput3 [content]="lastname" title="Id">Id</app-input>
+                                <app-input #id [content]="user.id" title="Id">Id</app-input>
                             </div>
                             <div class="mb-4 flex-1-1">
-                                <app-input #appinput4 [content]="lastname" title="Position">Position</app-input>
+                                <app-input #position [content]="user.position" title="Position">Position</app-input>
                             </div>
                         </div>
 
                         <div class="mb-4 flex-1-1">
-                            <app-input #appinput5 [content]="lastname" title="Email">Email</app-input>
+                            <app-input #email [content]="user.emailAddress" title="Email">Email</app-input>
                         </div>
 
                         <div class="mb-4 flex-1-1">
-                            <app-input #appinput6 [content]="lastname" title="Phone">Phone</app-input>
+                            <app-input #phone [content]="user.phone" title="Phone">Phone</app-input>
                         </div>
-
-
-                    </div>
-                
+                    </div>           
             </app-form-table>       
            <app-form-table>
                     <h3>Additional shifts register settings</h3>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="earlyStart">
+                        <input class="form-check-input" type="checkbox" value="" id="earlyStart" name="earlyStart" [(ngModel)]="user.isEarlyStart">
                         <label class="form-check-label" for="earlyStart">
                             Available for Early Start(Prior to contracted start time)
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input " type="checkbox" value="" id="lateFinish">
+                        <input class="form-check-input " type="checkbox" value="" id="lateFinish" name="lateFinish" [(ngModel)]="user.isLateFinish">
                         <label class="form-check-label" for="lateFinish">
                             Available for Late Finishes(Prior to contracted finish time)
                         </label>
@@ -62,7 +59,19 @@
                         </label>
                     </div>
                     <div class="padding-div-enable" *ngIf="enable ? 'disable' : ''">
-                        <!-- thieu prefer day -->
+                        <div class="flex flex-col ">
+                            <!-- <label>Select your preffered days</label>
+                            <div class="btn-group mt-1" role="group" aria-label="Basic checkbox toggle button group">
+                                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" (click)="isCheckAllDay()" [checked]="check"> 
+                                <label class="btn btn-outline-primary" for="btncheck1">All Day</label>
+                                <ng-container *ngFor="let d of day">
+                                    <input type="checkbox" class="btn-check" [id]="d.id"  [checked]="d.value" (click)="isCheck(d.id)">
+                                    <label class="btn btn-outline-primary" [for]="d.id"  >{{d.id}}</label>
+                                </ng-container>
+                              </div> -->
+                              <app-preferred-day [user]="user"></app-preferred-day>
+                        </div>
+                        
                         <div class="flex flex-col mt-1">
                             <label>Select your available time range</label>
                             <div class="inline-flex item-center mt-1">
@@ -74,14 +83,14 @@
                     </div>
                 </app-form-table>
             
-            <button class="radius-button btn bgr-color-primary">Save Changes</button>
+            <button class="radius-button btn bgr-color-primary" >Save Changes</button>
         </div>
     </form>
     </div>
     <div class="col-2"></div>
 </div>
 
-
+<app-update-image-modal #updateImageModal (modalSave)="onImageUpdated($event)"></app-update-image-modal>
 
 
 

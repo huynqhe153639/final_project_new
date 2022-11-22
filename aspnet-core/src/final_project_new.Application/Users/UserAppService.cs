@@ -53,6 +53,19 @@ namespace final_project_new.Users
             _logInManager = logInManager;
         }
 
+        public async Task<UserDto> GetCurrentUser()
+        {
+            var currentUser = await _userManager.GetUserByIdAsync(_abpSession.GetUserId());
+            if (currentUser == null)
+            {
+                throw new EntityNotFoundException();
+            }
+
+            var user = ObjectMapper.Map<UserDto>(currentUser);
+
+            return user;
+        }
+
         public override async Task<UserDto> CreateAsync(CreateUserDto input)
         {
             CheckCreatePermission();

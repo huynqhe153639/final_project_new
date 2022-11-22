@@ -1,22 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { InputComponent } from '@app/input/input.component';
+import { UpdateImageModalComponent } from '@app/update-image-modal/update-image-modal.component';
+import { AppComponentBase } from '@shared/app-component-base';
+import { UserDto, UserServiceProxy } from '@shared/service-proxies/service-proxies';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent extends AppComponentBase implements OnInit {
 
   enable : boolean = false;
   check : boolean = false;
 
-  firstname = '';
-  lastname ='';
+  @ViewChild('updateImageModal') updateImageModalModal : UpdateImageModalComponent;
 
-  @ViewChild('appinput1') appinput1 :InputComponent;
-  @ViewChild('appinput2') appinput2 :InputComponent;
+  user : UserDto = new UserDto();
+
+  @ViewChild('firstname') firstname :InputComponent;
+  @ViewChild('lastname') lastname :InputComponent;
+  @ViewChild('id') id :InputComponent;
+  @ViewChild('position') position :InputComponent;
+  @ViewChild('email') email :InputComponent;
+  @ViewChild('phone') phone :InputComponent;
 
   day : any[] = [
     {id : "Sun", value : false},
@@ -63,25 +71,36 @@ export class ProfileComponent implements OnInit {
     }
   }
 }
-  constructor() { }
+constructor(injector : Injector, private userService : UserServiceProxy) {
+  super(injector);
+}
 
-  ngOnInit(): void {
-    
-  }
-  getData(data : string){
-      this.firstname = data;
-  }
+ngOnInit(): void {
+this.getCurrentUser();
+}
+
+getCurrentUser(){
+this.userService.getCurrentUser().subscribe(result => {
+  this.user = result;
+})
+}
 
   submit(f : NgForm){
-    // if(f.valid){
-    //   this.toastr.success('Save Successfully!', '',{
-    //     timeOut :3000,
-    //     positionClass: 'toast-bottom-right',
-    //   });
-    // }
-    console.log(this.appinput1.content);
-    console.log(this.appinput2.content);
+    this.user.name = this.firstname.content;
+    this.userService.update(this.user).subscribe(result => {
+      this.getCurrentUser();
+      this.notify.success(this.l('Saved Successfully'));
+    })
 
+  }
+
+  updateImage(){
+    this.updateImageModalModal.show(this.user);
+  }
+
+  onImageUpdated(user : UserDto){
+    this.getCurrentUser();
+    this.notify.success(this.l('Saved Successfully'));
   }
 
 }

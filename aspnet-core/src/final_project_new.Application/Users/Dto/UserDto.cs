@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
@@ -36,5 +37,23 @@ namespace final_project_new.Users.Dto
         public DateTime CreationTime { get; set; }
 
         public string[] RoleNames { get; set; }
+
+        public string Image { get; set; }
+
+        public string Position { get; set; }
+
+        public string Phone { get; set; }
+
+        public bool isEarlyStart { get; set; }
+
+        public bool isLateFinish { get; set; }
+
+        public bool isAdditionalShift { get; set; }
+
+        public List<string> prefferDays { get; set; }
+
+        public DateTime? startTime { get; set; }
+
+        public DateTime? endTime { get; set; }
     }
 }

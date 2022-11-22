@@ -55,6 +55,7 @@ import { HeaderCustomComponent } from './header-custom/header-custom.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 import { PopupFormComponent } from './popup-form/popup-form.component';
 import { PreferredDayComponent } from './preferred-day/preferred-day.component';
+import { UpdateImageModalComponent } from './update-image-modal/update-image-modal.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { PreferredDayComponent } from './preferred-day/preferred-day.component';
     HeaderCustomComponent,
     PopupFormComponent,
     PreferredDayComponent,
+    UpdateImageModalComponent,
 
 
   ],

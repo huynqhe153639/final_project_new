@@ -1,4 +1,12 @@
 
 <div [ngClass]="isNavbar ? 'div-icon' : 'div-circle' ">
-    <div class="lettered-avatar">LH</div>
+    <ng-container *ngIf="this.user.image === null">
+        <div class="lettered-avatar">{{getFirstLastNameLetter(this.user)}}</div>
+    </ng-container>
+    <ng-container *ngIf="this.user.image !== null">
+        <img [src]="this.user.image" [ngStyle]="{'width' : '145px',
+        'height' : '150px', 'border-radius' : '9999px'}"/>
+    </ng-container>
+    
+    
 </div>
