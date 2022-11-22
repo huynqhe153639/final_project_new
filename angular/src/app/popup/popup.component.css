@@ -1,0 +1,122 @@
+ul {
+    list-style: none;
+}
+.btn-bell {
+    color: white;
+    background-color: #31303A;
+}
+
+.popup-open {
+    display: block;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    max-width: 100%;
+
+}
+.popup-close {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.4);
+    animation-name: close;
+    animation-duration: 5s;
+    opacity: 0;
+}
+
+@keyframes close {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.content-close {
+    background-color: #fefefe;
+    position: fixed;
+    left: 100%;
+    height: 100%;
+    width: 0px;
+    animation-name: content-bell-close;
+    animation-duration: 1s;
+}
+
+@keyframes content-bell-close {
+    0% {
+        left: 71%;
+        width: 100%;
+    }
+
+    100% {
+        left: 100%;
+        width: 0px;
+    }
+}
+
+
+.content{
+    background-color: #fefefe;
+    position: fixed;
+    left: 71%;
+    height: 100%;
+    width: 447px;
+    animation-name: content-bell-open;
+    animation-duration: 1s;
+}
+
+@keyframes content-bell-open {
+    0% {
+        left: 100%;
+    }
+
+    100% {
+        left: 71%;
+    }
+}
+
+
+.start {
+    display: none !important;
+}
+
+.text {
+    background-color: black;
+}
+
+.bi-bell-fill {
+    color: white;
+}
+
+.bi-briefcase-fill {
+    color: #58BDC5;
+}
+
+.bi-x {
+    cursor: pointer;
+}
+
+.btn-time {
+    background-color: rgba(0, 102, 179, .1);
+}
+
+.text-less {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175/var(--tw-text-opacity));
+}

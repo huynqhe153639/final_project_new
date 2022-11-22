@@ -45,12 +45,16 @@ import { InputComponent } from './input/input.component';
 import { InputTimeComponent } from './input-time/input-time.component';
 import { ButtonWeekComponent } from './button-week/button-week.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { CalendarTableComponent } from './calendar-table/calendar-table.component';
 import { TableItemRosterComponent } from './table-item-roster/table-item-roster.component';
 import { TableItemAvailabilityComponent } from './table-item-availability/table-item-availability.component';
 import { LoginComponent } from './login/login.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { TableWeekComponent } from './table-week/table-week.component';
+import { PopupComponent } from './popup/popup.component';
+import { HeaderCustomComponent } from './header-custom/header-custom.component';
+import { ClickOutsideModule } from 'ng-click-outside';
+import { PopupFormComponent } from './popup-form/popup-form.component';
+import { PreferredDayComponent } from './preferred-day/preferred-day.component';
 
 @NgModule({
   declarations: [
@@ -88,13 +92,16 @@ import { TableWeekComponent } from './table-week/table-week.component';
     InputTimeComponent,
     ButtonWeekComponent,
     CalendarComponent,
-    CalendarTableComponent,
     TableItemRosterComponent,
     TableItemAvailabilityComponent,
     LoginComponent,
     TableWeekComponent,
+    PopupComponent,
+    HeaderCustomComponent,
+    PopupFormComponent,
+    PreferredDayComponent,
 
-    
+
   ],
   imports: [
     CommonModule,
@@ -111,6 +118,7 @@ import { TableWeekComponent } from './table-week/table-week.component';
     SharedModule,
     AgGridModule,
     NgxPaginationModule,
+    ClickOutsideModule
   ],
   providers: [],
   entryComponents: [

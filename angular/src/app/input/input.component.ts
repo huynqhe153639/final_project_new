@@ -9,6 +9,7 @@ export class InputComponent implements OnInit {
 
   @Input() content;
   @Input() title;
+  @Input() typeInput;
   constructor() { }
 
   ngOnInit(): void {

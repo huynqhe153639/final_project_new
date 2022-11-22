@@ -1,0 +1,19 @@
+.curso-pointer {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+    margin-left: 8%;
+
+}
+
+.active {
+    color: white;
+    background-color: #1ABAC5;
+}
+
+.btn-day {
+    width: 58%;
+}

@@ -105,9 +105,10 @@ export class CalendarComponent implements OnInit {
     else if (this.checkWeek == -1) this.status = "Last Week";
 
   }
-
+  isClick = -2;
   Popup() {
     this.isPopup = !this.isPopup;
+    this.isClick = this.isClick + 2;
   }
 
   addAll() {
@@ -134,8 +135,8 @@ export class CalendarComponent implements OnInit {
     for (var i = 0; i < 15; i++) {
       this.dateExtra.setDate(this.dateR.getDate() + 1);
       this.rowData[i] = {
-        LeaveType: 'Annual Leave', 
-        FromDate: this.dateR.toLocaleDateString('en-GB') + " " + this.dateExtra.getHours() + ":" + this.dateExtra.getMinutes(), 
+        LeaveType: 'Annual Leave',
+        FromDate: this.dateR.toLocaleDateString('en-GB') + " " + this.dateExtra.getHours() + ":" + this.dateExtra.getMinutes(),
         ToDate: this.dateExtra.toLocaleDateString('en-GB')+ " " + this.dateExtra.getHours() + ":" + this.dateExtra.getMinutes(),
         Status: 'Approved'
       };
@@ -195,7 +196,28 @@ export class CalendarComponent implements OnInit {
   ChangeColorLogout(){
     this.changeColorLogout = !this.changeColorLogout;
   }
-  
+  title = "final";
+  isOpenPopup: any = null;
+  isOpenLogout:boolean = false;
+
+  OpenNotification() {
+
+    this.isClick = this.isClick + 2;
+    this.isOpenPopup = !this.isOpenPopup;
+  }
+  ClosePopup(close:boolean)
+  {
+    this.isOpenPopup=close;
+  }
+  onClickedOutside(e: Event) {
+    if (this.isOpenLogout) {
+      this.isOpenLogout = false;
+    }
+  }
+  onLogout() {
+    this.isOpenLogout = !this.isOpenLogout;
+  }
+
 }
 function dateComparator(date1: string, date2: string) {
   const date1Number = monthToComparableNumber(date1);

@@ -1,0 +1,11 @@
+<div [ngClass]="{'popup-open':isOpenPopup,'popup-close':!isOpenPopup}">
+    <div (clickOutside)='onClickOutsidePopup($event)'
+        [ngClass]="{'content':isOpenPopup,'content-close':!isOpenPopup,'start':isOpenPopup===null}">
+        <div class="fw-bold fs-6 py-3 text d-flex justify-content-between pe-4 ps-3">
+            <div class="text-white"><i class="bi bi-bell-fill me-3 fs-5"></i>Notification</div>
+            <i (click)="ClosePopup()" class="bi bi-x text-white fs-5"></i>
+        </div>
+        <ng-content></ng-content>
+    </div>
+</div>
+

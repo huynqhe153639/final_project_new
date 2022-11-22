@@ -1,5 +1,5 @@
-<label for="firstName">{{title}}</label>
-<input [(ngModel)]="content" required name="firstName" #firstName="ngModel" type="text" class="border-radius-input border input-width"  value="" [placeholder]="title"/>
+<label class="font-bold" for="firstName">{{title}}</label>
+<input [(ngModel)]="content" required name="firstName" #firstName="ngModel" type="{{typeInput}}" class="input border px-2"  value="" [placeholder]="title"/>
 <div
     *ngIf="firstName.invalid && (firstName.touched)"
 >

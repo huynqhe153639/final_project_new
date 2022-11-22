@@ -1,0 +1,46 @@
+<div [ngClass]="{'popup':isOpenPopup,'popup-close':!isOpenPopup}">
+  <div (clickOutside)='onClickOutsidePopup($event)' class="content border-black rounded-3 ">
+    <div class="fw-bold fs-6 py-4 text d-flex justify-content-between px-4">
+      <div class="text-white">LEAVE REQUEST</div>
+      <i (click)="ClosePopup()" class="bi bi-x text-white fs-5"></i>
+    </div>
+    <form class="row px-4">
+      <div class="mb-3 mt-3">
+        <label>LEAVE TYPE</label>
+        <select ngModel name="contactMethod" class="form-select">
+          <option value="">Select type</option>
+          <option *ngFor="let type of types" [value]="type.id">
+            {{ type.name }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 col-6">
+        <app-input #dateFrom [typeInput]="'date'" [content]="'dateFrom'" [title]="'DATE FROM'"></app-input>
+      </div>
+      <div class="mb-3 col-6">
+        <app-input #dateTo [typeInput]="'date'" [content]="'dateTo'" [title]="'DATE TO'"></app-input>
+
+      </div>
+      <div class="mb-3 ">
+        <input type="checkbox" (click)="addAll()" ngModel name="all" class="me-2" id="all" />
+        <label class="" for="all">All Day</label>
+      </div>
+      <div *ngIf="!isAll" class="mb-3 col-6">
+        <app-input #startTime [typeInput]="'time'" [content]="'startTime'" [title]="'START TIME'"></app-input>
+      </div>
+      <div *ngIf="!isAll" class="mb-3 col-6">
+        <app-input #endTime [typeInput]="'time'" [content]="'endTime'" [title]="'END TIME'"></app-input>
+
+      </div>
+      <div class="mb-3 d-flex flex-column">
+        <label for="comment">COMMENT</label>
+        <textarea class="rounded-3" name="comment">
+          </textarea>
+      </div>
+      <div class="mb-3 ">
+        <button class="btn-save border-0 py-2 px-4 rounded-4">Save</button>
+        <button (click)="ClosePopup()"
+          class="bg-white border border-1 border-black btn-cancel py-2 px-4 ms-3 rounded-4">Cancel</button>
+      </div>
+    </form>
+  </div>

@@ -2,7 +2,7 @@
     margin-top: 10px;
 }
 
-.border-radius-input{
+/* .border-radius-input{
     border-radius: 0.5rem;
 }
 .border{
@@ -12,9 +12,17 @@
 .input-width{
     width : 100%;
     box-shadow: none;
-    
+
     height: 35px;
-}
+} */
 .red-danger{
     color: red;
+}
+.input{
+    border-width: 1px;
+    border-radius: 0.5rem;
+    width : 100%;
+    box-shadow: none;
+
+    height: 35px;
 }

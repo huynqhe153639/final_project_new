@@ -1,0 +1,13 @@
+<!-- <div *ngIf="isAddShift"> -->
+    <div class="mt-2">Select your preferred days</div>
+    <ul class="d-flex btn-day flex-wrap border rounded-3 p-0 ms-0  mt-3 ">
+        <li (click)="isAllActive()" [ngClass]="{'active':activeAll}" class=" curso-pointer px-2 py-2">
+            <a>All day</a>
+        </li>
+        <ng-container *ngFor="let day of days">
+            <li (click)="isActive(day)" class="curso-pointer border-start px-2 py-2" [ngClass]="{'active':day[1]}">
+                <a>{{day[0]}}</a>
+            </li>
+        </ng-container>
+    </ul>
+<!-- </div> -->

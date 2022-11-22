@@ -1,0 +1,100 @@
+.btn_logout {
+    width: 13%;
+    text-align: left;
+    position: absolute;
+    top: 3%;
+    left: 83%;
+    background-color: white;
+    color: black;
+}
+
+
+.btn_time {
+    width: 18%;
+}
+
+ul {
+    list-style: none;
+}
+
+#shift,
+.btn_head {
+    border-color: #31303A;
+}
+
+header,
+#shift,
+.btn_head {
+    background-color: #31303A;
+}
+
+li>a>input {
+    color: white;
+    background-color: #31303A;
+    border: 0;
+}
+
+.btn-name {
+    background-color: #9572CF;
+}
+
+.btn-bell {
+    color: white;
+    background-color: #31303A;
+}
+
+.start {
+    display: none !important;
+}
+
+.text {
+    background-color: black;
+}
+
+.bi-bell-fill {
+    color: white;
+}
+
+.bi-briefcase-fill {
+    color: #58BDC5;
+}
+
+.bi-x {
+    cursor: pointer;
+}
+
+.btn-time {
+    background-color: rgba(0, 102, 179, .1);
+}
+
+.text-less {
+    --tw-text-opacity: 1;
+    color: rgb(156 163 175/var(--tw-text-opacity));
+}
+
+.align-super {
+    position: relative;
+    left: 65%;
+    top: -60%;
+    width: 3rem;
+    height: 3rem;
+    background-color: greenyellow;
+
+}
+
+
+.image-header {
+    position: relative;
+    align-items: center;
+}
+
+.active {
+    color: #FF4200 !important;
+}
+
+
+.btn_logout:hover {
+    background-color: #4DC9D2;
+    color: white
+}
+
