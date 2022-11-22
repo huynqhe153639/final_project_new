@@ -10,8 +10,8 @@ namespace final_project_new.RosterAndAvais
     public class RosterAndAvai:Entity
     {
         public int UserId { get; set; }
-        public DateTime FromTime { get; set; }
-        public DateTime ToTime { get; set; }
+        public TimeSpan FromTime { get; set; }
+        public TimeSpan ToTime { get; set; }
         public DateTime Date { get; set; }
         public string Type { get; set; }
     }

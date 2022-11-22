@@ -1,3 +1,4 @@
+import { TableLeaveComponent } from './table-leave/table-leave.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -56,7 +57,6 @@ import { ClickOutsideModule } from 'ng-click-outside';
 import { PopupFormComponent } from './popup-form/popup-form.component';
 import { PreferredDayComponent } from './preferred-day/preferred-day.component';
 import { UpdateImageModalComponent } from './update-image-modal/update-image-modal.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -102,7 +102,7 @@ import { UpdateImageModalComponent } from './update-image-modal/update-image-mod
     PopupFormComponent,
     PreferredDayComponent,
     UpdateImageModalComponent,
-
+    TableLeaveComponent
 
   ],
   imports: [

@@ -13,8 +13,8 @@ namespace final_project_new.Leaves
         public string Type { get; set; }
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
         public string Comment { get; set; }
         public bool Status { get; set; }
     }
