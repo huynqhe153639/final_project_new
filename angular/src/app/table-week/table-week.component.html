@@ -1,7 +1,8 @@
 
+
 <ul class="d-flex border boder-black rounded-3 p-0">
     <li *ngFor="let day of infoUpdate" class="flex-fill border-1 border-start">
-        <div class="head-day ps-3 py-2 ">{{this.day}}</div>
+        <div class="head-day ps-3 py-2 ">{{this.day[0]}}</div>
         <div *ngIf="this.changeCalendar == 1">
             <app-table-item-roster></app-table-item-roster>
         </div>
@@ -9,6 +10,12 @@
             <div class="avai-calendar">
                 <app-table-item-availability></app-table-item-availability>
             </div>
+        </div>
+        <div *ngIf="this.changeCalendar == 3">
+            <div class="avai-calendar">
+                <app-table-item-shift-offer [shiftList]="getItemTable(day[1])"></app-table-item-shift-offer>
+            </div>
+            
         </div>
     </li>
 

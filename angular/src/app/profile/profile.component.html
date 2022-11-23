@@ -1,9 +1,9 @@
-
+<app-header-custom [user]="this.user"></app-header-custom>
 <div class="row">
     <div class="col-2"></div>
     <div class="col-8">
         <div class="items-center flex flex-col">
-            <span (click)="updateImage()"><app-avatar [isNavbar]="false" [user]="user"></app-avatar></span>
+            <span (click)="updateImage()"><app-avatar [isNavbar]="false" [user]="this.user"></app-avatar></span>
             <h3 class="text-center text-x1 font-bold mt-4">{{this.user.name}}</h3>
             <p class="text-center text-sm text-[#7e8890]">{{this.user.surname}}</p>
         </div>
@@ -69,7 +69,7 @@
                                     <label class="btn btn-outline-primary" [for]="d.id"  >{{d.id}}</label>
                                 </ng-container>
                               </div> -->
-                              <app-preferred-day [user]="user"></app-preferred-day>
+                              <app-preferred-day #prefer [user]="user"></app-preferred-day>
                         </div>
                         
                         <div class="flex flex-col mt-1">

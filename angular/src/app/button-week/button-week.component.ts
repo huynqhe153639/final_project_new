@@ -9,12 +9,19 @@ export class ButtonWeekComponent implements OnInit {
 
   constructor() { }
 
-  days: any[] = [1, 2, 3, 4, 5, 6, 7];
+  days: any[] = 
+   [
+    ['1', ],
+    ['2', ],
+    ['3', ],
+    ['4', ],
+    ['5', ],
+    ['6', ],
+    ['7', ],
+  ];
   weekday: any[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   ngOnInit(): void {
-
-    console.log(1);
     this.checkTableWeek = 0;
     for (let i = 0; i < this.days.length; i++) {
 
@@ -24,13 +31,16 @@ export class ButtonWeekComponent implements OnInit {
         this.n = this.dateNow.getDay();
       }
       this.dateNow.setDate(this.dateNow.getDate() - this.n + i + 1);
+      this.days[i][1] = this.dateNow;
+      console.log(this.days[i][1]);
       if (i == 0) {
         this.dateStart = this.dateNow.getDate() + "/" + (this.dateNow.getMonth()+1) + "/" + this.dateNow.getFullYear();
       }
       if (i == 6) {
         this.dateEnd = this.dateNow.getDate() + "/" + (this.dateNow.getMonth()+1) + "/" + this.dateNow.getFullYear();
       }
-      this.days[i] = this.weekday[this.dateNow.getDay()] + " " + this.dateNow.getDate();
+      this.days[i][0] = this.weekday[this.dateNow.getDay()] + " " + this.dateNow.getDate();
+
     }
   }
 

@@ -1,0 +1,11 @@
+<app-header-custom></app-header-custom>
+<div class="option d-flex">
+    <div class="option-button d-flex">
+    </div>
+    <div>
+      <app-button-week (truyenchobo)="buttonWeek($event)"></app-button-week>
+    </div>
+  </div>
+<div class="mt-4" >
+    <app-table-week [shiftOffer]="shiftOffer" [infoUpdate] = "messages" [changeCalendar] = "3"></app-table-week>
+</div>

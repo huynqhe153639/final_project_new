@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { UserDto } from '@shared/service-proxies/service-proxies';
+import { Component, Injector, Input, OnInit } from '@angular/core';
+import { AppComponentBase } from '@shared/app-component-base';
+import { UserDto, UserServiceProxy } from '@shared/service-proxies/service-proxies';
 
 @Component({
   selector: 'app-avatar',
@@ -10,14 +11,16 @@ export class AvatarComponent implements OnInit {
 
   @Input() isNavbar : boolean = false;
   @Input() user : UserDto = new UserDto();
-
   firstname : string;
   lastname : string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
+  
+  ngOnInit(): void {
+
+  }
+  
   getFirstLastNameLetter(user : UserDto) : string{
     this.firstname = user?.name?.charAt(0).toUpperCase();
     this.lastname = user?.surname?.charAt(0).toUpperCase();

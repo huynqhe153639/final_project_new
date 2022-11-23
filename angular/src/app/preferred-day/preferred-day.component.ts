@@ -46,7 +46,7 @@ export class PreferredDayComponent implements OnInit {
       this.user.prefferDays.splice(0, this.user.prefferDays.length);
       this.user.prefferDays.push('All days');
     }else if(this.activeAll == false){
-      this.user.prefferDays.indexOf('All days');
+      this.user.prefferDays.splice(this.user.prefferDays.indexOf('All days'),1)
     }
     
     for (let i = 0; i < this.days.length; i++) {
@@ -56,13 +56,22 @@ export class PreferredDayComponent implements OnInit {
     }
   }
   isActive(day: any) {
+    this.user.prefferDays.splice(0, this.user.prefferDays.length);
     for (let i = 0; i < this.days.length; i++) {
       if (this.days[i] === day) {
         this.days[i][1] = !this.days[i][1];
       }
-    };
-    for (let i = 0; i < this.days.length; i++) {
-      if (!this.days[i][1]) this.activeAll = false;
+      if (!this.days[i][1] && this.activeAll == true){
+        this.activeAll = false;
+        this.user.prefferDays.splice(this.user.prefferDays.indexOf('All days'));
+      }
+
+      if(this.days[i][1] == true){
+        this.user.prefferDays.push(this.days[i][0].toString());
+      }else if(this.days[i][1] == false){
+        this.user.prefferDays.splice(this.user.prefferDays.indexOf(this.days[i][0].toString()));
+      }
+      
     };
 
   }

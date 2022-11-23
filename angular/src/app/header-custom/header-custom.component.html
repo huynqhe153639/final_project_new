@@ -6,14 +6,14 @@
     </div>
     <ul class="d-flex justify-content-start mt-2">
         <li class="pt-2 mx-3">
-            <a routerLinkActive="active" [routerLink]="['']" routerLinkActive="active"
+            <a routerLinkActive="active" routerLink="/app/profile" routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact:true}" class="text-white ">
                 <i class="bi bi-person-fill fs-4 me-2"></i>
                 <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button" value="Profile">
             </a>
         </li>
         <li class="pt-2 mx-3">
-            <a routerLinkActive="active" [routerLink]="['/calendar']" routerLinkActive="active"
+            <a routerLinkActive="active" routerLink="/app/calendar" routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact:true}" class="text-white ">
                 <i class="bi bi-calendar-week fs-4 me-2"></i>
                 <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
@@ -21,7 +21,7 @@
             </a>
         </li>
         <li class="pt-2 mx-3">
-            <a routerLinkActive="active" [routerLink]="['/shift']" routerLinkActive="active"
+            <a routerLinkActive="active" routerLink="/app/shiftOffer" routerLinkActive="active"
                 [routerLinkActiveOptions]="{exact:true}" class="text-white ">
                 <i class="bi bi-window-dash fs-4 me-2"></i>
                 <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
@@ -35,12 +35,13 @@
                 <div class="align-super rounded-circle border-0 me-2" style="width: 0.5rem; height:0.5rem;"></div>
             </i></button>
         <div class="mx-3 text-center mt-2">
-            <div>Hi Danny</div>
-            <div>DC - Sydney</div>
+            <div>{{this.user.name}}</div>
+            <div>{{this.user.surname}}</div>
         </div>
         <div (clickOutside)='onClickedOutside($event)'>
-            <button (click)="onLogout()" class="col-1  rounded-circle btn-name text-white"
-                style="width: 3rem; height:3rem;">DL</button>
+            <app-avatar [isNavbar]="true" [user]="this.user"></app-avatar>
+            <!-- <button (click)="onLogout()" class="col-1  rounded-circle btn-name text-white"
+                style="width: 3rem; height:3rem;">DL</button> -->
             <button *ngIf='isOpenLogout' [routerLink]="['/login']" (click)="logout()"
                 class=" position-absolute end-0  p-2 btn_logout mt-5 border border-white rounded-2 shadow  ">
                 <i class="bi bi-box-arrow-right me-2"></i>Log out

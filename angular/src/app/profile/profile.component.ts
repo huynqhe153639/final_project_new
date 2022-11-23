@@ -1,6 +1,7 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { InputComponent } from '@app/input/input.component';
+import { PreferredDayComponent } from '@app/preferred-day/preferred-day.component';
 import { UpdateImageModalComponent } from '@app/update-image-modal/update-image-modal.component';
 import { AppComponentBase } from '@shared/app-component-base';
 import { UserDto, UserServiceProxy } from '@shared/service-proxies/service-proxies';
@@ -25,6 +26,7 @@ export class ProfileComponent extends AppComponentBase implements OnInit {
   @ViewChild('position') position :InputComponent;
   @ViewChild('email') email :InputComponent;
   @ViewChild('phone') phone :InputComponent;
+  @ViewChild('prefer') prefer :PreferredDayComponent;
 
   day : any[] = [
     {id : "Sun", value : false},

@@ -1,0 +1,15 @@
+<ng-container *ngFor="let shift of this.shiftList">
+    <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day">
+        <div class="rounded-start me-2 pe-2 align-super"></div>
+        <div class="">
+            <span class="my-2">8h</span>
+            <div class="my-2">
+                <span class="rounded bg-white px-1 me-1">{{shift.fromTime}}</span>
+                <span class="rounded bg-white px-1 mx-1">{{shift.toTime}}</span>
+            </div>
+            <div class="flex items-center space-x-1"><span><i class="bi bi-briefcase-fill me-2"></i>{{shift.type}}</span>
+            </div>
+        </div>
+    </div>
+</ng-container>
+

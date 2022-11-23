@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserDto } from '@shared/service-proxies/service-proxies';
 
 @Component({
   selector: 'app-header-custom',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderCustomComponent implements OnInit {
 
+  @Input() user : UserDto = new UserDto();
+  
   constructor() { }
 
   ngOnInit(): void {

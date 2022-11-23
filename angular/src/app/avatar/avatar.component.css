@@ -26,3 +26,15 @@
     color: #fff;
     text-align: center;
 }
+
+.image-big{
+    width : 145px;
+    height: 150px;
+    border-radius : 9999px;
+}
+
+.image-icon{
+    width : 49px;
+    height: 49px;
+    border-radius : 9999px;
+}

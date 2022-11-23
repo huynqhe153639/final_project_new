@@ -503,6 +503,304 @@ export class LeaveServiceProxy {
 }
 
 @Injectable()
+export class NotificationServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    get(id: number | undefined): Observable<NotificationListDto> {
+        let url_ = this.baseUrl + "/api/services/app/Notification/Get?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGet(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGet(<any>response_);
+                } catch (e) {
+                    return <Observable<NotificationListDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NotificationListDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGet(response: HttpResponseBase): Observable<NotificationListDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = NotificationListDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NotificationListDto>(<any>null);
+    }
+
+    /**
+     * @param sorting (optional) 
+     * @param skipCount (optional) 
+     * @param maxResultCount (optional) 
+     * @return Success
+     */
+    getAll(sorting: string | undefined, skipCount: number | undefined, maxResultCount: number | undefined): Observable<NotificationListDtoPagedResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Notification/GetAll?";
+        if (sorting === null)
+            throw new Error("The parameter 'sorting' cannot be null.");
+        else if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&";
+        if (skipCount === null)
+            throw new Error("The parameter 'skipCount' cannot be null.");
+        else if (skipCount !== undefined)
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&";
+        if (maxResultCount === null)
+            throw new Error("The parameter 'maxResultCount' cannot be null.");
+        else if (maxResultCount !== undefined)
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAll(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAll(<any>response_);
+                } catch (e) {
+                    return <Observable<NotificationListDtoPagedResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NotificationListDtoPagedResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAll(response: HttpResponseBase): Observable<NotificationListDtoPagedResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = NotificationListDtoPagedResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NotificationListDtoPagedResultDto>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    create(body: NotificationListDto | undefined): Observable<NotificationListDto> {
+        let url_ = this.baseUrl + "/api/services/app/Notification/Create";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("post", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processCreate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processCreate(<any>response_);
+                } catch (e) {
+                    return <Observable<NotificationListDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NotificationListDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processCreate(response: HttpResponseBase): Observable<NotificationListDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = NotificationListDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NotificationListDto>(<any>null);
+    }
+
+    /**
+     * @param body (optional) 
+     * @return Success
+     */
+    update(body: NotificationListDto | undefined): Observable<NotificationListDto> {
+        let url_ = this.baseUrl + "/api/services/app/Notification/Update";
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(body);
+
+        let options_ : any = {
+            body: content_,
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Content-Type": "application/json-patch+json",
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("put", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processUpdate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processUpdate(<any>response_);
+                } catch (e) {
+                    return <Observable<NotificationListDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NotificationListDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processUpdate(response: HttpResponseBase): Observable<NotificationListDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = NotificationListDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NotificationListDto>(<any>null);
+    }
+
+    /**
+     * @param id (optional) 
+     * @return Success
+     */
+    delete(id: number | undefined): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Notification/Delete?";
+        if (id === null)
+            throw new Error("The parameter 'id' cannot be null.");
+        else if (id !== undefined)
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+            })
+        };
+
+        return this.http.request("delete", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processDelete(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processDelete(<any>response_);
+                } catch (e) {
+                    return <Observable<void>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<void>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processDelete(response: HttpResponseBase): Observable<void> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return _observableOf<void>(<any>null);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<void>(<any>null);
+    }
+}
+
+@Injectable()
 export class RoleServiceProxy {
     private http: HttpClient;
     private baseUrl: string;
@@ -1321,6 +1619,69 @@ export class SessionServiceProxy {
             }));
         }
         return _observableOf<GetCurrentLoginInformationsOutput>(<any>null);
+    }
+}
+
+@Injectable()
+export class ShiftOfferServiceProxy {
+    private http: HttpClient;
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @return Success
+     */
+    getAllShift(): Observable<ShiftOfferListDtoListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/ShiftOffer/GetAllShift";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllShift(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllShift(<any>response_);
+                } catch (e) {
+                    return <Observable<ShiftOfferListDtoListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<ShiftOfferListDtoListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllShift(response: HttpResponseBase): Observable<ShiftOfferListDtoListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = ShiftOfferListDtoListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<ShiftOfferListDtoListResultDto>(<any>null);
     }
 }
 
@@ -3446,8 +3807,8 @@ export class LeaveListDto implements ILeaveListDto {
     type: string | undefined;
     fromDate: moment.Moment;
     toDate: moment.Moment;
-    startTime: moment.Moment;
-    endTime: moment.Moment;
+    startTime: TimeSpan;
+    endTime: TimeSpan;
     comment: string | undefined;
     status: boolean;
 
@@ -3467,8 +3828,8 @@ export class LeaveListDto implements ILeaveListDto {
             this.type = _data["type"];
             this.fromDate = _data["fromDate"] ? moment(_data["fromDate"].toString()) : <any>undefined;
             this.toDate = _data["toDate"] ? moment(_data["toDate"].toString()) : <any>undefined;
-            this.startTime = _data["startTime"] ? moment(_data["startTime"].toString()) : <any>undefined;
-            this.endTime = _data["endTime"] ? moment(_data["endTime"].toString()) : <any>undefined;
+            this.startTime = _data["startTime"] ? TimeSpan.fromJS(_data["startTime"]) : <any>undefined;
+            this.endTime = _data["endTime"] ? TimeSpan.fromJS(_data["endTime"]) : <any>undefined;
             this.comment = _data["comment"];
             this.status = _data["status"];
         }
@@ -3488,8 +3849,8 @@ export class LeaveListDto implements ILeaveListDto {
         data["type"] = this.type;
         data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
         data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
-        data["startTime"] = this.startTime ? this.startTime.toISOString() : <any>undefined;
-        data["endTime"] = this.endTime ? this.endTime.toISOString() : <any>undefined;
+        data["startTime"] = this.startTime ? this.startTime.toJSON() : <any>undefined;
+        data["endTime"] = this.endTime ? this.endTime.toJSON() : <any>undefined;
         data["comment"] = this.comment;
         data["status"] = this.status;
         return data; 
@@ -3509,8 +3870,8 @@ export interface ILeaveListDto {
     type: string | undefined;
     fromDate: moment.Moment;
     toDate: moment.Moment;
-    startTime: moment.Moment;
-    endTime: moment.Moment;
+    startTime: TimeSpan;
+    endTime: TimeSpan;
     comment: string | undefined;
     status: boolean;
 }
@@ -3567,6 +3928,136 @@ export class LeaveListDtoPagedResultDto implements ILeaveListDtoPagedResultDto {
 
 export interface ILeaveListDtoPagedResultDto {
     items: LeaveListDto[] | undefined;
+    totalCount: number;
+}
+
+export class NotificationListDto implements INotificationListDto {
+    id: number;
+    userId: number;
+    typeNotification: string | undefined;
+    fromDate: moment.Moment;
+    toDate: moment.Moment;
+    startTime: TimeSpan;
+    endTime: TimeSpan;
+    content: string | undefined;
+    timeResgister: moment.Moment;
+
+    constructor(data?: INotificationListDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.userId = _data["userId"];
+            this.typeNotification = _data["typeNotification"];
+            this.fromDate = _data["fromDate"] ? moment(_data["fromDate"].toString()) : <any>undefined;
+            this.toDate = _data["toDate"] ? moment(_data["toDate"].toString()) : <any>undefined;
+            this.startTime = _data["startTime"] ? TimeSpan.fromJS(_data["startTime"]) : <any>undefined;
+            this.endTime = _data["endTime"] ? TimeSpan.fromJS(_data["endTime"]) : <any>undefined;
+            this.content = _data["content"];
+            this.timeResgister = _data["timeResgister"] ? moment(_data["timeResgister"].toString()) : <any>undefined;
+        }
+    }
+
+    static fromJS(data: any): NotificationListDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new NotificationListDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["userId"] = this.userId;
+        data["typeNotification"] = this.typeNotification;
+        data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
+        data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
+        data["startTime"] = this.startTime ? this.startTime.toJSON() : <any>undefined;
+        data["endTime"] = this.endTime ? this.endTime.toJSON() : <any>undefined;
+        data["content"] = this.content;
+        data["timeResgister"] = this.timeResgister ? this.timeResgister.toISOString() : <any>undefined;
+        return data; 
+    }
+
+    clone(): NotificationListDto {
+        const json = this.toJSON();
+        let result = new NotificationListDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface INotificationListDto {
+    id: number;
+    userId: number;
+    typeNotification: string | undefined;
+    fromDate: moment.Moment;
+    toDate: moment.Moment;
+    startTime: TimeSpan;
+    endTime: TimeSpan;
+    content: string | undefined;
+    timeResgister: moment.Moment;
+}
+
+export class NotificationListDtoPagedResultDto implements INotificationListDtoPagedResultDto {
+    items: NotificationListDto[] | undefined;
+    totalCount: number;
+
+    constructor(data?: INotificationListDtoPagedResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(NotificationListDto.fromJS(item));
+            }
+            this.totalCount = _data["totalCount"];
+        }
+    }
+
+    static fromJS(data: any): NotificationListDtoPagedResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new NotificationListDtoPagedResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        data["totalCount"] = this.totalCount;
+        return data; 
+    }
+
+    clone(): NotificationListDtoPagedResultDto {
+        const json = this.toJSON();
+        let result = new NotificationListDtoPagedResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface INotificationListDtoPagedResultDto {
+    items: NotificationListDto[] | undefined;
     totalCount: number;
 }
 
@@ -4186,8 +4677,8 @@ export interface IRoleListDtoListResultDto {
 export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
     id: number;
     userId: number;
-    fromTime: moment.Moment;
-    toTime: moment.Moment;
+    fromTime: TimeSpan;
+    toTime: TimeSpan;
     date: moment.Moment;
     type: string | undefined;
 
@@ -4204,8 +4695,8 @@ export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
         if (_data) {
             this.id = _data["id"];
             this.userId = _data["userId"];
-            this.fromTime = _data["fromTime"] ? moment(_data["fromTime"].toString()) : <any>undefined;
-            this.toTime = _data["toTime"] ? moment(_data["toTime"].toString()) : <any>undefined;
+            this.fromTime = _data["fromTime"] ? TimeSpan.fromJS(_data["fromTime"]) : <any>undefined;
+            this.toTime = _data["toTime"] ? TimeSpan.fromJS(_data["toTime"]) : <any>undefined;
             this.date = _data["date"] ? moment(_data["date"].toString()) : <any>undefined;
             this.type = _data["type"];
         }
@@ -4222,8 +4713,8 @@ export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["userId"] = this.userId;
-        data["fromTime"] = this.fromTime ? this.fromTime.toISOString() : <any>undefined;
-        data["toTime"] = this.toTime ? this.toTime.toISOString() : <any>undefined;
+        data["fromTime"] = this.fromTime ? this.fromTime.toJSON() : <any>undefined;
+        data["toTime"] = this.toTime ? this.toTime.toJSON() : <any>undefined;
         data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         data["type"] = this.type;
         return data; 
@@ -4240,8 +4731,8 @@ export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
 export interface IRosterAndAvaiListDtos {
     id: number;
     userId: number;
-    fromTime: moment.Moment;
-    toTime: moment.Moment;
+    fromTime: TimeSpan;
+    toTime: TimeSpan;
     date: moment.Moment;
     type: string | undefined;
 }
@@ -4299,6 +4790,124 @@ export class RosterAndAvaiListDtosPagedResultDto implements IRosterAndAvaiListDt
 export interface IRosterAndAvaiListDtosPagedResultDto {
     items: RosterAndAvaiListDtos[] | undefined;
     totalCount: number;
+}
+
+export class ShiftOfferListDto implements IShiftOfferListDto {
+    id: number;
+    userId: number;
+    fromTime: moment.Moment;
+    toTime: moment.Moment;
+    date: moment.Moment;
+    type: string | undefined;
+    isAccep: boolean;
+
+    constructor(data?: IShiftOfferListDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.id = _data["id"];
+            this.userId = _data["userId"];
+            this.fromTime = _data["fromTime"] ? moment(_data["fromTime"].toString()) : <any>undefined;
+            this.toTime = _data["toTime"] ? moment(_data["toTime"].toString()) : <any>undefined;
+            this.date = _data["date"] ? moment(_data["date"].toString()) : <any>undefined;
+            this.type = _data["type"];
+            this.isAccep = _data["isAccep"];
+        }
+    }
+
+    static fromJS(data: any): ShiftOfferListDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ShiftOfferListDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["id"] = this.id;
+        data["userId"] = this.userId;
+        data["fromTime"] = this.fromTime ? this.fromTime.toISOString() : <any>undefined;
+        data["toTime"] = this.toTime ? this.toTime.toISOString() : <any>undefined;
+        data["date"] = this.date ? this.date.toISOString() : <any>undefined;
+        data["type"] = this.type;
+        data["isAccep"] = this.isAccep;
+        return data; 
+    }
+
+    clone(): ShiftOfferListDto {
+        const json = this.toJSON();
+        let result = new ShiftOfferListDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IShiftOfferListDto {
+    id: number;
+    userId: number;
+    fromTime: moment.Moment;
+    toTime: moment.Moment;
+    date: moment.Moment;
+    type: string | undefined;
+    isAccep: boolean;
+}
+
+export class ShiftOfferListDtoListResultDto implements IShiftOfferListDtoListResultDto {
+    items: ShiftOfferListDto[] | undefined;
+
+    constructor(data?: IShiftOfferListDtoListResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(ShiftOfferListDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): ShiftOfferListDtoListResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new ShiftOfferListDtoListResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone(): ShiftOfferListDtoListResultDto {
+        const json = this.toJSON();
+        let result = new ShiftOfferListDtoListResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IShiftOfferListDtoListResultDto {
+    items: ShiftOfferListDto[] | undefined;
 }
 
 export enum TenantAvailabilityState {
@@ -4468,6 +5077,89 @@ export interface ITenantLoginInfoDto {
     name: string | undefined;
 }
 
+export class TimeSpan implements ITimeSpan {
+    ticks: number;
+    days: number;
+    hours: number;
+    milliseconds: number;
+    minutes: number;
+    seconds: number;
+    readonly totalDays: number;
+    readonly totalHours: number;
+    readonly totalMilliseconds: number;
+    readonly totalMinutes: number;
+    readonly totalSeconds: number;
+
+    constructor(data?: ITimeSpan) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            this.ticks = _data["ticks"];
+            this.days = _data["days"];
+            this.hours = _data["hours"];
+            this.milliseconds = _data["milliseconds"];
+            this.minutes = _data["minutes"];
+            this.seconds = _data["seconds"];
+            (<any>this).totalDays = _data["totalDays"];
+            (<any>this).totalHours = _data["totalHours"];
+            (<any>this).totalMilliseconds = _data["totalMilliseconds"];
+            (<any>this).totalMinutes = _data["totalMinutes"];
+            (<any>this).totalSeconds = _data["totalSeconds"];
+        }
+    }
+
+    static fromJS(data: any): TimeSpan {
+        data = typeof data === 'object' ? data : {};
+        let result = new TimeSpan();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["ticks"] = this.ticks;
+        data["days"] = this.days;
+        data["hours"] = this.hours;
+        data["milliseconds"] = this.milliseconds;
+        data["minutes"] = this.minutes;
+        data["seconds"] = this.seconds;
+        data["totalDays"] = this.totalDays;
+        data["totalHours"] = this.totalHours;
+        data["totalMilliseconds"] = this.totalMilliseconds;
+        data["totalMinutes"] = this.totalMinutes;
+        data["totalSeconds"] = this.totalSeconds;
+        return data; 
+    }
+
+    clone(): TimeSpan {
+        const json = this.toJSON();
+        let result = new TimeSpan();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface ITimeSpan {
+    ticks: number;
+    days: number;
+    hours: number;
+    milliseconds: number;
+    minutes: number;
+    seconds: number;
+    totalDays: number;
+    totalHours: number;
+    totalMilliseconds: number;
+    totalMinutes: number;
+    totalSeconds: number;
+}
+
 export class UserDto implements IUserDto {
     id: number;
     userName: string;
@@ -4486,8 +5178,8 @@ export class UserDto implements IUserDto {
     isLateFinish: boolean;
     isAdditionalShift: boolean;
     prefferDays: string[] | undefined;
-    startTime: moment.Moment | undefined;
-    endTime: moment.Moment | undefined;
+    startTime: TimeSpan;
+    endTime: TimeSpan;
 
     constructor(data?: IUserDto) {
         if (data) {
@@ -4525,8 +5217,8 @@ export class UserDto implements IUserDto {
                 for (let item of _data["prefferDays"])
                     this.prefferDays.push(item);
             }
-            this.startTime = _data["startTime"] ? moment(_data["startTime"].toString()) : <any>undefined;
-            this.endTime = _data["endTime"] ? moment(_data["endTime"].toString()) : <any>undefined;
+            this.startTime = _data["startTime"] ? TimeSpan.fromJS(_data["startTime"]) : <any>undefined;
+            this.endTime = _data["endTime"] ? TimeSpan.fromJS(_data["endTime"]) : <any>undefined;
         }
     }
 
@@ -4564,8 +5256,8 @@ export class UserDto implements IUserDto {
             for (let item of this.prefferDays)
                 data["prefferDays"].push(item);
         }
-        data["startTime"] = this.startTime ? this.startTime.toISOString() : <any>undefined;
-        data["endTime"] = this.endTime ? this.endTime.toISOString() : <any>undefined;
+        data["startTime"] = this.startTime ? this.startTime.toJSON() : <any>undefined;
+        data["endTime"] = this.endTime ? this.endTime.toJSON() : <any>undefined;
         return data; 
     }
 
@@ -4595,8 +5287,8 @@ export interface IUserDto {
     isLateFinish: boolean;
     isAdditionalShift: boolean;
     prefferDays: string[] | undefined;
-    startTime: moment.Moment | undefined;
-    endTime: moment.Moment | undefined;
+    startTime: TimeSpan;
+    endTime: TimeSpan;
 }
 
 export class UserDtoPagedResultDto implements IUserDtoPagedResultDto {
