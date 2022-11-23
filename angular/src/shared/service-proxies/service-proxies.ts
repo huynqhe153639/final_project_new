@@ -5178,8 +5178,8 @@ export class UserDto implements IUserDto {
     isLateFinish: boolean;
     isAdditionalShift: boolean;
     prefferDays: string[] | undefined;
-    startTime: TimeSpan;
-    endTime: TimeSpan;
+    startTime: moment.Moment | undefined;
+    endTime: moment.Moment | undefined;
 
     constructor(data?: IUserDto) {
         if (data) {
@@ -5217,8 +5217,8 @@ export class UserDto implements IUserDto {
                 for (let item of _data["prefferDays"])
                     this.prefferDays.push(item);
             }
-            this.startTime = _data["startTime"] ? TimeSpan.fromJS(_data["startTime"]) : <any>undefined;
-            this.endTime = _data["endTime"] ? TimeSpan.fromJS(_data["endTime"]) : <any>undefined;
+            this.startTime = _data["startTime"] ? moment(_data["startTime"].toString()) : <any>undefined;
+            this.endTime = _data["endTime"] ? moment(_data["endTime"].toString()) : <any>undefined;
         }
     }
 
@@ -5256,8 +5256,8 @@ export class UserDto implements IUserDto {
             for (let item of this.prefferDays)
                 data["prefferDays"].push(item);
         }
-        data["startTime"] = this.startTime ? this.startTime.toJSON() : <any>undefined;
-        data["endTime"] = this.endTime ? this.endTime.toJSON() : <any>undefined;
+        data["startTime"] = this.startTime ? this.startTime.toISOString() : <any>undefined;
+        data["endTime"] = this.endTime ? this.endTime.toISOString() : <any>undefined;
         return data; 
     }
 
@@ -5287,8 +5287,8 @@ export interface IUserDto {
     isLateFinish: boolean;
     isAdditionalShift: boolean;
     prefferDays: string[] | undefined;
-    startTime: TimeSpan;
-    endTime: TimeSpan;
+    startTime: moment.Moment | undefined;
+    endTime: moment.Moment | undefined;
 }
 
 export class UserDtoPagedResultDto implements IUserDtoPagedResultDto {

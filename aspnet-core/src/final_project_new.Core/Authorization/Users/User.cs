@@ -23,9 +23,9 @@ namespace final_project_new.Authorization.Users
 
         public List<string> prefferDays { get; set; }
 
-        public TimeSpan? startTime { get; set; }
+        public DateTime? startTime { get; set; }
 
-        public TimeSpan? endTime { get; set; }
+        public DateTime? endTime { get; set; }
 
         public static string CreateRandomPassword()
         {

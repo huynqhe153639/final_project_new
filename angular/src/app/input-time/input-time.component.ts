@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'app-input-time',
@@ -9,9 +10,12 @@ export class InputTimeComponent implements OnInit {
 
   @Input() content;
   @Input() title;
+  time : Moment;
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.time = this.content.format("HH:mm A");
   }
-
+  
 }

@@ -1,7 +1,7 @@
 import { Component, Injector, OnInit } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 import { ShiftOfferListDto, ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies';
-import * as console from 'console';
+
 
 @Component({
   selector: 'app-shift-offer',

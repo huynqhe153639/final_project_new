@@ -31,8 +31,7 @@ export class ButtonWeekComponent implements OnInit {
         this.n = this.dateNow.getDay();
       }
       this.dateNow.setDate(this.dateNow.getDate() - this.n + i + 1);
-      this.days[i][1] = this.dateNow;
-      console.log(this.days[i][1]);
+
       if (i == 0) {
         this.dateStart = this.dateNow.getDate() + "/" + (this.dateNow.getMonth()+1) + "/" + this.dateNow.getFullYear();
       }
@@ -40,7 +39,7 @@ export class ButtonWeekComponent implements OnInit {
         this.dateEnd = this.dateNow.getDate() + "/" + (this.dateNow.getMonth()+1) + "/" + this.dateNow.getFullYear();
       }
       this.days[i][0] = this.weekday[this.dateNow.getDay()] + " " + this.dateNow.getDate();
-
+      this.days[i][1] = (this.dateNow.getMonth()+1) + "/" + this.dateNow.getDate() + "/" + this.dateNow.getFullYear();
     }
   }
 

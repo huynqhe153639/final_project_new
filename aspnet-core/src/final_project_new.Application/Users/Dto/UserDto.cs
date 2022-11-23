@@ -52,8 +52,8 @@ namespace final_project_new.Users.Dto
 
         public List<string> prefferDays { get; set; }
 
-        public TimeSpan? startTime { get; set; }
+        public DateTime? startTime { get; set; }
 
-        public TimeSpan? endTime { get; set; }
+        public DateTime? endTime { get; set; }
     }
 }

@@ -55,7 +55,7 @@ export class TableWeekComponent {
       }
       this.dateNow.setDate(this.dateNow.getDate() - this.n + i + 1);
       this.infoUpdate1[i][0] = this.weekday[this.dateNow.getDay()] + " " + this.dateNow.getDate();
-      this.infoUpdate1[i][1] = this.dateNow;
+      this.infoUpdate1[i][1] = (this.dateNow.getMonth()+1) + "/" + this.dateNow.getDate() + "/" + this.dateNow.getFullYear();
 
     }
     if(this.infoUpdate == null){
@@ -63,22 +63,19 @@ export class TableWeekComponent {
     }
   }
 
-  getItemTable(day : Date) : ShiftOfferListDto[] {
+  getItemTable(day : string) : ShiftOfferListDto[] {
       // for (let sf of Object.keys(this.shiftOffer)) {
       //   let s = this.shiftOffer[sf];
       //   if(s.date.format("DD MMM YYYY") === moment(day).format("DD MMM YYYY")){
       //     this.shiftList.push(s);
       //   }
       // }
+      this.shiftList.splice(0,this.shiftList.length);
       for(let shift of this.shiftOffer){
         if(shift.date.format("DD MMM YYYY") === moment(day).format("DD MMM YYYY")){
           this.shiftList.push(shift);
-          
         }
-       
-      }
-      
-    
+      } 
       return this.shiftList;
   }
 

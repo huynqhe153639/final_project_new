@@ -59,6 +59,7 @@ import { PreferredDayComponent } from './preferred-day/preferred-day.component';
 import { UpdateImageModalComponent } from './update-image-modal/update-image-modal.component';
 import { TableItemShiftOfferComponent } from './table-item-shift-offer/table-item-shift-offer.component';
 import { ShiftOfferComponent } from './shift-offer/shift-offer.component';
+import { ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies';
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,7 +127,7 @@ import { ShiftOfferComponent } from './shift-offer/shift-offer.component';
     NgxPaginationModule,
     ClickOutsideModule
   ],
-  providers: [],
+  providers: [ShiftOfferServiceProxy],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

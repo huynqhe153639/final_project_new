@@ -3,3 +3,6 @@
     background-color: #E5E7EB;
 }
 
+ul.d-flex.border.boder-black.rounded-3.p-0 {
+    list-style: none;
+}

@@ -4,8 +4,8 @@
         <div class="">
             <span class="my-2">8h</span>
             <div class="my-2">
-                <span class="rounded bg-white px-1 me-1">{{shift.fromTime}}</span>
-                <span class="rounded bg-white px-1 mx-1">{{shift.toTime}}</span>
+                <span class="rounded bg-white px-1 me-1">{{shift.fromTime.format("HH:mm")}}</span>
+                <span class="rounded bg-white px-1 mx-1">{{shift.toTime.format("HH:mm")}}</span>
             </div>
             <div class="flex items-center space-x-1"><span><i class="bi bi-briefcase-fill me-2"></i>{{shift.type}}</span>
             </div>

@@ -53,31 +53,22 @@
                         </label>
                     </div>
                     <div class="form-check ">
-                        <input class="form-check-input" type="checkbox" (click)="isEnable()" value="" id="additionalShift">
+                        <input class="form-check-input" type="checkbox" (click)="isEnable()" [checked]="isEnable" value="" id="additionalShift" [(ngModel)]="user.isAdditionalShift">
                         <label class="form-check-label" for="additionalShift">
                             Available for Additional Shift(Days and Times)
                         </label>
                     </div>
                     <div class="padding-div-enable" *ngIf="enable ? 'disable' : ''">
                         <div class="flex flex-col ">
-                            <!-- <label>Select your preffered days</label>
-                            <div class="btn-group mt-1" role="group" aria-label="Basic checkbox toggle button group">
-                                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" (click)="isCheckAllDay()" [checked]="check"> 
-                                <label class="btn btn-outline-primary" for="btncheck1">All Day</label>
-                                <ng-container *ngFor="let d of day">
-                                    <input type="checkbox" class="btn-check" [id]="d.id"  [checked]="d.value" (click)="isCheck(d.id)">
-                                    <label class="btn btn-outline-primary" [for]="d.id"  >{{d.id}}</label>
-                                </ng-container>
-                              </div> -->
                               <app-preferred-day #prefer [user]="user"></app-preferred-day>
                         </div>
                         
                         <div class="flex flex-col mt-1">
                             <label>Select your available time range</label>
                             <div class="inline-flex item-center mt-1">
-                                <app-input-time></app-input-time>
+                                <app-input-time #start [content]="user.startTime" title="Start Time"></app-input-time>
                                 <span>to</span>
-                                <app-input-time></app-input-time>
+                                <app-input-time #end [content]="user.endTime" title="End Time"></app-input-time>
                             </div>
                         </div>
                     </div>

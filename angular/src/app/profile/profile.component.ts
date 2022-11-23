@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { InputTimeComponent } from '@app/input-time/input-time.component';
 import { InputComponent } from '@app/input/input.component';
 import { PreferredDayComponent } from '@app/preferred-day/preferred-day.component';
 import { UpdateImageModalComponent } from '@app/update-image-modal/update-image-modal.component';
@@ -27,6 +28,8 @@ export class ProfileComponent extends AppComponentBase implements OnInit {
   @ViewChild('email') email :InputComponent;
   @ViewChild('phone') phone :InputComponent;
   @ViewChild('prefer') prefer :PreferredDayComponent;
+  @ViewChild('start') start :InputTimeComponent;
+  @ViewChild('end') end :InputTimeComponent;
 
   day : any[] = [
     {id : "Sun", value : false},
@@ -73,22 +76,31 @@ export class ProfileComponent extends AppComponentBase implements OnInit {
     }
   }
 }
-constructor(injector : Injector, private userService : UserServiceProxy) {
-  super(injector);
-}
+  constructor(injector : Injector, private userService : UserServiceProxy) {
+      super(injector);
+  }
 
-ngOnInit(): void {
-this.getCurrentUser();
-}
+  ngOnInit(): void {
+     this.getCurrentUser();
+  }
 
-getCurrentUser(){
-this.userService.getCurrentUser().subscribe(result => {
-  this.user = result;
-})
-}
+  getCurrentUser(){
+    this.userService.getCurrentUser().subscribe(result => {
+      this.user = result;
+      if(this.user.isAdditionalShift == true){
+        this.enable = true;
+      }
+      
+    });
+    
+  }
 
   submit(f : NgForm){
     this.user.name = this.firstname.content;
+    this.user.surname = this.lastname.content;
+    this.user.position = this.position.content;
+    this.user.emailAddress = this.email.content;
+    this.user.phone = this.phone.content;
     this.userService.update(this.user).subscribe(result => {
       this.getCurrentUser();
       this.notify.success(this.l('Saved Successfully'));
