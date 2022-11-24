@@ -29,9 +29,8 @@
   </div>
 </div>
 
-
 <div class="mt-4" *ngIf="this.changeCalendar != 3">
-  <app-table-week [infoUpdate] = "message" [changeCalendar] = "changeCalendar" ></app-table-week>
+  <app-table-week [infoUpdate] = "messager" [changeCalendar] = "changeCalendar" [rosters]="rosters"></app-table-week>
 </div>
 <div *ngIf="this.changeCalendar == 3">
   <app-calendar-table></app-calendar-table>

@@ -1,3 +1,4 @@
+import { CalendarComponent } from './calendar/calendar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
@@ -18,13 +19,15 @@ import { ShiftOfferComponent } from './shift-offer/shift-offer.component';
                 path: '',
                 component: AppComponent,
                 children: [
-                    { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-                    { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
-                    { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
-                    { path: 'about', component: AboutComponent, canActivate: [AppRouteGuard] },
-                    { path: 'update-password', component: ChangePasswordComponent, canActivate: [AppRouteGuard] },
-                    { path : 'home', component : ProfileComponent},
-                    { path : 'shiftOffer', component : ShiftOfferComponent}
+                    // { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
+                    // { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },
+                    // { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
+                    // { path: 'about', component: AboutComponent, canActivate: [AppRouteGuard] },
+                    // { path: 'update-password', component: ChangePasswordComponent, canActivate: [AppRouteGuard] },
+                    { path : 'home', component : ProfileComponent,canActivate: [AppRouteGuard]},
+                    { path : 'shiftOffer', component : ShiftOfferComponent,canActivate: [AppRouteGuard]},
+                    { path : 'calendar', component : CalendarComponent,canActivate: [AppRouteGuard]}
+
 
                 ]
             }

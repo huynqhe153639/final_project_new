@@ -1,3 +1,4 @@
+import { LeaveServiceProxy } from './../shared/service-proxies/service-proxies';
 import { TableLeaveComponent } from './table-leave/table-leave.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -59,7 +60,7 @@ import { PreferredDayComponent } from './preferred-day/preferred-day.component';
 import { UpdateImageModalComponent } from './update-image-modal/update-image-modal.component';
 import { TableItemShiftOfferComponent } from './table-item-shift-offer/table-item-shift-offer.component';
 import { ShiftOfferComponent } from './shift-offer/shift-offer.component';
-import { ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies';
+import { RosterAndAvaiServiceProxy, ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies';
 @NgModule({
   declarations: [
     AppComponent,
@@ -127,7 +128,7 @@ import { ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies'
     NgxPaginationModule,
     ClickOutsideModule
   ],
-  providers: [ShiftOfferServiceProxy],
+  providers: [ShiftOfferServiceProxy,RosterAndAvaiServiceProxy,LeaveServiceProxy],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

@@ -4,18 +4,18 @@
       <div class="text-white">LEAVE REQUEST</div>
       <i (click)="ClosePopup()" class="bi bi-x text-white fs-5"></i>
     </div>
-    <form class="row px-4">
+    <form class="row px-4" (ngSubmit)="save()" #taskForm="ngForm">
       <div class="mb-3 mt-3">
         <label>LEAVE TYPE</label>
-        <select ngModel name="contactMethod" class="form-select">
+        <select ngModel name="contactMethod" class="form-select"  [(ngModel)]="leave.type" >
           <option value="">Select type</option>
-          <option *ngFor="let type of types" [value]="type.id">
+          <option *ngFor="let type of types" [value]="type.name">
             {{ type.name }}
           </option>
         </select>
       </div>
       <div class="mb-3 col-6">
-        <app-input #dateFrom [typeInput]="'date'" [content]="'dateFrom'" [title]="'DATE FROM'"></app-input>
+        <app-input #fromDate name="fromDate"  [(ngModel)]="leave.fromDate" [typeInput]="'date'" [content]="'dateFrom'" [title]="'DATE FROM'"></app-input>
       </div>
       <div class="mb-3 col-6">
         <app-input #dateTo [typeInput]="'date'" [content]="'dateTo'" [title]="'DATE TO'"></app-input>
@@ -26,7 +26,7 @@
         <label class="" for="all">All Day</label>
       </div>
       <div *ngIf="!isAll" class="mb-3 col-6">
-        <app-input #startTime [typeInput]="'time'" [content]="'startTime'" [title]="'START TIME'"></app-input>
+        <app-input #startTime name="startTime" [(ngModel)]="leave.startTime" [typeInput]="'time'" [content]="'startTime'" [title]="'START TIME'"></app-input>
       </div>
       <div *ngIf="!isAll" class="mb-3 col-6">
         <app-input #endTime [typeInput]="'time'" [content]="'endTime'" [title]="'END TIME'"></app-input>
@@ -38,7 +38,7 @@
           </textarea>
       </div>
       <div class="mb-3 ">
-        <button class="btn-save border-0 py-2 px-4 rounded-4">Save</button>
+        <button class="btn-save border-0 py-2 px-4 rounded-4"  type="submit" [disabled]="!taskForm.form.valid" >Save</button>
         <button (click)="ClosePopup()"
           class="bg-white border border-1 border-black btn-cancel py-2 px-4 ms-3 rounded-4">Cancel</button>
       </div>
