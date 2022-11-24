@@ -1,32 +1,48 @@
-import { Component, OnInit, Output,EventEmitter, Input } from '@angular/core';
+import { AppComponentBase } from "@shared/app-component-base";
+import {
+  LeaveServiceProxy,
+  LeaveListDto,
+} from "./../../shared/service-proxies/service-proxies";
+import { extend, result } from "lodash-es";
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  Injector,
+} from "@angular/core";
+import * as moment from "moment";
 
 @Component({
-  selector: 'app-popup-form',
-  templateUrl: './popup-form.component.html',
-  styleUrls: ['./popup-form.component.css']
+  selector: "app-popup-form",
+  templateUrl: "./popup-form.component.html",
+  styleUrls: ["./popup-form.component.css"],
 })
-export class PopupFormComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class PopupFormComponent extends AppComponentBase implements OnInit {
+  constructor(injector: Injector, private leaveService: LeaveServiceProxy) {
+    super(injector);
   }
-  btnActive = 1
+
+  ngOnInit(): void {}
+  leave: LeaveListDto = new LeaveListDto();
+  btnActive = 1;
   isActive(number: any) {
-    this.btnActive = number
+    this.btnActive = number;
   }
   types = [
-    { id: 1, name: 'Annual Leave' },
-    { id: 2, name: 'Sick Leave' },
-    { id: 3, name: 'Parental Leave' },
-  ]
-  isAll = false
+    { id: 1, name: "Annual Leave" },
+    { id: 2, name: "Sick Leave" },
+    { id: 3, name: "Parental Leave" },
+  ];
+  isAll = false;
   addAll() {
-    this.isAll = !this.isAll
+    this.isAll = !this.isAll;
   }
   @Input() isOpenPopup: any = null;
   @Input() isClick: number;
   @Output() isClosePopupEvent = new EventEmitter<any>();
+  @Output() createNewLeaveEvent = new EventEmitter<any>();
   ClosePopup() {
     this.isOpenPopup = false;
     this.isClosePopupEvent.emit(this.isOpenPopup);
@@ -44,5 +60,13 @@ export class PopupFormComponent implements OnInit {
       this.isClick = this.isClick + 1;
     }
   }
+  save() {
+    this.leave.fromDate = moment(this.leave.fromDate);
+    this.leave.startTime = moment(this.leave.startTime);
 
+    this.leaveService.create(this.leave).subscribe((result) => {
+      this.createNewLeaveEvent.emit(result);
+      console.log(result)
+    });
+  }
 }

@@ -1,9 +1,12 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { RosterAndAvaiServiceProxy, RosterAndAvaiListDtos } from './../../shared/service-proxies/service-proxies';
+import { AppComponentBase } from '@shared/app-component-base';
+import { AfterViewInit, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 import { Observable } from 'rxjs';
 import { ButtonWeekComponent } from '../button-week/button-week.component';
+import { result } from 'lodash-es';
 
 
 
@@ -13,9 +16,16 @@ import { ButtonWeekComponent } from '../button-week/button-week.component';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent extends AppComponentBase implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,injector:Injector,private rosterService: RosterAndAvaiServiceProxy) {
+    super(injector);
+  }
+  rosters : RosterAndAvaiListDtos[]=[];
+  getAllRosters(){
+    this.rosterService.getAll("",0,100).subscribe(result => {this.rosters = result.items})
+  }
+
   days: any[] = [1, 2, 3, 4, 5, 6, 7];
   weekday: any[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   types: any[] = ["Annual Leave", "Sick Leave", "Parental Leave"];
@@ -35,13 +45,14 @@ export class CalendarComponent implements OnInit {
   checkWeek = 0;
   status = "This Week";
 
-  message : any[];
+  messager : any[];
   buttonWeek(days:any[]){
-    this.message = days;
+    this.messager = days;
   }
 
   ngOnInit(): void {
     this.setRowData();
+    this.getAllRosters();
     for (let i = 0; i < this.days.length; i++) {
 
       if (this.dateNow.getDay() == 0) {

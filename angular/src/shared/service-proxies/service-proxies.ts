@@ -3807,8 +3807,8 @@ export class LeaveListDto implements ILeaveListDto {
     type: string | undefined;
     fromDate: moment.Moment;
     toDate: moment.Moment;
-    startTime: TimeSpan;
-    endTime: TimeSpan;
+    startTime: moment.Moment;
+    endTime: moment.Moment;
     comment: string | undefined;
     status: boolean;
 
@@ -3828,8 +3828,8 @@ export class LeaveListDto implements ILeaveListDto {
             this.type = _data["type"];
             this.fromDate = _data["fromDate"] ? moment(_data["fromDate"].toString()) : <any>undefined;
             this.toDate = _data["toDate"] ? moment(_data["toDate"].toString()) : <any>undefined;
-            this.startTime = _data["startTime"] ? TimeSpan.fromJS(_data["startTime"]) : <any>undefined;
-            this.endTime = _data["endTime"] ? TimeSpan.fromJS(_data["endTime"]) : <any>undefined;
+            this.startTime = _data["startTime"] ? moment(_data["startTime"].toString()) : <any>undefined;
+            this.endTime = _data["endTime"] ? moment(_data["endTime"].toString()) : <any>undefined;
             this.comment = _data["comment"];
             this.status = _data["status"];
         }
@@ -3849,8 +3849,8 @@ export class LeaveListDto implements ILeaveListDto {
         data["type"] = this.type;
         data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
         data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
-        data["startTime"] = this.startTime ? this.startTime.toJSON() : <any>undefined;
-        data["endTime"] = this.endTime ? this.endTime.toJSON() : <any>undefined;
+        data["startTime"] = this.startTime ? this.startTime.toISOString() : <any>undefined;
+        data["endTime"] = this.endTime ? this.endTime.toISOString() : <any>undefined;
         data["comment"] = this.comment;
         data["status"] = this.status;
         return data; 
@@ -3870,8 +3870,8 @@ export interface ILeaveListDto {
     type: string | undefined;
     fromDate: moment.Moment;
     toDate: moment.Moment;
-    startTime: TimeSpan;
-    endTime: TimeSpan;
+    startTime: moment.Moment;
+    endTime: moment.Moment;
     comment: string | undefined;
     status: boolean;
 }
@@ -4677,8 +4677,8 @@ export interface IRoleListDtoListResultDto {
 export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
     id: number;
     userId: number;
-    fromTime: TimeSpan;
-    toTime: TimeSpan;
+    fromTime: moment.Moment;
+    toTime: moment.Moment;
     date: moment.Moment;
     type: string | undefined;
 
@@ -4695,8 +4695,8 @@ export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
         if (_data) {
             this.id = _data["id"];
             this.userId = _data["userId"];
-            this.fromTime = _data["fromTime"] ? TimeSpan.fromJS(_data["fromTime"]) : <any>undefined;
-            this.toTime = _data["toTime"] ? TimeSpan.fromJS(_data["toTime"]) : <any>undefined;
+            this.fromTime = _data["fromTime"] ? moment(_data["fromTime"].toString()) : <any>undefined;
+            this.toTime = _data["toTime"] ? moment(_data["toTime"].toString()) : <any>undefined;
             this.date = _data["date"] ? moment(_data["date"].toString()) : <any>undefined;
             this.type = _data["type"];
         }
@@ -4713,8 +4713,8 @@ export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
         data = typeof data === 'object' ? data : {};
         data["id"] = this.id;
         data["userId"] = this.userId;
-        data["fromTime"] = this.fromTime ? this.fromTime.toJSON() : <any>undefined;
-        data["toTime"] = this.toTime ? this.toTime.toJSON() : <any>undefined;
+        data["fromTime"] = this.fromTime ? this.fromTime.toISOString() : <any>undefined;
+        data["toTime"] = this.toTime ? this.toTime.toISOString() : <any>undefined;
         data["date"] = this.date ? this.date.toISOString() : <any>undefined;
         data["type"] = this.type;
         return data; 
@@ -4731,8 +4731,8 @@ export class RosterAndAvaiListDtos implements IRosterAndAvaiListDtos {
 export interface IRosterAndAvaiListDtos {
     id: number;
     userId: number;
-    fromTime: TimeSpan;
-    toTime: TimeSpan;
+    fromTime: moment.Moment;
+    toTime: moment.Moment;
     date: moment.Moment;
     type: string | undefined;
 }

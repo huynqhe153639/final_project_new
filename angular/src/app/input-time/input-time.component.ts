@@ -11,11 +11,11 @@ export class InputTimeComponent implements OnInit {
   @Input() content;
   @Input() title;
   time : Moment;
-  
+
   constructor() { }
 
   ngOnInit(): void {
-    this.time = this.content.format("HH:mm A");
+    this.time = this.content.format("HH:mm");
   }
-  
+
 }

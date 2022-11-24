@@ -6,13 +6,13 @@ import { ShiftOfferListDto } from '@shared/service-proxies/service-proxies';
   templateUrl: './table-item-shift-offer.component.html',
   styleUrls: ['./table-item-shift-offer.component.css']
 })
-export class TableItemShiftOfferComponent implements OnInit {
+export class TableItemShiftOfferComponent  implements OnInit {
 
   @Input() shiftList : ShiftOfferListDto[] = [];
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
   get(){
     console.log(this.shiftList);
