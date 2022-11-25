@@ -24,8 +24,6 @@ export class TableItemRosterComponent
 
   @Input() rosters: RosterAndAvaiListDtos[]=[];
   ngOnInit(): void {
-    for(let i =0;i<this.rosters.length;i++){
-        this.rosters[i].fromTime.format("hh:mm");
-    }
+
   }
 }

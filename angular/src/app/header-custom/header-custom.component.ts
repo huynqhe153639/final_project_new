@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { NotificationServiceProxy, NotificationListDto } from './../../shared/service-proxies/service-proxies';
+import { AppComponentBase } from '@shared/app-component-base';
+import { extend, result } from 'lodash-es';
+import { Component, Input, OnInit, Inject, Injector } from '@angular/core';
 import { UserDto } from '@shared/service-proxies/service-proxies';
 
 @Component({
@@ -6,13 +9,22 @@ import { UserDto } from '@shared/service-proxies/service-proxies';
   templateUrl: './header-custom.component.html',
   styleUrls: ['./header-custom.component.css']
 })
-export class HeaderCustomComponent implements OnInit {
+export class HeaderCustomComponent extends AppComponentBase implements OnInit {
 
   @Input() user : UserDto = new UserDto();
-  
-  constructor() { }
+
+  constructor(Injector:Injector,private notificationService:NotificationServiceProxy) {
+    super(Injector);
+   }
+   notifications: NotificationListDto[]=[];
+   getAllNotification(){
+    this.notificationService.getAll("",0,100).subscribe(result =>{
+      this.notifications= result.items;
+    })
+   }
 
   ngOnInit(): void {
+    this.getAllNotification();
   }
   title = "final";
   isOpenPopup: any = null;
@@ -33,7 +45,7 @@ export class HeaderCustomComponent implements OnInit {
       this.isOpenLogout = false;
     }
   }
-  onLogout() {
-    this.isOpenLogout = !this.isOpenLogout;
+  onLogout(isOpen:boolean) {
+    this.isOpenLogout = isOpen;
   }
 }

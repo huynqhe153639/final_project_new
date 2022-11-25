@@ -1,4 +1,4 @@
-<app-header-custom [user]="this.user"></app-header-custom>
+<app-header-custom [user]="this.user" ></app-header-custom>
 <div class="row">
     <div class="col-2"></div>
     <div class="col-8">
@@ -14,7 +14,7 @@
                     <div>
                         <div class="flex flex-row">
                             <div class="mb-4 flex-1-1">
-                                <app-input #firstname [content]="user.name" title="FirstName">FirstName</app-input>     
+                                <app-input #firstname [content]="user.name" title="FirstName">FirstName</app-input>
                             </div>
                             <div class="mb-4 flex-1-1">
                                 <app-input #lastname [content]="user.surname" title="LastName">LastName</app-input>
@@ -36,8 +36,8 @@
                         <div class="mb-4 flex-1-1">
                             <app-input #phone [content]="user.phone" title="Phone">Phone</app-input>
                         </div>
-                    </div>           
-            </app-form-table>       
+                    </div>
+            </app-form-table>
            <app-form-table>
                     <h3>Additional shifts register settings</h3>
                     <div class="form-check">
@@ -62,7 +62,7 @@
                         <div class="flex flex-col ">
                               <app-preferred-day #prefer [user]="user"></app-preferred-day>
                         </div>
-                        
+
                         <div class="flex flex-col mt-1">
                             <label>Select your available time range</label>
                             <div class="inline-flex item-center mt-1">
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </app-form-table>
-            
+
             <button class="radius-button btn bgr-color-primary" >Save Changes</button>
         </div>
     </form>

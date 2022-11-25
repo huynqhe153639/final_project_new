@@ -24,7 +24,7 @@ import { ShiftOfferComponent } from './shift-offer/shift-offer.component';
                     // { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     // { path: 'about', component: AboutComponent, canActivate: [AppRouteGuard] },
                     // { path: 'update-password', component: ChangePasswordComponent, canActivate: [AppRouteGuard] },
-                    { path : 'home', component : ProfileComponent,canActivate: [AppRouteGuard]},
+                    { path : 'profile', component : ProfileComponent,canActivate: [AppRouteGuard]},
                     { path : 'shiftOffer', component : ShiftOfferComponent,canActivate: [AppRouteGuard]},
                     { path : 'calendar', component : CalendarComponent,canActivate: [AppRouteGuard]}
 

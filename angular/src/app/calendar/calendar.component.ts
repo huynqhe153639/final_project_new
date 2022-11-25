@@ -1,4 +1,4 @@
-import { RosterAndAvaiServiceProxy, RosterAndAvaiListDtos } from './../../shared/service-proxies/service-proxies';
+import { RosterAndAvaiServiceProxy, RosterAndAvaiListDtos, LeaveServiceProxy, LeaveListDto } from './../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
 import { AfterViewInit, Component, OnInit, ViewChild, Injector } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -18,13 +18,26 @@ import { result } from 'lodash-es';
 })
 export class CalendarComponent extends AppComponentBase implements OnInit {
 
-  constructor(private http: HttpClient,injector:Injector,private rosterService: RosterAndAvaiServiceProxy) {
+  constructor(private http: HttpClient,injector:Injector,private rosterService: RosterAndAvaiServiceProxy,private leaveService:LeaveServiceProxy) {
     super(injector);
   }
   rosters : RosterAndAvaiListDtos[]=[];
+  leaves : LeaveListDto[]=[];
+  leaveCreated:LeaveListDto;
+
+  getAllLeaves(){
+    this.leaveService.getAll("",0,100).subscribe(result => {
+      this.leaves= result.items;
+    })
+  }
   getAllRosters(){
     this.rosterService.getAll("",0,100).subscribe(result => {this.rosters = result.items})
   }
+  createNewLeave(leave:LeaveListDto){
+    this.leaves.push(leave);
+
+  }
+
 
   days: any[] = [1, 2, 3, 4, 5, 6, 7];
   weekday: any[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -53,6 +66,7 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
   ngOnInit(): void {
     this.setRowData();
     this.getAllRosters();
+    this.getAllLeaves();
     for (let i = 0; i < this.days.length; i++) {
 
       if (this.dateNow.getDay() == 0) {

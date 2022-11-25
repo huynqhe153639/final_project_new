@@ -3937,8 +3937,8 @@ export class NotificationListDto implements INotificationListDto {
     typeNotification: string | undefined;
     fromDate: moment.Moment;
     toDate: moment.Moment;
-    startTime: TimeSpan;
-    endTime: TimeSpan;
+    startTime: moment.Moment;
+    endTime: moment.Moment;
     content: string | undefined;
     timeResgister: moment.Moment;
 
@@ -3958,8 +3958,8 @@ export class NotificationListDto implements INotificationListDto {
             this.typeNotification = _data["typeNotification"];
             this.fromDate = _data["fromDate"] ? moment(_data["fromDate"].toString()) : <any>undefined;
             this.toDate = _data["toDate"] ? moment(_data["toDate"].toString()) : <any>undefined;
-            this.startTime = _data["startTime"] ? TimeSpan.fromJS(_data["startTime"]) : <any>undefined;
-            this.endTime = _data["endTime"] ? TimeSpan.fromJS(_data["endTime"]) : <any>undefined;
+            this.startTime = _data["startTime"] ? moment(_data["startTime"].toString()) : <any>undefined;
+            this.endTime = _data["endTime"] ? moment(_data["endTime"].toString()) : <any>undefined;
             this.content = _data["content"];
             this.timeResgister = _data["timeResgister"] ? moment(_data["timeResgister"].toString()) : <any>undefined;
         }
@@ -3979,8 +3979,8 @@ export class NotificationListDto implements INotificationListDto {
         data["typeNotification"] = this.typeNotification;
         data["fromDate"] = this.fromDate ? this.fromDate.toISOString() : <any>undefined;
         data["toDate"] = this.toDate ? this.toDate.toISOString() : <any>undefined;
-        data["startTime"] = this.startTime ? this.startTime.toJSON() : <any>undefined;
-        data["endTime"] = this.endTime ? this.endTime.toJSON() : <any>undefined;
+        data["startTime"] = this.startTime ? this.startTime.toISOString() : <any>undefined;
+        data["endTime"] = this.endTime ? this.endTime.toISOString() : <any>undefined;
         data["content"] = this.content;
         data["timeResgister"] = this.timeResgister ? this.timeResgister.toISOString() : <any>undefined;
         return data; 
@@ -4000,8 +4000,8 @@ export interface INotificationListDto {
     typeNotification: string | undefined;
     fromDate: moment.Moment;
     toDate: moment.Moment;
-    startTime: TimeSpan;
-    endTime: TimeSpan;
+    startTime: moment.Moment;
+    endTime: moment.Moment;
     content: string | undefined;
     timeResgister: moment.Moment;
 }
@@ -5075,89 +5075,6 @@ export interface ITenantLoginInfoDto {
     id: number;
     tenancyName: string | undefined;
     name: string | undefined;
-}
-
-export class TimeSpan implements ITimeSpan {
-    ticks: number;
-    days: number;
-    hours: number;
-    milliseconds: number;
-    minutes: number;
-    seconds: number;
-    readonly totalDays: number;
-    readonly totalHours: number;
-    readonly totalMilliseconds: number;
-    readonly totalMinutes: number;
-    readonly totalSeconds: number;
-
-    constructor(data?: ITimeSpan) {
-        if (data) {
-            for (var property in data) {
-                if (data.hasOwnProperty(property))
-                    (<any>this)[property] = (<any>data)[property];
-            }
-        }
-    }
-
-    init(_data?: any) {
-        if (_data) {
-            this.ticks = _data["ticks"];
-            this.days = _data["days"];
-            this.hours = _data["hours"];
-            this.milliseconds = _data["milliseconds"];
-            this.minutes = _data["minutes"];
-            this.seconds = _data["seconds"];
-            (<any>this).totalDays = _data["totalDays"];
-            (<any>this).totalHours = _data["totalHours"];
-            (<any>this).totalMilliseconds = _data["totalMilliseconds"];
-            (<any>this).totalMinutes = _data["totalMinutes"];
-            (<any>this).totalSeconds = _data["totalSeconds"];
-        }
-    }
-
-    static fromJS(data: any): TimeSpan {
-        data = typeof data === 'object' ? data : {};
-        let result = new TimeSpan();
-        result.init(data);
-        return result;
-    }
-
-    toJSON(data?: any) {
-        data = typeof data === 'object' ? data : {};
-        data["ticks"] = this.ticks;
-        data["days"] = this.days;
-        data["hours"] = this.hours;
-        data["milliseconds"] = this.milliseconds;
-        data["minutes"] = this.minutes;
-        data["seconds"] = this.seconds;
-        data["totalDays"] = this.totalDays;
-        data["totalHours"] = this.totalHours;
-        data["totalMilliseconds"] = this.totalMilliseconds;
-        data["totalMinutes"] = this.totalMinutes;
-        data["totalSeconds"] = this.totalSeconds;
-        return data; 
-    }
-
-    clone(): TimeSpan {
-        const json = this.toJSON();
-        let result = new TimeSpan();
-        result.init(json);
-        return result;
-    }
-}
-
-export interface ITimeSpan {
-    ticks: number;
-    days: number;
-    hours: number;
-    milliseconds: number;
-    minutes: number;
-    seconds: number;
-    totalDays: number;
-    totalHours: number;
-    totalMilliseconds: number;
-    totalMinutes: number;
-    totalSeconds: number;
 }
 
 export class UserDto implements IUserDto {

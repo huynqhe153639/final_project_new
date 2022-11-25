@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { LeaveListDto } from './../../shared/service-proxies/service-proxies';
+import { Component, Input, OnInit } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
 @Component({
   selector: 'app-table-leave',
@@ -8,16 +9,7 @@ import { ColDef } from 'ag-grid-community';
 export class TableLeaveComponent implements OnInit {
   constructor() {}
 
-
-
-
-
-
-  ngOnInit(): void {
-
-    this.setRowData()
-
-  }
+  @Input() leaves: LeaveListDto[]=[];
   colDefs: ColDef[] = [
 
 
@@ -28,22 +20,20 @@ export class TableLeaveComponent implements OnInit {
   ]
 
   rowData:any = [
-
-    // { 'Leave Type' : 'Annual Leave', 'From Date':,  'To Date' : ,'Status':'Approved' },
-
   ]
   dateNow2 = new Date()
   dateExtra = new Date()
   setRowData(){
-    for (var i = 0; i < 500; i++){
-      this.dateExtra.setDate(this.dateNow2.getDate()+1);
-        this.rowData[i]={ 'Leave Type' : 'Annual Leave', 'From Date':this.dateNow2.toLocaleString('en-GB', {
-          day: 'numeric', month: 'numeric', year: 'numeric'
-        })+" "+this.dateExtra.getHours()+":"+this.dateExtra.getMinutes(),  'To Date' : this.dateExtra.toLocaleString('en-GB', {
-          day: 'numeric', month: 'numeric', year: 'numeric'
-        })+" "+this.dateExtra.getHours()+":"+this.dateExtra.getMinutes(),'Status':'Approved' };
-        this.dateNow2.setDate(this.dateNow2.getDate()+1);
+    for (var i = 0; i <= this.leaves.length; i++){
+      this.rowData[i]={ 'Leave Type' : this.leaves[i].type, 'From Date':this.leaves[i].fromDate.format("DD/MM/YYYY hh:ss"),  'To Date' :this.leaves[i].toDate.format("DD/MM/YYYY hh:ss"),'Status':this.leaves[i].status?"Approved":"UnApproved" };
+
     }
+  }
+  ngOnInit(): void {
+
+    this.setRowData()
+
+
   }
 
   public defaultColDef: ColDef = {
