@@ -47,6 +47,7 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
 
     this.isClick = this.isClick + 2;
     this.isOpenPopup = !this.isOpenPopup;
+    this.getAllNotification()
   }
   ClosePopup(close:boolean)
   {
