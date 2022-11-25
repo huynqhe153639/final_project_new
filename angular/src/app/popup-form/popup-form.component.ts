@@ -74,10 +74,23 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   submit(f : NgForm) {
     this.leave.fromDate = moment(this.fromDate.content);
     this.leave.toDate = moment(this.toDate.content);
+    // this.leave.startTime = moment(this.startTime.content);
+    // this.leave.endTime = moment(this.endTime.content);
+
+    // this.leave.startTime.set('day',this.fromDate.content.getDay());
+    // this.leave.startTime.set('month',this.fromDate.content.getMonth());
+    // this.leave.startTime.set('year',this.fromDate.content.getYear());
 
 
+    // this.leave.startTime.utcOffset(0);
+    // this.leave.startTime.set('hour',this.startTime.getHour());
+    // this.leave.startTime.set('minute',this.startTime.getMinute());
+    // this.leave.endTime.utcOffset(0);
+    // this.leave.endTime.set('hour',this.endTime.getHour());
+    // this.leave.endTime.set('minute',this.endTime.getMinute());
 
-    console.log( this.leave.fromDate)
+
+    console.log( this.leave.endTime)
     // this.leave.startTime = moment(this.startTime.content);
     // this.leave.endTime = moment(this.endTime.content);
     this.leaveService.create(this.leave).subscribe((result) => {

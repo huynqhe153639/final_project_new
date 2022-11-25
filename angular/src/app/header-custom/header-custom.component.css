@@ -98,3 +98,7 @@ li>a>input {
     color: white
 }
 
+.content-notification{
+    overflow: auto;
+    height: 90%;
+}

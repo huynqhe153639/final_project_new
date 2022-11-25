@@ -1,6 +1,6 @@
 <div class="mb-8 flex-1-1 max-width-120 mright-1">
-    <div class="inline-block width-100">
-        <input [(ngModel)]="time" required name="start"  #start="ngModel" type="time" [ngModelOptions]="{standalone: true}" id="startTime" class="width-100 border border-radius-input input-width timepicker margin-3" [placeholder]="title" >  
+    <div class="inline-block width-100 px-2">
+        <input [(ngModel)]="time" required name="start"  #start="ngModel" type="time" [ngModelOptions]="{standalone: true}" id="startTime" class="width-100 border border-radius-input input-width timepicker margin-3" [placeholder]="title" >
         <div
             *ngIf="start.invalid && (start.touched)"
         >
