@@ -4,6 +4,7 @@ import { extend, result } from 'lodash-es';
 import { Component, Input, OnInit, Inject, Injector } from '@angular/core';
 import { UserDto } from '@shared/service-proxies/service-proxies';
 import { DataService } from '@app/data.service';
+import { AppAuthService } from '@shared/auth/app-auth.service';
 
 @Component({
   selector: 'app-header-custom',
@@ -14,7 +15,7 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
 
   @Input() user : UserDto = new UserDto();
 
-  constructor(Injector:Injector,private notificationService:NotificationServiceProxy, private userService : UserServiceProxy, private dataService : DataService) {
+  constructor(Injector:Injector,private notificationService:NotificationServiceProxy, private userService : UserServiceProxy, private dataService : DataService,private _authService : AppAuthService) {
     super(Injector);
    }
    notifications: NotificationListDto[]=[];
@@ -58,5 +59,9 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
   }
   onLogout(isOpen:boolean) {
     this.isOpenLogout = isOpen;
+  }
+
+  logout(){
+    this._authService.logout();
   }
 }

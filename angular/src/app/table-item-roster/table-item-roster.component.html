@@ -1,5 +1,5 @@
 <div *ngFor="let roster of rosters">
-    <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day">
+    <!-- <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day">
         <div class="rounded-start me-2 pe-2 align-super"></div>
         <div class="">
             <span class="my-2">8h</span>
@@ -9,6 +9,23 @@
             </div>
             <div class="flex items-center space-x-1"><span><i class="bi bi-briefcase-fill me-2"></i>{{roster.type}}</span>
             </div>
+        </div>
+    </div> -->
+
+    <div class="p-2 flex">
+        <div class="flex overflow-hidden border-radius-1 bgr-color-blue-2 width-100">
+            <div class="w-3 align-super bgr-color-blue-1"></div>
+            <div class="p-2 text-xs">
+                <span>8h</span>
+                <div class="margin-x-y">
+                    <span class="border-radius-3 px-1 bgr-color-white">{{roster.fromTime.format("hh:mm")}}</span>
+                    <span class="border-radius-3 px-1 bgr-color-white margin-left">{{roster.toTime.format("hh:mm")}}</span>
+                </div>
+                <div class="flex item-center margin-x-y">
+                    <i class="bi bi-briefcase-fill"></i>
+                    <span>{{roster.type}}</span>
+                </div>
+            </div>  
         </div>
     </div>
 </div>

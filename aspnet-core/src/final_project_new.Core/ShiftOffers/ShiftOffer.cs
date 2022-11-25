@@ -15,5 +15,15 @@ namespace final_project_new.ShiftOffers
         public DateTime Date { get; set; }
         public string Type { get; set; }
         public bool IsAccep { get; set; }
+
+        public ShiftOffer(int userId, DateTime fromTime, DateTime toTime, DateTime date, string type, bool isAccep)
+        {
+            UserId = userId;
+            FromTime = fromTime;
+            ToTime = toTime;
+            Date = date;
+            Type = type;
+            IsAccep = isAccep;
+        }
     }
 }

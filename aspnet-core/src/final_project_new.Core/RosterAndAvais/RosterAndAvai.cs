@@ -14,5 +14,14 @@ namespace final_project_new.RosterAndAvais
         public DateTime ToTime { get; set; }
         public DateTime Date { get; set; }
         public string Type { get; set; }
+
+        public RosterAndAvai(int userId, DateTime fromTime, DateTime toTime, DateTime date, string type)
+        {
+            UserId = userId;
+            FromTime = fromTime;
+            ToTime = toTime;
+            Date = date;
+            Type = type;
+        }
     }
 }

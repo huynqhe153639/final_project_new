@@ -17,5 +17,17 @@ namespace final_project_new.Leaves
         public DateTime EndTime { get; set; }
         public string Comment { get; set; }
         public bool Status { get; set; }
+
+        public Leave(int userId, string type, DateTime fromDate, DateTime toDate, DateTime startTime, DateTime endTime, string comment, bool status)
+        {
+            UserId = userId;
+            Type = type;
+            FromDate = fromDate;
+            ToDate = toDate;
+            StartTime = startTime;
+            EndTime = endTime;
+            Comment = comment;
+            Status = status;
+        }
     }
 }

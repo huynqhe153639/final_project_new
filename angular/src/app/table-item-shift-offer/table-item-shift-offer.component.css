@@ -219,7 +219,7 @@ div:hover div.hover {
 }
 
 .button-color-acc{
-    background-color: rgb(0 160 171/1);
+    background-color: rgb(0 178 190/1);
 
 }
 
@@ -317,7 +317,7 @@ div:hover div.hover {
 }
 
 .align-super {
-    height: 80px;
+    height: 100%;
     width: 12px;
     background-color: #0066B3;
   }
