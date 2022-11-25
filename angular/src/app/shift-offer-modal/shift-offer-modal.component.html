@@ -1,0 +1,26 @@
+
+<div
+bsModal
+#shiftModal="bs-modal"
+class="modal fade"
+tabindex="-1"
+role="dialog"
+aria-labelledby="shiftModal"
+aria-hidden="true"
+[config]="{backdrop: 'static'}"
+>
+<div class="modal-dialog">
+    <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="swal2-icon swal2-question swal2-icon-show flex">
+                    <div class="swal2-icon-content">?</div>
+                </div>
+              <div class="swal2-html-container">Do you want to {{this.type}} this shift offer?</div>
+              <button type="button" class="text-white font-medium text-sm px-8 py-2 bg-primary-800 rounded-full border" (click)="save()" >Yes</button>
+              <button type="button" class="bg-red-500 margin-left text-white font-medium text-sm px-8 py-2 rounded-full border" (click)="save()" >No</button>
+            </div>
+    </div>
+</div>
+</div>
+
+

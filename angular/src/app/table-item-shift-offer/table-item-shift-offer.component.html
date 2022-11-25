@@ -1,15 +1,56 @@
+
+<!-- <div *ngIf="getCheck()">
+    <ng-container *ngFor="let shift of this.shiftList">
+        <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day">
+            <div class="rounded-start me-2 pe-2 align-super"></div>
+            <div class="p-2 text-xs">
+                <span class="my-2">8h</span>
+                <div class="my-2">
+                    <span class="rounded bg-white px-1 me-1">{{shift.fromTime.format("HH:mm")}}</span>
+                    <span class="rounded bg-white px-1 mx-1">{{shift.toTime.format("HH:mm")}}</span>
+                </div>
+                <div class="flex items-center space-x-1"><span><i class="bi bi-briefcase-fill me-2"></i>{{shift.type}}</span>
+                </div>
+                <div>
+                    <div class="margin-x-y-1 flex">
+                        <div class="hover">
+                            <button class="border-radius-2 border button-color-acc bgr-color-blue-2 flex-1-1" (click)="openModal()">Accept</button>
+                        </div>
+                        <div class="hover">
+                            <button class="border-radius-2 border bgr-color-white margin-left-1 flex-1-1" (click)="openModal()">Reject</button>
+                        </div>
+                    </div>
+                </div>      
+            </div>
+
+        </div>
+    </ng-container>
+</div> -->
+
 <ng-container *ngFor="let shift of this.shiftList">
-    <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day">
-        <div class="rounded-start me-2 pe-2 align-super"></div>
-        <div class="">
+    <div class="m-2 d-flex align-items-start border boder-black rounded-3 content-day"
+          >
+          <div class="rounded-start me-2 pe-2 align-super2"></div>
+          <div class="">
             <span class="my-2">8h</span>
             <div class="my-2">
-                <span class="rounded bg-white px-1 me-1">{{shift.fromTime.format("HH:mm")}}</span>
-                <span class="rounded bg-white px-1 mx-1">{{shift.toTime.format("HH:mm")}}</span>
+              <span class="rounded bg-white px-1 me-1">{{shift.fromTime.format("HH:mm")}}</span>
+              <span class="rounded bg-white px-1 mx-1">{{shift.toTime.format("HH:mm")}}</span>
             </div>
-            <div class="flex items-center space-x-1"><span><i class="bi bi-briefcase-fill me-2"></i>{{shift.type}}</span>
+            <div class="flex items-center space-x-1"><span><i
+                  class="bi bi-briefcase-fill me-2"></i>{{shift.type}}</span>
             </div>
+            <div class="d-flex justify-content-start py-2">
+                <div class="hover">
+                    <button class="border-0 rounded-4 btn-request  me-1" (click)="openModal('accept')">Accept</button>
+                </div>
+                <div class="hover">
+                    <button class="border-0 rounded-4 text-black mx-1" (click)="openModal('reject')">Reject</button>
+                </div>
+            </div>
+          </div>
         </div>
-    </div>
 </ng-container>
+        
 
+<app-shift-offer-modal #shiftModal></app-shift-offer-modal>

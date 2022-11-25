@@ -1,8 +1,9 @@
-import { NotificationServiceProxy, NotificationListDto } from './../../shared/service-proxies/service-proxies';
+import { NotificationServiceProxy, NotificationListDto, UserServiceProxy } from './../../shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
 import { extend, result } from 'lodash-es';
 import { Component, Input, OnInit, Inject, Injector } from '@angular/core';
 import { UserDto } from '@shared/service-proxies/service-proxies';
+import { DataService } from '@app/data.service';
 
 @Component({
   selector: 'app-header-custom',
@@ -13,7 +14,7 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
 
   @Input() user : UserDto = new UserDto();
 
-  constructor(Injector:Injector,private notificationService:NotificationServiceProxy) {
+  constructor(Injector:Injector,private notificationService:NotificationServiceProxy, private userService : UserServiceProxy, private dataService : DataService) {
     super(Injector);
    }
    notifications: NotificationListDto[]=[];
@@ -23,8 +24,18 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
     })
    }
 
+   getCurrentUser(){
+    this.userService.getCurrentUser().subscribe(result => {
+      this.user = result;
+    });
+  }
+
   ngOnInit(): void {
     this.getAllNotification();
+    this.getCurrentUser();
+    this.dataService.user.subscribe((user : UserDto) => {
+      this.user = user;
+    });
   }
   title = "final";
   isOpenPopup: any = null;

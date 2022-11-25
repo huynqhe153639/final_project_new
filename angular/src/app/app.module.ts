@@ -62,6 +62,8 @@ import { TableItemShiftOfferComponent } from './table-item-shift-offer/table-ite
 import { ShiftOfferComponent } from './shift-offer/shift-offer.component';
 import { RosterAndAvaiServiceProxy, ShiftOfferServiceProxy } from '@shared/service-proxies/service-proxies';
 import { PopupNotificationComponent } from './popup-notification/popup-notification.component';
+import { ShiftOfferModalComponent } from './shift-offer-modal/shift-offer-modal.component';
+import {DataService} from './data.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,7 +112,8 @@ import { PopupNotificationComponent } from './popup-notification/popup-notificat
     TableLeaveComponent,
     TableItemShiftOfferComponent,
     ShiftOfferComponent,
-    PopupNotificationComponent
+    PopupNotificationComponent,
+    ShiftOfferModalComponent
 
   ],
   imports: [
@@ -130,7 +133,7 @@ import { PopupNotificationComponent } from './popup-notification/popup-notificat
     NgxPaginationModule,
     ClickOutsideModule
   ],
-  providers: [ShiftOfferServiceProxy,RosterAndAvaiServiceProxy,LeaveServiceProxy,NotificationServiceProxy],
+  providers: [ShiftOfferServiceProxy,RosterAndAvaiServiceProxy,LeaveServiceProxy,NotificationServiceProxy,DataService],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

@@ -63,13 +63,10 @@ export class PreferredDayComponent implements OnInit {
       }
       if (!this.days[i][1] && this.activeAll == true){
         this.activeAll = false;
-        this.user.prefferDays.splice(this.user.prefferDays.indexOf('All days'));
       }
 
       if(this.days[i][1] == true){
         this.user.prefferDays.push(this.days[i][0].toString());
-      }else if(this.days[i][1] == false){
-        this.user.prefferDays.splice(this.user.prefferDays.indexOf(this.days[i][0].toString()));
       }
       
     };

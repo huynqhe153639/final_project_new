@@ -1,4 +1,4 @@
-<div class="avai-calendar">
-    <!-- <a>{{leaves[0].fromTime.format("hh:mm")}} – 18:00</a> -->
+<div class="avai-calendar" *ngIf="getCheck()">
+    <a>{{avaib[0].fromTime.format("hh:mm")}}-{{avaib[0].toTime.format("hh:mm")}}</a>
 </div>
 
