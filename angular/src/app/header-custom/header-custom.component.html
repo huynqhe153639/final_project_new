@@ -39,7 +39,7 @@
             <div>{{this.user.surname}}</div>
         </div>
         <div (clickOutside)='onClickedOutside($event)'>
-            <app-avatar [isNavbar]="true" [user]="this.user"></app-avatar>
+            <app-avatar [isNavbar]="true" [user]="this.user" (OpenLogoutEvent)="onLogout($event)"></app-avatar>
             <!-- <button (click)="onLogout()" class="col-1  rounded-circle btn-name text-white"
                 style="width: 3rem; height:3rem;">DL</button> -->
             <button *ngIf='isOpenLogout' [routerLink]="['/login']" (click)="logout()"
@@ -49,5 +49,5 @@
         </div>
     </div>
 </header>
-<app-popup  (isClosePopupEvent)="ClosePopup($event)" [isClick]="isClick"  [isOpenPopup] = "isOpenPopup" ></app-popup>
+<app-popup-notification  (isClosePopupEvent)="ClosePopup($event)" [isClick]="isClick"  [isOpenPopup] = "isOpenPopup"  [notifications]="notifications"></app-popup-notification>
 

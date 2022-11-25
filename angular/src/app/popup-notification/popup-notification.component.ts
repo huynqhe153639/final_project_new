@@ -1,12 +1,12 @@
 import { NotificationListDto } from './../../shared/service-proxies/service-proxies';
-import { Component, Input, OnInit, Output ,EventEmitter} from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-popup',
-  templateUrl: './popup.component.html',
-  styleUrls: ['./popup.component.css']
+  selector: 'app-popup-notification',
+  templateUrl: './popup-notification.component.html',
+  styleUrls: ['./popup-notification.component.css']
 })
-export class PopupComponent implements OnInit {
+export class PopupNotificationComponent implements OnInit {
 
   constructor() { }
 

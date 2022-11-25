@@ -3,10 +3,11 @@
         <div class="head-day ps-3 py-2 ">{{this.day[0]}}</div>
         <div *ngIf="this.changeCalendar == 1">
             <app-table-item-roster [rosters]="getItemRosterOfDay(day[1])"></app-table-item-roster>
+
         </div>
         <div *ngIf="this.changeCalendar == 2">
             <div class="avai-calendar">
-                <app-table-item-availability></app-table-item-availability>
+                <app-table-item-availability [leaves]="getItemLeaveOfDay(day[1])"></app-table-item-availability>
             </div>
         </div>
         <div *ngIf="this.changeCalendar == 3">

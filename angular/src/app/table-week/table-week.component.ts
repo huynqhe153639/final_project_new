@@ -50,7 +50,7 @@ export class TableWeekComponent  implements OnInit {
 
   shiftList: ShiftOfferListDto[] = [];
   rosterList: RosterAndAvaiListDtos[] = [];
-
+  leaveList: RosterAndAvaiListDtos[]=[];
   ngOnInit(): void {
     for (let i = 0; i < this.infoUpdate1.length; i++) {
       if (this.dateNow.getDay() == 0) {
@@ -83,6 +83,17 @@ export class TableWeekComponent  implements OnInit {
       }
     }
     return this.rosterList;
+  }
+  getItemLeaveOfDay(day: string): RosterAndAvaiListDtos[] {
+    this.leaveList.splice(0, this.rosters.length);
+    for (let roster of this.rosters) {
+      if (
+        roster.date.format("DD MMM YYYY") === moment(day).format("DD MMM YYYY")
+      ) {
+        this.leaveList.push(roster);
+      }
+    }
+    return this.leaveList;
   }
 
   getItemTable(day: string): ShiftOfferListDto[] {

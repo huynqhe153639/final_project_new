@@ -1,46 +1,46 @@
 <div [ngClass]="{'popup':isOpenPopup,'popup-close':!isOpenPopup}">
   <div (clickOutside)='onClickOutsidePopup($event)' class="content border-black rounded-3 ">
-    <div class="fw-bold fs-6 py-4 text d-flex justify-content-between px-4">
+    <div class="fw-normal fs-6 py-4 text d-flex justify-content-between px-4">
       <div class="text-white">LEAVE REQUEST</div>
       <i (click)="ClosePopup()" class="bi bi-x text-white fs-5"></i>
     </div>
-    <form class="row px-4" (ngSubmit)="save()" #taskForm="ngForm">
+    <form class="row px-4" (ngSubmit)="submit(f)" #f="ngForm">
       <div class="mb-3 mt-3">
         <label>LEAVE TYPE</label>
-        <select ngModel name="contactMethod" class="form-select"  [(ngModel)]="leave.type" >
-          <option value="">Select type</option>
+        <select ngModel name="contactMethod" class="form-select" autocomplete="false"  [(ngModel)]="leave.type" [(ngModel)]="notification.typeNotification">
+          <option value=""  selected disabled >Select type</option>
           <option *ngFor="let type of types" [value]="type.name">
             {{ type.name }}
           </option>
         </select>
       </div>
       <div class="mb-3 col-6">
-        <app-input #fromDate name="fromDate"  [(ngModel)]="leave.fromDate" [typeInput]="'date'" [content]="'dateFrom'" [title]="'DATE FROM'"></app-input>
+        <app-input #fromDate   [typeInput]="'date'" [content]="leave.fromDate" title="DATE FROM">Date from</app-input>
       </div>
       <div class="mb-3 col-6">
-        <app-input #dateTo [typeInput]="'date'" [content]="'dateTo'" [title]="'DATE TO'"></app-input>
+        <app-input #toDate [typeInput]="'date'" [content]="leave.toDate" title="DATE TO">Date to</app-input>
 
       </div>
-      <div class="mb-3 ">
-        <input type="checkbox" (click)="addAll()" ngModel name="all" class="me-2" id="all" />
+      <div class="mb-1 ">
+        <input type="checkbox" (click)="addAll()" ngModel name="all" class="me-2" id="all" checked value="true"/>
         <label class="" for="all">All Day</label>
       </div>
-      <div *ngIf="!isAll" class="mb-3 col-6">
-        <app-input #startTime name="startTime" [(ngModel)]="leave.startTime" [typeInput]="'time'" [content]="'startTime'" [title]="'START TIME'"></app-input>
+      <div *ngIf="isAll" class="mb-3 col-6">
+        <app-input #startTime  [typeInput]="'time'" [content]="leave.startTime" title="START TIME">Start time</app-input>
       </div>
-      <div *ngIf="!isAll" class="mb-3 col-6">
-        <app-input #endTime [typeInput]="'time'" [content]="'endTime'" [title]="'END TIME'"></app-input>
+      <div *ngIf="isAll" class="mb-3 col-6">
+        <app-input #endTime [typeInput]="'time'" [content]="leave.endTime" title="END TIME">End time</app-input>
 
       </div>
       <div class="mb-3 d-flex flex-column">
         <label for="comment">COMMENT</label>
-        <textarea class="rounded-3" name="comment">
+        <textarea class="rounded-3" name="comment" [(ngModel)]="leave.comment" [(ngModel)]="notification.content">
           </textarea>
       </div>
       <div class="mb-3 ">
-        <button class="btn-save border-0 py-2 px-4 rounded-4"  type="submit" [disabled]="!taskForm.form.valid" >Save</button>
+        <button class="btn-save border-0 py-2 px-4 rounded-5" type="submit"  >Save</button>
         <button (click)="ClosePopup()"
-          class="bg-white border border-1 border-black btn-cancel py-2 px-4 ms-3 rounded-4">Cancel</button>
+          class="bg-white border border-1 border-black btn-cancel py-2 px-4 ms-3 rounded-5">Cancel</button>
       </div>
     </form>
   </div>

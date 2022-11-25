@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using final_project_new.EntityFrameworkCore;
 
 namespace final_project_new.Migrations
 {
     [DbContext(typeof(final_project_newDbContext))]
-    partial class final_project_newDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221124034631_Change_datetime_notification")]
+    partial class Change_datetime_notification
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

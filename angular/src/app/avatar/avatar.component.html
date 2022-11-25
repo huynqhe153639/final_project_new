@@ -1,10 +1,8 @@
-<div [ngClass]="isNavbar ? 'div-icon' : 'div-circle' ">
+<div [ngClass]="isNavbar ? 'div-icon' : 'div-circle' " (click)="OpenLogout()" style="cursor: pointer;">
     <ng-container *ngIf="this.user.image === null">
         <div class="lettered-avatar">{{getFirstLastNameLetter(this.user)}}</div>
     </ng-container>
     <ng-container *ngIf="this.user.image !== null">
         <img [src]="this.user.image" [ngClass]="isNavbar ? 'image-icon' : 'image-big' "/>
     </ng-container>
-    
-    
 </div>
