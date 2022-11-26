@@ -34,6 +34,8 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   @ViewChild('startTime') startTime :InputComponent;
   @ViewChild('endTime') endTime :InputComponent;
 
+  timeExample:any;
+
   ngOnInit(): void {}
   leave: LeaveListDto = new LeaveListDto();
   notification: NotificationListDto = new NotificationListDto();
@@ -74,6 +76,7 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   submit(f : NgForm) {
     this.leave.fromDate = moment(this.fromDate.content);
     this.leave.toDate = moment(this.toDate.content);
+    console.log(this.timeExample)
     // this.leave.startTime = moment(this.startTime.content);
     // this.leave.endTime = moment(this.endTime.content);
 
