@@ -26,7 +26,7 @@
         <label class="" for="all">All Day</label>
       </div>
       <div *ngIf="isAll" class="mb-3 col-6">
-        <app-input #startTime  [typeInput]="'time'" [content]="leave.startTime" title="START TIME">Start time</app-input>
+        <app-input #timeExample  [typeInput]="'time'" [content]="timeExample" title="START TIME">Start time</app-input>
         <!-- <app-input-time #startTime [content]="leave.startTime" title="START TIME"></app-input-time> -->
       </div>
       <div *ngIf="isAll" class="mb-3 col-6">
