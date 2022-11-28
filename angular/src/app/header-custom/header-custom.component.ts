@@ -18,7 +18,9 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
   constructor(Injector:Injector,private notificationService:NotificationServiceProxy, private userService : UserServiceProxy, private dataService : DataService,private _authService : AppAuthService) {
     super(Injector);
    }
+
    notifications: NotificationListDto[]=[];
+   noticationString: NotificationListDto[]=[];
    getAllNotification(){
     this.notificationService.getAll("",0,100).subscribe(result =>{
       this.notifications= result.items;
@@ -47,7 +49,15 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
 
     this.isClick = this.isClick + 2;
     this.isOpenPopup = !this.isOpenPopup;
-    this.getAllNotification()
+    this.getAllNotification();
+    // for(let i = 0; i < this.notifications.length; i++){
+    //   do{
+    //     this.notifications[i].fromDate.add(1, 'days').calendar();
+    //      this.noticationString.push(this.notifications[i]);
+    //   }
+    //   while(this.notifications[i].fromDate != this.notifications[i].toDate)
+    // }
+    // console.log(this.noticationString);
   }
   ClosePopup(close:boolean)
   {

@@ -1,6 +1,6 @@
-import { NgForm } from '@angular/forms';
-import { InputTimeComponent } from './../input-time/input-time.component';
-import { InputComponent } from './../input/input.component';
+import { NgForm } from "@angular/forms";
+import { InputTimeComponent } from "./../input-time/input-time.component";
+import { InputComponent } from "./../input/input.component";
 import { AppComponentBase } from "@shared/app-component-base";
 import {
   LeaveServiceProxy,
@@ -26,18 +26,29 @@ import * as moment from "moment";
   styleUrls: ["./popup-form.component.css"],
 })
 export class PopupFormComponent extends AppComponentBase implements OnInit {
-  constructor(injector: Injector, private leaveService: LeaveServiceProxy,private notificationService:NotificationServiceProxy) {
+  constructor(
+    injector: Injector,
+    private leaveService: LeaveServiceProxy,
+    private notificationService: NotificationServiceProxy
+  ) {
     super(injector);
   }
-  @ViewChild('fromDate') fromDate :InputComponent;
-  @ViewChild('toDate') toDate :InputComponent;
-  @ViewChild('startTime') startTime :InputComponent;
-  @ViewChild('endTime') endTime :InputComponent;
+  @ViewChild("fromDate") fromDate: InputComponent;
+  @ViewChild("toDate") toDate: InputComponent;
+  @ViewChild("startTime") startTime: InputComponent;
+  @ViewChild("endTime") endTime: InputComponent;
+  @ViewChild("timeStartExample") timeStartExample: InputComponent;
+  @ViewChild("timeEndExample") timeEndExample: InputComponent;
 
-  timeExample:any;
 
-  ngOnInit(): void {}
+  // timeExample: any;
+
+  ngOnInit(): void {
+    // this.getAllLeaves();
+    // this.setRowData(this.leaves);
+  }
   leave: LeaveListDto = new LeaveListDto();
+  leaves: LeaveListDto[] = [];
   notification: NotificationListDto = new NotificationListDto();
   btnActive = 1;
   isActive(number: any) {
@@ -55,7 +66,7 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   @Input() isOpenPopup: any = null;
   @Input() isClick: number;
   @Output() isClosePopupEvent = new EventEmitter<any>();
-  @Output() createNewLeaveEvent = new EventEmitter<any>();
+  @Output() newLeavesEvent: EventEmitter<any> = new EventEmitter<any>();
   ClosePopup() {
     this.isOpenPopup = false;
     this.isClosePopupEvent.emit(this.isOpenPopup);
@@ -73,38 +84,40 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
     }
   }
 
-  submit(f : NgForm) {
+  newStartDay: any;
+  newEndDay: any;
+
+
+  submit(f: NgForm) {
     this.leave.fromDate = moment(this.fromDate.content);
     this.leave.toDate = moment(this.toDate.content);
-    console.log(this.timeExample)
-    // this.leave.startTime = moment(this.startTime.content);
-    // this.leave.endTime = moment(this.endTime.content);
 
-    // this.leave.startTime.set('day',this.fromDate.content.getDay());
-    // this.leave.startTime.set('month',this.fromDate.content.getMonth());
-    // this.leave.startTime.set('year',this.fromDate.content.getYear());
+    this.newStartDay = moment().utcOffset(0);
+    this.newStartDay.set("hour", this.timeStartExample.getHour());
+    this.newStartDay.set("minute", this.timeStartExample.getMinute());
+    this.leave.startTime = this.newStartDay;
 
 
-    // this.leave.startTime.utcOffset(0);
-    // this.leave.startTime.set('hour',this.startTime.getHour());
-    // this.leave.startTime.set('minute',this.startTime.getMinute());
-    // this.leave.endTime.utcOffset(0);
-    // this.leave.endTime.set('hour',this.endTime.getHour());
-    // this.leave.endTime.set('minute',this.endTime.getMinute());
+    this.newEndDay = moment().utcOffset(0);
+    this.newEndDay.set("hour", this.timeEndExample.getHour());
+    this.newEndDay.set("minute", this.timeEndExample.getMinute());
+    this.leave.endTime = this.newEndDay;
 
+    this.notification.fromDate = moment(this.fromDate.content);
+    this.notification.toDate = moment(this.toDate.content);
+    this.notification.startTime = this.leave.startTime;
+    this.notification.endTime = this.leave.endTime;
+    this.notification.timeResgister = moment();
 
-    console.log( this.leave.endTime)
-    // this.leave.startTime = moment(this.startTime.content);
-    // this.leave.endTime = moment(this.endTime.content);
     this.leaveService.create(this.leave).subscribe((result) => {
-      this.createNewLeaveEvent.emit(result);
-    });
-    this.notificationService.create(this.notification).subscribe((result) => {
-      // this.createNewLeaveEvent.emit(result);
+      this.newLeavesEvent.emit(result);
     });
 
-    this.notify.success(this.l("Save Successfully"))
+    this.notificationService
+      .create(this.notification)
+      .subscribe((result) => {});
+
+    this.notify.success(this.l("Save Successfully"));
     this.ClosePopup();
-
   }
 }

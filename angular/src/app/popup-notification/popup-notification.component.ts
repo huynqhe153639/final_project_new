@@ -1,5 +1,6 @@
 import { NotificationListDto } from './../../shared/service-proxies/service-proxies';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-popup-notification',
@@ -20,7 +21,7 @@ export class PopupNotificationComponent implements OnInit {
     this.isOpenPopup = false;
     this.isClosePopupEvent.emit(this.isOpenPopup);
   }
-
+  timeNow : any = moment()
   onClickOutsidePopup(e: any) {
     if (this.isClick > 0) {
       if (this.isClick % 2 == 1) {

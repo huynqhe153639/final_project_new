@@ -29,9 +29,19 @@
 </div>
 
 <div class="mt-4" *ngIf="this.changeCalendar != 3">
-  <app-table-week [infoUpdate] = "messager" [changeCalendar] = "changeCalendar" [rosters]="rosters"></app-table-week>
+  <app-table-week [infoUpdate]="messager" [changeCalendar]="changeCalendar" [rosters]="rosters"></app-table-week>
 </div>
 <div *ngIf="this.changeCalendar == 3">
-  <app-table-leave [leaves]="leaves" [leaveCreated]="leaveCreated"></app-table-leave>
+  <app-table-leave [leaves]="leaves" [rowData]="rowData"></app-table-leave>
+
+  <!-- <div class="mx-5 px-5 mt-4" style="height: 100%; display: flex; flex-direction: column;">
+    <div [ngStyle]="style" class="px-5">
+      <ag-grid-angular style="width: 1216px; height: 500px;" class="ag-theme-alpine" [rowData]="rowData"
+        [columnDefs]="colDefs" [defaultColDef]="defaultColDef" [rowSelection]="rowSelection"
+        [suppressRowClickSelection]="true">
+      </ag-grid-angular>
+    </div>
+  </div> -->
 </div>
-<app-popup-form (isClosePopupEvent)="ClosePopup($event)" [isClick]="isClick"  [isOpenPopup] = "isOpenPopup" (createNewLeaveEvent)="getAllLeaves()" ></app-popup-form>
+<app-popup-form (isClosePopupEvent)="ClosePopup($event)" [isClick]="isClick" [isOpenPopup]="isOpenPopup"
+  (newLeavesEvent)="newLeavesEvent($event)"></app-popup-form>
