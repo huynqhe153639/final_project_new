@@ -13,14 +13,14 @@
                             style="width: 2.5rem; height:2.5rem;"><i class="bi bi-briefcase-fill"></i></button>
                         <div class=" border-bottom flex-fill">
                             <div class="mb-2">
-                                <span class=" px-1 me-1">Today shift</span>
-                                <span class=" px-1 mx-1 text-less">less than a minute</span>
+                                <span class=" px-1 me-1">{{notification.fromDate.format("DD/MM/YYYY")}}</span>
+                                <!-- <span class=" px-1 mx-1 text-less">{{(timeNow-notification.timeResgister)}}</span> -->
                             </div>
                             <div class="my-2">
-                                <span class="rounded px-2 py-1 me-1 btn-time">08:00</span>
-                                <span class="rounded px-2 py-1 mx-1 btn-time">16:00</span>
+                                <span class="rounded px-2 py-1 me-1 btn-time">{{notification.startTime.format("hh:mm")}}</span>
+                                <span class="rounded px-2 py-1 mx-1 btn-time">{{notification.endTime.format("hh:mm")}}</span>
                             </div>
-                            <div class="my-2">Contracted</div>
+                            <div class="my-2">{{notification.typeNotification}}</div>
                         </div>
                     </li>
                 </ng-container>
