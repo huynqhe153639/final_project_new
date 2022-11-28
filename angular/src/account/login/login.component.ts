@@ -5,6 +5,7 @@ import { accountModuleAnimation } from '@shared/animations/routerTransition';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 
 @Component({
+  styleUrls: ['./login.component.css'],
   templateUrl: './login.component.html',
   animations: [accountModuleAnimation()]
 })

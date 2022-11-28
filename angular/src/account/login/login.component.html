@@ -1,83 +1,107 @@
-﻿<div [@routerTransition]>
-  <h4 class="text-center mb-3">{{ "LogIn" | localize }}</h4>
-  <form novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()">
-    <div class="form-group">
-      <div class="input-group">
-        <input
-          type="text"
-          class="form-control"
-          name="userNameOrEmailAddress"
-          [(ngModel)]="authService.authenticateModel.userNameOrEmailAddress"
-          [placeholder]="'UserNameOrEmail' | localize"
-          required
-          maxlength="256"
-          #userNameOrEmailAddressModel="ngModel"
-          #userNameOrEmailAddressEl
-        />
-        <div class="input-group-append">
-          <div class="input-group-text">
-            <span class="fas fa-user"></span>
+﻿<!-- <div [@routerTransition]>
+  <div class="row">
+    <div class="col-5  sm:block ">
+      <img class="login-pic"
+        src="https://optimize-portal.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogin-banner.1fa296f1.png&w=3840&q=75">
+    </div>
+    <div class="col-4 ">
+      <div class="flex flex-col items-center">
+        <img class="login-logo "
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3ZZ2xzuUklqfo5TVBdYr-6WKhZauKox4Ym0dgXAOflNBLIWcjMP1UV4ad0LtGNqjH8Q&usqp=CAU">
+        <div class="flex flex-col items-center">
+          <a class="mt-10 text-center text-2xl">Sign in to your account</a>
+          <form (ngSubmit)="login()" action="#" 
+            class="mb-0 mt-4 min-w-[300px] space-y-4 md:w-[350px] text-center" novalidate="">
+            <div class="mb-4 flex-1">
+              <input class="text-base" 
+                [placeholder]="'UserNameOrEmail' | localize"
+                [ngStyle]="{'border': (email?.errors?.required && this.checkClickOutside) || (email?.errors?.required && this.checkClick2) ? '1px solid red' : '1px solid black'}"
+                formControlName="email" name="email" id="email" type="email" (clickOutside)="CheckClickOutside()"
+                (click)="CheckClick()" placeholder="Email" autocomplete="off" value="" required="required">
+
+              <div class="notification"
+                *ngIf="(email?.errors?.required && this.checkClickOutside) || (email?.errors?.required && this.checkClick2) ">
+                <a class="text-noti">Email is required.</a>
+              </div>
+            </div>
+
+            <div class="mb-4 flex-1">
+              <input class="text-base"
+                [placeholder]="'Password' | localize" required maxlength="32"
+                [ngStyle]="{'border': (password?.errors?.required && this.checkClickOutside1) || (password?.errors?.required && this.checkClick2) ? '1px solid red' : '1px solid black'}"
+                name="password" formControlName="password" (clickOutside)="CheckClickOutside1()" (click)="CheckClick1()"
+                id="password" type="password" placeholder="Password" autocomplete="off" value="" required="required">
+              <div class="notification"
+                *ngIf="(password?.errors?.required && this.checkClickOutside1) || (password?.errors?.required && this.checkClick2)">
+                <a class="text-noti">Password is required.</a>
+              </div>
+            </div>
+            <li *ngIf="!email?.errors?.required && !password?.errors?.required">
+              <div class="text-right">
+                <button type="submit" [routerLink]="['']" (click)="CheckClick2()"
+                  class="inline-flex items-center justify-center space-x-2 rounded-full "><span class="mr-1">Sign
+                    in</span> </button>
+              </div>
+            </li>
+            <li *ngIf="email?.errors?.required || password?.errors?.required">
+              <div class="text-right">
+                <button type="submit" [routerLink]="['/login']" (click)="CheckClick2()"
+                  class="inline-flex items-center justify-center space-x-2 rounded-full "><span class="mr-1">Sign
+                    in</span> </button>
+              </div>
+            </li>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-5  sm:block ">
+    <img class="login-pic"
+      src="https://optimize-portal.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogin-banner.1fa296f1.png&w=3840&q=75">
+
+  </div>
+  <div class="col-4 ">
+    <div class="login">
+      <div [@routerTransition]>
+        <img class="logo" src="https://optimize-portal.vercel.app/_next/static/media/login-logo.cbf5804c.svg">
+        <br />
+        <span class="title">Sign in to your account</span>
+        <form novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" name="userNameOrEmailAddress"
+                [(ngModel)]="authService.authenticateModel.userNameOrEmailAddress" [placeholder]="'Email' | localize"
+                required maxlength="256" #userNameOrEmailAddressModel="ngModel" #userNameOrEmailAddressEl />
+
+            </div>
+            <abp-validation-summary [control]="userNameOrEmailAddressModel" [controlEl]="userNameOrEmailAddressEl">
+            </abp-validation-summary>
           </div>
-        </div>
-      </div>
-      <abp-validation-summary
-        [control]="userNameOrEmailAddressModel"
-        [controlEl]="userNameOrEmailAddressEl"
-      ></abp-validation-summary>
-    </div>
-    <div class="form-group">
-      <div class="input-group">
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          [(ngModel)]="authService.authenticateModel.password"
-          [placeholder]="'Password' | localize"
-          required
-          maxlength="32"
-          #passwordModel="ngModel"
-          #passwordEl
-        />
-        <div class="input-group-append">
-          <div class="input-group-text">
-            <span class="fas fa-lock"></span>
+          <div class="form-group">
+            <div class="input-group">
+              <input type="password" class="form-control" name="password"
+                [(ngModel)]="authService.authenticateModel.password" [placeholder]="'Password' | localize" required
+                maxlength="32" #passwordModel="ngModel" #passwordEl />
+
+            </div>
+            <abp-validation-summary [control]="passwordModel" [controlEl]="passwordEl"></abp-validation-summary>
           </div>
-        </div>
+          <div class="form-group row">
+            <div class="col-md-8">
+
+            </div>
+            <div class="col-md-4">
+              <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.form.valid || submitting">
+                {{ "Sign In" | localize }} <i class="bi bi-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+
       </div>
-      <abp-validation-summary
-        [control]="passwordModel"
-        [controlEl]="passwordEl"
-      ></abp-validation-summary>
+
     </div>
-    <div class="form-group row">
-      <div class="col-md-8">
-        <div class="custom-control custom-checkbox">
-          <input
-            type="checkbox"
-            class="custom-control-input"
-            id="rememberMe"
-            name="rememberMe"
-            [(ngModel)]="authService.rememberMe"
-          />
-          <label for="rememberMe" class="custom-control-label">
-            {{ "RememberMe" | localize }}
-          </label>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <button
-          type="submit"
-          class="btn btn-primary btn-block"
-          [disabled]="!loginForm.form.valid || submitting"
-        >
-          {{ "LogIn" | localize }}
-        </button>
-      </div>
-    </div>
-  </form>
-  <p *ngIf="isSelfRegistrationAllowed" class="mb-1">
-    <a [routerLink]="['../register']">
-      <i class="fa fa-plus-circle"></i> {{ "Register" | localize }}
-    </a>
-  </p>
+  </div>
 </div>
