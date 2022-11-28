@@ -44,7 +44,17 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
   isOpenPopup: any = null;
   isOpenLogout:boolean = false;
   isClick = -2;
+  isOpenNav:boolean = null;
+  OpenNavbar(){
+    if(this.isOpenNav=== null){
+      this.isOpenNav =false;
+      this.isOpenNav=!this.isOpenNav
+    }
+    else{
+      this.isOpenNav=null
 
+    }
+  }
   OpenNotification() {
 
     this.isClick = this.isClick + 2;

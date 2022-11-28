@@ -64,6 +64,7 @@ import { RosterAndAvaiServiceProxy, ShiftOfferServiceProxy } from '@shared/servi
 import { PopupNotificationComponent } from './popup-notification/popup-notification.component';
 import { ShiftOfferModalComponent } from './shift-offer-modal/shift-offer-modal.component';
 import {DataService} from './data.service';
+import { NavbarCustomComponent } from './navbar-custom/navbar-custom.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -113,7 +114,8 @@ import {DataService} from './data.service';
     TableItemShiftOfferComponent,
     ShiftOfferComponent,
     PopupNotificationComponent,
-    ShiftOfferModalComponent
+    ShiftOfferModalComponent,
+    NavbarCustomComponent
 
   ],
   imports: [
