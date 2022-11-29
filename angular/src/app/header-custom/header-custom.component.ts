@@ -55,6 +55,10 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
 
     }
   }
+  CloseNavEvent(event:any){
+    this.isOpenNav= event;
+
+  }
   OpenNotification() {
 
     this.isClick = this.isClick + 2;

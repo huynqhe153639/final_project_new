@@ -114,10 +114,16 @@ li>a>input {
 .item-avatar {
     margin-top: 0.5rem;
 }
-.close-content-link{
+
+.close-content-link {
     display: none;
 }
-.open-content-link{
+
+.item-logo {
+    display: none !important;
+}
+
+.open-content-link {
 
     display: block;
     position: fixed;
@@ -131,19 +137,57 @@ li>a>input {
     padding: 0px !important;
 
 }
-.item-link{
-    /* padding-left: 2%; */
-    background-color:  #FF4200 !important;;
+
+.btn-logout {
+    background-color: #31303A;
+    color: white;
+    border: none;
+    margin-left: 3%;
+    margin-top: 2%;
+
 }
+
+.close-btn-logout {
+    display: none !important;
+}
+
+.btn-custom {
+    display: none;
+
+}
+
+.item-link {
+    display: none;
+}
+
+.btn-nav{
+    background-color: #31303A;
+    width: 95%;
+    text-align: start;
+    color: white !important;
+
+}
+.active-button{
+    color: white !important;
+    background-color: #FF4200;
+
+}
+
+
 @media only screen and (max-width:1000px) {
     .content-link {
         display: none !important;
     }
+
+    .item-logo {
+        display: block !important;
+    }
+
     .icon-nav {
         display: block !important;
         cursor: pointer;
     }
-    .active{
-        color: white !important;
-    }
+
+
+
 }
