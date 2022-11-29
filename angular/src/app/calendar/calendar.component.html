@@ -1,4 +1,4 @@
-<div class="mx-auto mt-10 max-w-7xl sm:px-8">
+<!-- <div class="mx-auto mt-10 max-w-7xl sm:px-8">
   <div class="mx-4 flex flex-col space-y-4 sm:mx-0 sm:flex-row sm:items-center sm:space-y-0">
     <div class="flex-1">
       <div class=" d-flex">
@@ -16,7 +16,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="flex-1 sm:flex-none" *ngIf="this.changeCalendar != 3">
       <app-button-week (truyenchobo)="buttonWeek($event)"> </app-button-week>
     </div>
@@ -27,14 +27,70 @@
           <a class="option" type="button" [ngStyle]="{'color': 'white'}" (click)=" OpenNotification()"> Request Leave </a>
         </div>
       </div>
-  
-  
+
+
     </div>
   </div>
-  
+
+</div> -->
+<div class="option d-flex button-table">
+  <div class="option-button d-flex">
+    <button class=" items-center  flex-fill  border  py-1" id="roster" (click)="RosterButton()"
+      [ngStyle]="{'background-color': checkRoster ? '#1ABAC5':'white','color': checkRoster ? 'white':'black' }">Roster
+      <!-- <a type="button" class="option" [ngStyle]="{'color': checkRoster  ? 'white':'black' }">Roster</a> -->
+    </button>
+    <button class=" items-center  flex-fill border  py-1" id="availability" (click)="AvaiButton()"
+      [ngStyle]="{'background-color': checkAvai ? '#1ABAC5':'white','color': checkAvai ? 'white':'black' }">Availability
+      <!-- <a type="button" class="option" [ngStyle]="{'color': checkAvai  ? 'white':'black' }">Availability</a> -->
+    </button>
+    <button class="items-center  flex-fill border  py-1" id="leave" (click)="LeaveButton()"
+      [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white','color': checkLeave ? 'white':'black' }">Leave
+      <!-- <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a> -->
+    </button>
+  </div>
+  <div *ngIf="this.changeCalendar != 3">
+    <app-button-week (truyenchobo)="buttonWeek($event)"> </app-button-week>
+  </div>
+  <div *ngIf="this.changeCalendar == 3">
+    <!-- <div class="">
+      <div class=" items-center  border px-4 py-1" id="week"
+        [ngStyle]="{'background-color': '#1ABAC5','outline': '2px solid transparent','outline-offset': '2px'}">
+        <a class="option" type="button" [ngStyle]="{'color': 'white'}" (click)=" OpenNotification()"> Request Leave </a>
+      </div>
+    </div> -->
+    <button class="items-center  flex-fill border px-4 py-2" id="request" (click)="LeaveButton()"
+      [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white','color': checkLeave ? 'white':'black' }"  (click)=" OpenNotification()">Request Leave
+      <!-- <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a> -->
+    </button>
+  </div>
+  <!-- <div class="option-button d-flex">
+    <div class=" items-center col-md-4 border px-4 py-1" id="roster" (click)="RosterButton()"
+      [ngStyle]="{'background-color': checkRoster ? '#1ABAC5':'white'}">
+      <a type="button" class="option" [ngStyle]="{'color': checkRoster  ? 'white':'black' }">Roster</a>
+    </div>
+    <div class=" items-center col-md-4 border px-4 py-1" id="availability" (click)="AvaiButton()"
+      [ngStyle]="{'background-color': checkAvai ? '#1ABAC5':'white'}">
+      <a type="button" class="option" [ngStyle]="{'color': checkAvai  ? 'white':'black' }">Availability</a>
+    </div>
+    <div class="items-center col-md-4 border px-4 py-1" id="leave" (click)="LeaveButton()"
+      [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white' }">
+      <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a>
+    </div>
+  </div>
+  <div *ngIf="this.changeCalendar != 3">
+    <app-button-week (truyenchobo)="buttonWeek($event)"> </app-button-week>
+  </div>
+  <div *ngIf="this.changeCalendar == 3">
+    <div class="option-option-button">
+      <div class=" items-center  border px-4 py-1" id="week"
+        [ngStyle]="{'background-color': '#1ABAC5','outline': '2px solid transparent','outline-offset': '2px'}">
+        <a class="option" type="button" [ngStyle]="{'color': 'white'}" (click)=" OpenNotification()"> Request Leave </a>
+      </div>
+    </div>
+  </div> -->
 </div>
 
-<div class="mt-4 sm:px-8 max-w-7xl" *ngIf="this.changeCalendar != 3">
+<div class="mt-4   table-calendar" *ngIf="this.changeCalendar != 3">
   <app-table-week [infoUpdate]="messager" [changeCalendar]="changeCalendar" [rosters]="rosters"></app-table-week>
 </div>
 <div *ngIf="this.changeCalendar == 3">

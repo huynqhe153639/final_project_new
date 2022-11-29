@@ -14,10 +14,10 @@
           </option>
         </select>
       </div>
-      <div class="mb-3 col-6">
+      <div class="mb-3 col-lg-6 col-md-12" >
         <app-input #fromDate   [typeInput]="'date'" [content]="leave.fromDate" title="DATE FROM">Date from</app-input>
       </div>
-      <div class="mb-3 col-6">
+      <div class="mb-3 col-lg-6 col-md-12">
         <app-input #toDate [typeInput]="'date'" [content]="leave.toDate" title="DATE TO">Date to</app-input>
 
       </div>
@@ -25,11 +25,11 @@
         <input type="checkbox" (click)="addAll()" ngModel name="all" class="me-2" id="all" checked value="true"/>
         <label class="" for="all">All Day</label>
       </div>
-      <div *ngIf="isAll" class="mb-3 col-6">
+      <div *ngIf="isAll" class="mb-3 col-lg-6 col-md-12">
         <app-input #timeStartExample  [typeInput]="'time'" [content]="timeStartExample" title="START TIME">Start time</app-input>
         <!-- <app-input-time #startTime [content]="leave.startTime" title="START TIME"></app-input-time> -->
       </div>
-      <div *ngIf="isAll" class="mb-3 col-6">
+      <div *ngIf="isAll" class="mb-3 col-lg-6 col-md-12">
         <app-input #timeEndExample [typeInput]="'time'" [content]="timeEndExample" title="END TIME">End time</app-input>
         <!-- <app-input-time #endTime [content]="leave.endTime" title="END TIME"></app-input-time> -->
 
