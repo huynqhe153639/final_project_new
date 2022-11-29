@@ -11,6 +11,14 @@
 
   }
 
+  .flex{
+    display: flex;
+  }
+
+  .flex-col{
+    flex-direction: column;
+  }
+
   a.option {
     text-decoration: none;
     color: black;
@@ -36,8 +44,8 @@
 
 
   .mt-4 {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .align-super {
@@ -309,3 +317,51 @@
     margin-left: 50px;
     margin-right: 50px;
   }
+
+  .max-w-7xl{
+    width: 70rem;
+  }
+   
+  .flex-1{
+    flex: 1 1 0%;
+  }
+  .mx-4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .mx-auto.mt-10.max-w-7xl.sm\:px-8 {
+    margin-top: 50px;
+}
+
+@media (min-width: 650px){
+  .sm\:items-center {
+    align-items: center;
+}
+
+.sm\:flex-row {
+  flex-direction: row;
+}
+
+.sm\:mx-0 {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.sm\:max-w-sm {
+    max-width: 24rem;
+}
+
+.sm\:px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.sm\:flex-none {
+  flex: none;
+}
+.sm\:flex-1{
+  flex: none;
+}
+}
+

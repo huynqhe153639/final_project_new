@@ -11,6 +11,15 @@
 
   }
 
+  .flex{
+    display: flex;
+  }
+
+  .m-4{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
   a.option {
     text-decoration: none;
     color: black;
@@ -36,8 +45,8 @@
 
 
   .mt-4 {
-    margin-left: 200px;
-    margin-right: 200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .align-super {
@@ -308,4 +317,40 @@
   .ag-root-wrapper.ag-layout-normal.ag-ltr {
     margin-left: 50px;
     margin-right: 50px;
+  }
+  .max-w-7xl{
+    max-width: 70rem;
+  }
+
+  .flex-1{
+    flex: 1 1 0%;
+  }
+
+  .hidden{
+    display: none;
+  }
+
+
+  @media (min-width: 640px){
+    .sm\:px-8 {
+      padding-left: 2rem;
+      padding-right: 2rem;
+  }
+
+  .sm\:mx-0 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .sm\:flex-1 {
+    flex: 1 1 0%;
+  }
+
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:flex-none {
+    flex: none;
+}
   }

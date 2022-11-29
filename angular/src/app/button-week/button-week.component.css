@@ -23,3 +23,13 @@ a.option {
     padding: 5px 15px 5px 15px;
 }
 
+.flex-1 {
+    flex: 1 1 0%;
+}
+
+@media (min-width: 640px){
+    .sm\:flex-none {
+        flex: none;
+    }
+}
+

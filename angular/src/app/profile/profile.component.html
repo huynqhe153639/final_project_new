@@ -1,6 +1,9 @@
-<div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+<!-- <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+/> -->
+<div class="col-8 mx-8 max-w-4xl lg:mx-auto">
+    <div class="my-10 flex flex-col space-x-0 md:flex-row md:space-x-12">
         <div class="items-center flex flex-col">
             <span (click)="updateImage()"><app-avatar [isNavbar]="false" [user]="this.user"></app-avatar></span>
             <h3 class="text-center text-x1 font-bold mt-4">{{this.user.name}}</h3>
@@ -11,7 +14,7 @@
             <app-form-table>
                     <h3>Profile</h3>
                     <div>
-                        <div class="flex flex-row">
+                        <div class="flex flex-col md:flex-row ">
                             <div class="mb-4 flex-1-1">
                                 <app-input #firstname [content]="user.name" title="FirstName">FirstName</app-input>     
                             </div>
@@ -19,7 +22,7 @@
                                 <app-input #lastname [content]="user.surname" title="LastName">LastName</app-input>
                             </div>
                         </div>
-                        <div class="flex flex-row">
+                        <div class="flex flex-col md:flex-row" >
                             <div class="mb-4 flex-1-1">
                                 <app-input #id [content]="user.id" title="Id">Id</app-input>
                             </div>
@@ -76,8 +79,7 @@
             <button class="radius-button btn bgr-color-primary" >Save Changes</button>
         </div>
     </form>
-    </div>
-    <div class="col-2"></div>
+    </div>      
 </div>
 
 <app-update-image-modal #updateImageModal (modalSave)="onImageUpdated($event)"></app-update-image-modal>
