@@ -24,27 +24,66 @@
 </ul> -->
 <!-- <div *ngIf="isOpenNav === null">asdsa</div> -->
 <ul [ngClass]="{'d-flex justify-content-start mt-2 content-link':isOpenNav===null,'open-content-link ':isOpenNav}">
-    <li [ngClass]="{'pt-2 mx-3':isOpenNav===null,'w-100 mx-2 p-2 my-3  d-flex justify-content-between':isOpenNav}">
-        <img src="https://optimize-portal.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.71ef5d46.png&w=256&q=75">
-        <i class="bi bi-x fs-2 me-4"></i>
+    <li
+        [ngClass]="{'pt-2 mx-3 item-logo':isOpenNav===null,'w-100 mx-2 p-2 my-3 d-flex justify-content-between':isOpenNav}">
+        <img
+            src="https://optimize-portal.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.71ef5d46.png&w=256&q=75">
+        <i class="bi bi-x fs-2 me-4 cursor " (click)="CloseNav()"></i>
     </li>
-    <li [ngClass]="{'pt-2 mx-3':isOpenNav===null,'w-100 mx-4 p-2 item-link':isOpenNav}">
-        <a routerLinkActive="active" routerLink="profile" [routerLinkActiveOptions]="{exact:true}" class="text-white ">
+    <li [ngClass]="{'pt-2 mx-3':isOpenNav===null,'w-80 mx-4 p-2 item-link':isOpenNav}">
+        <a (click)="CloseNav()" routerLinkActive="active" routerLink="profile"
+            [routerLinkActiveOptions]="{exact:true}" class="text-white ">
             <i class="bi bi-person-fill fs-4 me-2"></i>
-            <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button" value="Profile">
+
+            <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
+                value="Profile">
         </a>
+
     </li>
-    <li [ngClass]="{'pt-2 mx-3':isOpenNav===null,'w-100 mx-2 p-2 item-link':isOpenNav}">
-        <a routerLinkActive="active" routerLink="calendar" [routerLinkActiveOptions]="{exact:true}" class="text-white ">
+    <button (click)="CloseNav()" routerLinkActive="active-button" routerLink="profile"
+        [routerLinkActiveOptions]="{exact:true}"
+        [ngClass]="{'btn-custom text-white border-0':isOpenNav===null,'border-0 mx-4 p-2 btn-nav':isOpenNav}">
+        <i class="bi bi-person-fill fs-4 me-2"></i>
+
+        Profile
+    </button>
+
+    <li [ngClass]="{'pt-2 mx-3':isOpenNav===null,'w-80 mx-4 p-2 item-link':isOpenNav}">
+        <a (click)="CloseNav()" routerLinkActive="active" routerLink="calendar"
+            [routerLinkActiveOptions]="{exact:true}" class="text-white ">
             <i class="bi bi-calendar-week fs-4 me-2"></i>
-            <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button" value="Calendar">
+
+            <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
+                value="Calendar">
         </a>
+
     </li>
-    <li [ngClass]="{'pt-2 mx-3':isOpenNav===null,'w-100 mx-2 p-2 item-link':isOpenNav}">
-        <a routerLinkActive="active" routerLink="shiftOffer" [routerLinkActiveOptions]="{exact:true}" class="text-white ">
+    <button (click)="CloseNav()" routerLinkActive="active-button" routerLink="calendar"
+        [routerLinkActiveOptions]="{exact:true}"
+        [ngClass]="{'btn-custom text-white border-0':isOpenNav===null,'border-0 mx-4 p-2 btn-nav':isOpenNav}">
+        <i class="bi bi-calendar-week fs-4 me-2"></i>
+
+        Calendar
+    </button>
+
+    <li [ngClass]="{'pt-2 mx-3':isOpenNav===null,'w-80 mx-4 p-2 item-link':isOpenNav}">
+        <a (click)="CloseNav()" routerLinkActive="active" routerLink="shiftOffer"
+            [routerLinkActiveOptions]="{exact:true}" class="text-white ">
             <i class="bi bi-window-dash fs-4 me-2"></i>
             <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
                 value="Shift Offers">
         </a>
+
     </li>
+    <button (click)="CloseNav()" routerLinkActive="active-button" routerLink="shiftOffer"
+        [routerLinkActiveOptions]="{exact:true}"
+        [ngClass]="{'btn-custom text-white border-0':isOpenNav===null,'border-0 mx-4 p-2 btn-nav':isOpenNav}">
+        <i class="bi bi-window-dash fs-4 me-2"></i>
+        Shift Offers
+    </button>
+
+    <button [ngClass]="{'close-btn-logout':isOpenNav===null,'btn-logout fs-5':isOpenNav}" [routerLink]="['/login']"
+        (click)="logout()">
+        <i class="bi bi-box-arrow-right me-2"></i>Log out
+    </button>
 </ul>

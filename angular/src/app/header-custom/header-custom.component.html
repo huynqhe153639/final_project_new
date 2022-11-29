@@ -4,34 +4,8 @@
         <img
             src="https://optimize-portal.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.71ef5d46.png&w=256&q=75">
     </div>
-    <app-navbar-custom [isOpenNav]="isOpenNav"></app-navbar-custom>
-    <!-- <app-navbar-custom *ngIf="isOpenNav" []></app-navbar-custom> -->
+    <app-navbar-custom [isOpenNav]="isOpenNav" (CloseNavEvent)="CloseNavEvent($event)"></app-navbar-custom>
 
-    <!-- <ul class="d-flex justify-content-start mt-2 content-link">
-        <li class="pt-2 mx-3">
-            <a routerLinkActive="active" routerLink="profile" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact:true}" class="text-white ">
-                <i class="bi bi-person-fill fs-4 me-2"></i>
-                <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button" value="Profile">
-            </a>
-        </li>
-        <li class="pt-2 mx-3">
-            <a routerLinkActive="active" routerLink="calendar" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact:true}" class="text-white ">
-                <i class="bi bi-calendar-week fs-4 me-2"></i>
-                <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
-                    value="Calendar">
-            </a>
-        </li>
-        <li class="pt-2 mx-3">
-            <a routerLinkActive="active" routerLink="shiftOffer" routerLinkActive="active"
-                [routerLinkActiveOptions]="{exact:true}" class="text-white ">
-                <i class="bi bi-window-dash fs-4 me-2"></i>
-                <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
-                    value="Shift Offers">
-            </a>
-        </li>
-    </ul> -->
     <div class=" pt-1 d-flex justify-content-end  conten-avatar">
         <button class="btn-bell border-0 mx-2 " (click)="OpenNotification()">
             <i class="bi bi-bell-fill fs-4">
