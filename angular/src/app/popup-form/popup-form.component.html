@@ -22,7 +22,7 @@
 
       </div>
       <div class="mb-1 ">
-        <input type="checkbox" (click)="addAll()" ngModel name="all" class="me-2" id="all" checked value="true"/>
+        <input type="checkbox" (click)="addAll()" [(ngModel)]="all" name="all" class="me-2" id="all" checked />
         <label class="" for="all">All Day</label>
       </div>
       <div *ngIf="isAll" class="mb-3 col-lg-6 col-md-12">
@@ -41,7 +41,7 @@
           </textarea>
       </div>
       <div class="mb-3 ">
-        <button class="btn-save border-0 py-2 px-4 rounded-5" type="submit"  >Save</button>
+        <button class="btn-save border-0 py-2 px-4 rounded-5" type="submit" [disabled]="!f.form.valid"  >Save</button>
         <button (click)="ClosePopup()"
           class="bg-white border border-1 border-black btn-cancel py-2 px-4 ms-3 rounded-5">Cancel</button>
       </div>

@@ -49,7 +49,7 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
   }
   setRowData(){
     for (var i = 0; i < this.leaves.length; i++){
-      this.rowData[i]={ 'Leave Type' : this.leaves[i].type, 'From Date':this.leaves[i].fromDate.format("DD/MM/YYYY hh:ss"),  'To Date' :this.leaves[i].toDate.format("DD/MM/YYYY hh:ss"),'Status':this.leaves[i].status?"Approved":"UnApproved" };
+      this.rowData[i]={ 'Leave Type' : this.leaves[i].type, 'From Date':this.leaves[i].fromDate.format("DD/MM/YYYY hh:mm"),  'To Date' :this.leaves[i].toDate.format("DD/MM/YYYY hh:mm"),'Status':this.leaves[i].status?"Approved":"UnApproved" };
 
     }
   }
@@ -59,9 +59,9 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
     this.leaveCreated=newLeave;
     this.leaves.push(newLeave);
     for (var i = 0; i < this.leaves.length; i++){
-      this.rowData[i]={ 'Leave Type' : this.leaves[i].type, 'From Date':this.leaves[i].fromDate.format("DD/MM/YYYY hh:ss"),  'To Date' :this.leaves[i].toDate.format("DD/MM/YYYY hh:ss"),'Status':this.leaves[i].status?"Approved":"UnApproved" };
+      this.rowData[i]={ 'Leave Type' : this.leaves[i].type, 'From Date':this.leaves[i].fromDate.format("DD/MM/YYYY ")+this.leaves[i].startTime.format("hh:mm"),  'To Date' :this.leaves[i].toDate.format("DD/MM/YYYY ")+this.leaves[i].endTime.format("hh:mm"),'Status':this.leaves[i].status?"Approved":"UnApproved" };
+
     }
-    // console.log(this.rowData)
   }
 
   days: any[] = [1, 2, 3, 4, 5, 6, 7];

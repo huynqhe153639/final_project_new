@@ -1,93 +1,24 @@
-<!-- <div class="mx-auto mt-10 max-w-7xl sm:px-8">
-  <div class="mx-4 flex flex-col space-y-4 sm:mx-0 sm:flex-row sm:items-center sm:space-y-0">
-    <div class="flex-1">
-      <div class=" d-flex">
-        <div class="flex flex-1 sm:flex-1 items-center space-x-8 rounded-2xl border px-4 py-1" id="roster" (click)="RosterButton()"
-          [ngStyle]="{'background-color': checkRoster ? '#1ABAC5':'white'}">
-          <a type="button" class="option" [ngStyle]="{'color': checkRoster  ? 'white':'black' }">Roster</a>
-        </div>
-        <div class="flex flex-1 sm:flex-1 items-center space-x-8 rounded-2xl border px-4 py-1" id="availability" (click)="AvaiButton()"
-          [ngStyle]="{'background-color': checkAvai ? '#1ABAC5':'white'}">
-          <a type="button" class="option" [ngStyle]="{'color': checkAvai  ? 'white':'black' }">Availability</a>
-        </div>
-        <div class="flex flex-1 sm:flex-1 items-center space-x-8 rounded-2xl border px-4 py-1" id="leave" (click)="LeaveButton()"
-          [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white' }">
-          <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="flex-1 sm:flex-none" *ngIf="this.changeCalendar != 3">
-      <app-button-week (truyenchobo)="buttonWeek($event)"> </app-button-week>
-    </div>
-    <div *ngIf="this.changeCalendar == 3">
-      <div class="option-option-button">
-        <div class="flex items-center space-x-8 rounded-2xl border px-4 py-1" id="week"
-          [ngStyle]="{'background-color': '#1ABAC5','outline': '2px solid transparent','outline-offset': '2px'}">
-          <a class="option" type="button" [ngStyle]="{'color': 'white'}" (click)=" OpenNotification()"> Request Leave </a>
-        </div>
-      </div>
-
-
-    </div>
-  </div>
-
-</div> -->
 <div class="option d-flex button-table">
   <div class="option-button d-flex">
     <button class=" items-center  flex-fill  border  py-1" id="roster" (click)="RosterButton()"
       [ngStyle]="{'background-color': checkRoster ? '#1ABAC5':'white','color': checkRoster ? 'white':'black' }">Roster
-      <!-- <a type="button" class="option" [ngStyle]="{'color': checkRoster  ? 'white':'black' }">Roster</a> -->
     </button>
     <button class=" items-center  flex-fill border  py-1" id="availability" (click)="AvaiButton()"
       [ngStyle]="{'background-color': checkAvai ? '#1ABAC5':'white','color': checkAvai ? 'white':'black' }">Availability
-      <!-- <a type="button" class="option" [ngStyle]="{'color': checkAvai  ? 'white':'black' }">Availability</a> -->
     </button>
     <button class="items-center  flex-fill border  py-1" id="leave" (click)="LeaveButton()"
       [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white','color': checkLeave ? 'white':'black' }">Leave
-      <!-- <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a> -->
     </button>
   </div>
   <div *ngIf="this.changeCalendar != 3">
     <app-button-week (truyenchobo)="buttonWeek($event)"> </app-button-week>
   </div>
   <div *ngIf="this.changeCalendar == 3">
-    <!-- <div class="">
-      <div class=" items-center  border px-4 py-1" id="week"
-        [ngStyle]="{'background-color': '#1ABAC5','outline': '2px solid transparent','outline-offset': '2px'}">
-        <a class="option" type="button" [ngStyle]="{'color': 'white'}" (click)=" OpenNotification()"> Request Leave </a>
-      </div>
-    </div> -->
     <button class="items-center  flex-fill border px-4 py-2" id="request" (click)="LeaveButton()"
       [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white','color': checkLeave ? 'white':'black' }"  (click)=" OpenNotification()">Request Leave
-      <!-- <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a> -->
     </button>
   </div>
-  <!-- <div class="option-button d-flex">
-    <div class=" items-center col-md-4 border px-4 py-1" id="roster" (click)="RosterButton()"
-      [ngStyle]="{'background-color': checkRoster ? '#1ABAC5':'white'}">
-      <a type="button" class="option" [ngStyle]="{'color': checkRoster  ? 'white':'black' }">Roster</a>
-    </div>
-    <div class=" items-center col-md-4 border px-4 py-1" id="availability" (click)="AvaiButton()"
-      [ngStyle]="{'background-color': checkAvai ? '#1ABAC5':'white'}">
-      <a type="button" class="option" [ngStyle]="{'color': checkAvai  ? 'white':'black' }">Availability</a>
-    </div>
-    <div class="items-center col-md-4 border px-4 py-1" id="leave" (click)="LeaveButton()"
-      [ngStyle]="{'background-color': checkLeave ? '#1ABAC5':'white' }">
-      <a type="button" class="option" [ngStyle]="{'color': checkLeave  ? 'white':'black' }">Leave</a>
-    </div>
-  </div>
-  <div *ngIf="this.changeCalendar != 3">
-    <app-button-week (truyenchobo)="buttonWeek($event)"> </app-button-week>
-  </div>
-  <div *ngIf="this.changeCalendar == 3">
-    <div class="option-option-button">
-      <div class=" items-center  border px-4 py-1" id="week"
-        [ngStyle]="{'background-color': '#1ABAC5','outline': '2px solid transparent','outline-offset': '2px'}">
-        <a class="option" type="button" [ngStyle]="{'color': 'white'}" (click)=" OpenNotification()"> Request Leave </a>
-      </div>
-    </div>
-  </div> -->
 </div>
 
 <div class="mt-4   table-calendar" *ngIf="this.changeCalendar != 3">
@@ -95,15 +26,7 @@
 </div>
 <div *ngIf="this.changeCalendar == 3">
   <app-table-leave [leaves]="leaves" [rowData]="rowData"></app-table-leave>
-
-  <!-- <div class="mx-5 px-5 mt-4" style="height: 100%; display: flex; flex-direction: column;">
-    <div [ngStyle]="style" class="px-5">
-      <ag-grid-angular style="width: 1216px; height: 500px;" class="ag-theme-alpine" [rowData]="rowData"
-        [columnDefs]="colDefs" [defaultColDef]="defaultColDef" [rowSelection]="rowSelection"
-        [suppressRowClickSelection]="true">
-      </ag-grid-angular>
-    </div>
-  </div> -->
 </div>
 <app-popup-form (isClosePopupEvent)="ClosePopup($event)" [isClick]="isClick" [isOpenPopup]="isOpenPopup"
   (newLeavesEvent)="newLeavesEvent($event)"></app-popup-form>
+<div>{{leaves}}</div>

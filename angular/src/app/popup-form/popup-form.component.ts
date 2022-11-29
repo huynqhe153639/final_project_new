@@ -40,7 +40,6 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   @ViewChild("timeStartExample") timeStartExample: InputComponent;
   @ViewChild("timeEndExample") timeEndExample: InputComponent;
 
-
   // timeExample: any;
 
   ngOnInit(): void {
@@ -67,6 +66,7 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   @Input() isClick: number;
   @Output() isClosePopupEvent = new EventEmitter<any>();
   @Output() newLeavesEvent: EventEmitter<any> = new EventEmitter<any>();
+  all: any;
   ClosePopup() {
     this.isOpenPopup = false;
     this.isClosePopupEvent.emit(this.isOpenPopup);
@@ -87,24 +87,33 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   newStartDay: any;
   newEndDay: any;
 
-
   submit(f: NgForm) {
+    console.log(this.all);
 
-    this.leave.fromDate = moment(this.fromDate.content);
-    this.leave.toDate = moment(this.toDate.content);
+    this.leave.fromDate = moment.utc(this.fromDate.content).utcOffset(0);
+    this.leave.toDate = moment.utc(this.toDate.content).utcOffset(0);
 
-    console.log(this.fromDate.content);
+    if (this.all) {
+      this.newStartDay = moment().utcOffset(0);
+      this.newStartDay.set("hour", 0);
+      this.newStartDay.set("minute", 0);
+      this.leave.startTime = this.newStartDay;
 
-    this.newStartDay = moment().utcOffset(0);
-    this.newStartDay.set("hour", this.timeStartExample.getHour());
-    this.newStartDay.set("minute", this.timeStartExample.getMinute());
-    this.leave.startTime = this.newStartDay;
+      this.newEndDay = moment().utcOffset(0);
+      this.newEndDay.set("hour", 23);
+      this.newEndDay.set("minute", 59);
+      this.leave.endTime = this.newEndDay;
+    } else {
+      this.newStartDay = moment().utcOffset(0);
+      this.newStartDay.set("hour", this.timeStartExample.getHour());
+      this.newStartDay.set("minute", this.timeStartExample.getMinute());
+      this.leave.startTime = this.newStartDay;
 
-
-    this.newEndDay = moment().utcOffset(0);
-    this.newEndDay.set("hour", this.timeEndExample.getHour());
-    this.newEndDay.set("minute", this.timeEndExample.getMinute());
-    this.leave.endTime = this.newEndDay;
+      this.newEndDay = moment().utcOffset(0);
+      this.newEndDay.set("hour", this.timeEndExample.getHour());
+      this.newEndDay.set("minute", this.timeEndExample.getMinute());
+      this.leave.endTime = this.newEndDay;
+    }
 
     this.notification.fromDate = moment(this.fromDate.content);
     this.notification.toDate = moment(this.toDate.content);
@@ -114,6 +123,7 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
 
     this.leaveService.create(this.leave).subscribe((result) => {
       this.newLeavesEvent.emit(result);
+      console.log(result);
     });
 
     this.notificationService

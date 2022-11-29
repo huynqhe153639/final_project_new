@@ -1,88 +1,96 @@
 .align-super {
-    height: 80px;
-    width: 12px;
-    background-color: #0066B3;
-  }
+  height: 80px;
+  width: 12px;
+  background-color: #0066B3;
+}
 
-  .head-day {
-    background-color: #E5E7EB;
-  }
+.head-day {
+  background-color: #E5E7EB;
+}
 
-  .content-day {
-    background-color: #B3D1E8;
-    font-size: 13px;
-  }
+.content-day {
+  background-color: #B3D1E8;
+  font-size: 13px;
+}
 
-  .button {
-    background-color: white;
-  }
+.button {
+  background-color: white;
+}
 
-  .active {
-    color: white;
-    background-color: #1ABAC5;
-  }
+.active {
+  color: white;
+  background-color: #1ABAC5;
+}
 
-  .content-two {
-    height: 177px;
-    background-color: #E6F7F9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.content-two {
+  height: 177px;
+  background-color: #E6F7F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .btn-request {
-    color: white;
-    background-color: #1ABAC5;
-  }
+.btn-request {
+  color: white;
+  background-color: #1ABAC5;
+}
 
-  .popup {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    background-color: rgba(0, 0, 0, 0.4);
-    /* Black w/ opacity */
-  }
+.popup {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
 
-  .popup-close {
-    display: none;
-  }
+.popup-close {
+  display: none;
+}
 
+.content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  height: auto;
+  width: 576px;
+}
+
+.text {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: black;
+}
+
+textarea {
+  height: 70px;
+}
+
+.btn-save {
+  background-color: #00B2BE;
+  color: white;
+
+}
+
+.bi-x {
+  cursor: pointer;
+}
+
+@media only screen and (max-width:650px) {
   .content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    height: auto;
-    width: 576px;
-  }
-
-  .text {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    background-color: black;
-  }
-
-  textarea {
-    height: 70px;
-  }
-
-  .btn-save {
-    background-color: #00B2BE;
-    color: white;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
 
   }
+}
 
-  .bi-x {
-    cursor: pointer;
+@media only screen and (max-width:970px) {
+  form {
+    height: 500px;
+    overflow: auto;
   }
-  @media only screen and (max-width:650px) {
-    .content{
-      width: 90%;
-      margin-left: 5%;
-      margin-right: 5%;
-
-    }
-  }
+}
