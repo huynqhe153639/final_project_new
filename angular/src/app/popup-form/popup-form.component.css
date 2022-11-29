@@ -78,3 +78,11 @@
   .bi-x {
     cursor: pointer;
   }
+  @media only screen and (max-width:650px) {
+    .content{
+      width: 90%;
+      margin-left: 5%;
+      margin-right: 5%;
+
+    }
+  }
