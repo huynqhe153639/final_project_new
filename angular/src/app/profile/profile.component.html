@@ -2,8 +2,8 @@
     name="viewport"
     content="width=device-width, initial-scale=1"
 /> -->
-<div class="col-8 mx-8 max-w-4xl lg:mx-auto">
-    <div class="my-10 flex flex-col space-x-0 md:flex-row md:space-x-12">
+<div class="d-flex justify-content-center col-8 max-w-4xl lg:mx-auto">
+    <div class="my-10 flex flex-col mx-8 space-x-0 md:flex-row md:space-x-12">
         <div class="items-center flex flex-col">
             <span (click)="updateImage()"><app-avatar [isNavbar]="false" [user]="this.user"></app-avatar></span>
             <h3 class="text-center text-x1 font-bold mt-4">{{this.user.name}}</h3>

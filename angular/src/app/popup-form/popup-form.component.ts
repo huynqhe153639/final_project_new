@@ -89,8 +89,11 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
 
 
   submit(f: NgForm) {
+
     this.leave.fromDate = moment(this.fromDate.content);
     this.leave.toDate = moment(this.toDate.content);
+
+    console.log(this.fromDate.content);
 
     this.newStartDay = moment().utcOffset(0);
     this.newStartDay.set("hour", this.timeStartExample.getHour());

@@ -82,7 +82,7 @@
 
 .div-form {
     margin-right: 40px;
-    width: 700px;
+    width: 100%;
 }
 
 .form-padding{
@@ -341,7 +341,7 @@ ul{
 }
 
 .max-w-4xl {
-    max-width: 56rem;
+    max-width: 100%;
 }
 
 @media (min-width: 1024px){
