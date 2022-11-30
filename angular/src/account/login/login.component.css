@@ -4,9 +4,11 @@ body {
     height: 100%;
 }
 
-.col-4 {
-    margin-top: 150px;
-
+.col.form-login {
+    min-height: 100vh;
+    flex: 1 1 0%;
+    display: flex;
+    max-width: 100%;
 }
 
 .row {
@@ -18,8 +20,10 @@ body {
     box-shadow: none !important;
 }
 
-.col-5 {
+.col.pic {
     margin-right: 150px;
+    height: 100vh;
+    background-color: white;
 }
 
 account-footer {
@@ -28,6 +32,10 @@ account-footer {
 
 .card-body.login-card-body {
     height: 400px;
+}
+
+form.form-log {
+    margin-top: 20px;
 }
 
 .form-group.row.ng-tns-c71-0 {
@@ -40,7 +48,20 @@ account-footer {
 }
 
 img.login-pic {
-    width: 500px;
+    position: absolute;
+    inset: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    border: none;
+    margin: auto;
+    display: block;
+    width: 0px;
+    height: 0px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+    object-fit: cover;
 }
 
 .card-header.ng-star-inserted {
@@ -70,6 +91,25 @@ span.title {
     margin-left: 40px;
     font-size: 25px;
 }
+.form-group.row.ng-tns-c119-0 {
+    height: 50px;
+}
 .login {
     width: 370px;
+    margin: auto;
+}
+
+@media screen and (max-width: 885px) {
+    div.sm-block{
+        display: none;
+    }
+    
+}
+
+.row {
+    overflow: hidden;
+    height: 100vh;
+}
+.col-md-4{
+    padding-left: 206px;
 }
