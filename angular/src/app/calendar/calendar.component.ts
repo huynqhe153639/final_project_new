@@ -36,6 +36,7 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
   rosters: RosterAndAvaiListDtos[] = [];
   leaves: LeaveListDto[] = [];
   leaveCreated: LeaveListDto= new LeaveListDto();
+  rowData: any[] = [];
 
   getAllLeaves() {
     this.leaveService.getAll("", 0, 100).subscribe((result) => {
@@ -58,9 +59,9 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
     this.getAllLeaves();
     this.leaveCreated=newLeave;
     this.leaves.push(newLeave);
+    this.rowData=[];
     for (var i = 0; i < this.leaves.length; i++){
       this.rowData[i]={ 'Leave Type' : this.leaves[i].type, 'From Date':this.leaves[i].fromDate.format("DD/MM/YYYY ")+this.leaves[i].startTime.format("hh:mm"),  'To Date' :this.leaves[i].toDate.format("DD/MM/YYYY ")+this.leaves[i].endTime.format("hh:mm"),'Status':this.leaves[i].status?"Approved":"UnApproved" };
-
     }
   }
 
@@ -99,7 +100,7 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
   ngOnInit(): void {
     this.getAllRosters();
     this.getAllLeaves();
-    this.setRowData();
+    // this.setRowData();
 
     for (let i = 0; i < this.days.length; i++) {
       if (this.dateNow.getDay() == 0) {
@@ -186,7 +187,6 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
 
   dateR: Date = new Date();
   dateExtra = new Date();
-  public rowData: any[] = [];
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
