@@ -27,6 +27,6 @@
 <div *ngIf="this.changeCalendar == 3">
   <app-table-leave [leaves]="leaves" [rowData]="rowData"></app-table-leave>
 </div>
+
 <app-popup-form (isClosePopupEvent)="ClosePopup($event)" [isClick]="isClick" [isOpenPopup]="isOpenPopup"
   (newLeavesEvent)="newLeavesEvent($event)"></app-popup-form>
-<div>{{leaves}}</div>

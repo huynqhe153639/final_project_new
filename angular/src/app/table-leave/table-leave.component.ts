@@ -26,15 +26,10 @@ export class TableLeaveComponent implements OnInit {
     for (var i = 0; i < this.leaves.length; i++){
       this.rowData[i]={ 'Leave Type' : this.leaves[i].type, 'From Date':this.leaves[i].fromDate.format("DD/MM/YYYY ")+this.leaves[i].startTime.format("hh:mm"),  'To Date' :this.leaves[i].toDate.format("DD/MM/YYYY ")+this.leaves[i].endTime.format("hh:mm"),'Status':this.leaves[i].status?"Approved":"UnApproved" };
     }
-    
   }
   ngOnInit(): void {
-
     this.setRowData()
-
-
   }
-
   public defaultColDef: ColDef = {
     flex: 1,
     minWidth: 100,
@@ -62,7 +57,6 @@ function dateComparator(date1: string, date2: string) {
   }
   return date1Number - date2Number;
 }
-// eg 29/08/2004 gets converted to 20040829
 function monthToComparableNumber(date: string) {
   if (date === undefined || date === null ) {
     return null;
