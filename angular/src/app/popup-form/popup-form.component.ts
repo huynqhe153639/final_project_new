@@ -7,6 +7,8 @@ import {
   LeaveListDto,
   NotificationServiceProxy,
   NotificationListDto,
+  UserDto,
+  UserServiceProxy,
 } from "./../../shared/service-proxies/service-proxies";
 import { extend, result } from "lodash-es";
 import {
@@ -19,6 +21,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import * as moment from "moment";
+import { throws } from "assert";
 
 @Component({
   selector: "app-popup-form",
@@ -29,7 +32,8 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   constructor(
     injector: Injector,
     private leaveService: LeaveServiceProxy,
-    private notificationService: NotificationServiceProxy
+    private notificationService: NotificationServiceProxy,
+    private userSerivce: UserServiceProxy
   ) {
     super(injector);
   }
@@ -45,6 +49,7 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
   ngOnInit(): void {
     // this.getAllLeaves();
     // this.setRowData(this.leaves);
+    this.getUserCurrent();
   }
   leave: LeaveListDto = new LeaveListDto();
   leaves: LeaveListDto[] = [];
@@ -83,14 +88,29 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
       this.isClick = this.isClick + 1;
     }
   }
+  user: UserDto = new UserDto();
+
+  getUserCurrent(){
+    this.userSerivce
+    .getCurrentUser()
+    .subscribe(result => this.user= result );
+    console.log(this.user.id);
+  }
 
   newStartDay: any;
   newEndDay: any;
-
   submit(f: NgForm) {
 
+    this.leave.userId = this.user.id;
     this.leave.fromDate = moment.utc(this.fromDate.content).utcOffset(0);
+    this.leave.fromDate.set("hour", 0);
+    this.leave.fromDate.set("minute", 0);
+    this.leave.fromDate.set("second", 0);
+
     this.leave.toDate = moment.utc(this.toDate.content).utcOffset(0);
+    this.leave.toDate.set("hour", 0);
+    this.leave.toDate.set("minute", 0);
+    this.leave.toDate.set("second", 0);
 
     if (this.all) {
       this.newStartDay = moment().utcOffset(0);
@@ -113,7 +133,7 @@ export class PopupFormComponent extends AppComponentBase implements OnInit {
       this.newEndDay.set("minute", this.timeEndExample.getMinute());
       this.leave.endTime = this.newEndDay;
     }
-
+    this.notification.userId = this.user.id;
     this.notification.fromDate = moment(this.fromDate.content);
     this.notification.toDate = moment(this.toDate.content);
     this.notification.startTime = this.leave.startTime;

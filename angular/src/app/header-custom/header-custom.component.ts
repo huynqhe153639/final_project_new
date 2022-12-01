@@ -22,7 +22,7 @@ export class HeaderCustomComponent extends AppComponentBase implements OnInit {
    notifications: NotificationListDto[]=[];
    noticationString: NotificationListDto[]=[];
    getAllNotification(){
-    this.notificationService.getAll("",0,100).subscribe(result =>{
+    this.notificationService.getAllCustom().subscribe(result =>{
       this.notifications= result.items;
     })
    }
