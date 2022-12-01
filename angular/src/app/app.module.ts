@@ -1,4 +1,4 @@
-import { LeaveServiceProxy, NotificationServiceProxy } from './../shared/service-proxies/service-proxies';
+import { LeaveServiceProxy, NotificationServiceProxy, UserServiceProxy } from './../shared/service-proxies/service-proxies';
 import { TableLeaveComponent } from './table-leave/table-leave.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -135,7 +135,7 @@ import { NavbarCustomComponent } from './navbar-custom/navbar-custom.component';
     NgxPaginationModule,
     ClickOutsideModule
   ],
-  providers: [ShiftOfferServiceProxy,RosterAndAvaiServiceProxy,LeaveServiceProxy,NotificationServiceProxy,DataService],
+  providers: [ShiftOfferServiceProxy,RosterAndAvaiServiceProxy,LeaveServiceProxy,NotificationServiceProxy,DataService,UserServiceProxy],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,

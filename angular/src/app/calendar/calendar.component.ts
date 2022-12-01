@@ -39,12 +39,12 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
   rowData: any[] = [];
 
   getAllLeaves() {
-    this.leaveService.getAll("", 0, 100).subscribe((result) => {
+    this.leaveService.getAllCustom().subscribe((result) => {
       this.leaves = result.items;
     });
   }
   getAllRosters() {
-    this.rosterService.getAll("", 0, 100).subscribe((result) => {
+    this.rosterService.getAllCustom().subscribe((result) => {
       this.rosters = result.items;
     });
   }

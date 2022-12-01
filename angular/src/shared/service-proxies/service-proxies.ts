@@ -216,6 +216,118 @@ export class LeaveServiceProxy {
     }
 
     /**
+     * @param start (optional) 
+     * @param end (optional) 
+     * @return Success
+     */
+    getAllByDate(start: moment.Moment | undefined, end: moment.Moment | undefined): Observable<LeaveListDtoListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Leave/GetAllByDate?";
+        if (start === null)
+            throw new Error("The parameter 'start' cannot be null.");
+        else if (start !== undefined)
+            url_ += "start=" + encodeURIComponent(start ? "" + start.toJSON() : "") + "&";
+        if (end === null)
+            throw new Error("The parameter 'end' cannot be null.");
+        else if (end !== undefined)
+            url_ += "end=" + encodeURIComponent(end ? "" + end.toJSON() : "") + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllByDate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllByDate(<any>response_);
+                } catch (e) {
+                    return <Observable<LeaveListDtoListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<LeaveListDtoListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllByDate(response: HttpResponseBase): Observable<LeaveListDtoListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = LeaveListDtoListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<LeaveListDtoListResultDto>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllCustom(): Observable<LeaveListDtoListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Leave/GetAllCustom";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllCustom(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllCustom(<any>response_);
+                } catch (e) {
+                    return <Observable<LeaveListDtoListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<LeaveListDtoListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllCustom(response: HttpResponseBase): Observable<LeaveListDtoListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = LeaveListDtoListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<LeaveListDtoListResultDto>(<any>null);
+    }
+
+    /**
      * @param id (optional) 
      * @return Success
      */
@@ -511,6 +623,118 @@ export class NotificationServiceProxy {
     constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @param start (optional) 
+     * @param end (optional) 
+     * @return Success
+     */
+    getAllByDate(start: moment.Moment | undefined, end: moment.Moment | undefined): Observable<NotificationListDtoListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Notification/GetAllByDate?";
+        if (start === null)
+            throw new Error("The parameter 'start' cannot be null.");
+        else if (start !== undefined)
+            url_ += "start=" + encodeURIComponent(start ? "" + start.toJSON() : "") + "&";
+        if (end === null)
+            throw new Error("The parameter 'end' cannot be null.");
+        else if (end !== undefined)
+            url_ += "end=" + encodeURIComponent(end ? "" + end.toJSON() : "") + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllByDate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllByDate(<any>response_);
+                } catch (e) {
+                    return <Observable<NotificationListDtoListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NotificationListDtoListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllByDate(response: HttpResponseBase): Observable<NotificationListDtoListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = NotificationListDtoListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NotificationListDtoListResultDto>(<any>null);
+    }
+
+    /**
+     * @return Success
+     */
+    getAllCustom(): Observable<NotificationListDtoListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/Notification/GetAllCustom";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllCustom(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllCustom(<any>response_);
+                } catch (e) {
+                    return <Observable<NotificationListDtoListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<NotificationListDtoListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllCustom(response: HttpResponseBase): Observable<NotificationListDtoListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = NotificationListDtoListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<NotificationListDtoListResultDto>(<any>null);
     }
 
     /**
@@ -1270,6 +1494,113 @@ export class RosterAndAvaiServiceProxy {
     constructor(@Inject(HttpClient) http: HttpClient, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
         this.http = http;
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : "";
+    }
+
+    /**
+     * @return Success
+     */
+    getAllCustom(): Observable<RosterAndAvaiListDtosListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/RosterAndAvai/GetAllCustom";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllCustom(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllCustom(<any>response_);
+                } catch (e) {
+                    return <Observable<RosterAndAvaiListDtosListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RosterAndAvaiListDtosListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllCustom(response: HttpResponseBase): Observable<RosterAndAvaiListDtosListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = RosterAndAvaiListDtosListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RosterAndAvaiListDtosListResultDto>(<any>null);
+    }
+
+    /**
+     * @param date (optional) 
+     * @return Success
+     */
+    getAllByDate(date: moment.Moment | undefined): Observable<RosterAndAvaiListDtosListResultDto> {
+        let url_ = this.baseUrl + "/api/services/app/RosterAndAvai/GetAllByDate?";
+        if (date === null)
+            throw new Error("The parameter 'date' cannot be null.");
+        else if (date !== undefined)
+            url_ += "date=" + encodeURIComponent(date ? "" + date.toJSON() : "") + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            observe: "response",
+            responseType: "blob",
+            headers: new HttpHeaders({
+                "Accept": "text/plain"
+            })
+        };
+
+        return this.http.request("get", url_, options_).pipe(_observableMergeMap((response_ : any) => {
+            return this.processGetAllByDate(response_);
+        })).pipe(_observableCatch((response_: any) => {
+            if (response_ instanceof HttpResponseBase) {
+                try {
+                    return this.processGetAllByDate(<any>response_);
+                } catch (e) {
+                    return <Observable<RosterAndAvaiListDtosListResultDto>><any>_observableThrow(e);
+                }
+            } else
+                return <Observable<RosterAndAvaiListDtosListResultDto>><any>_observableThrow(response_);
+        }));
+    }
+
+    protected processGetAllByDate(response: HttpResponseBase): Observable<RosterAndAvaiListDtosListResultDto> {
+        const status = response.status;
+        const responseBlob =
+            response instanceof HttpResponse ? response.body :
+            (<any>response).error instanceof Blob ? (<any>response).error : undefined;
+
+        let _headers: any = {}; if (response.headers) { for (let key of response.headers.keys()) { _headers[key] = response.headers.get(key); }}
+        if (status === 200) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = RosterAndAvaiListDtosListResultDto.fromJS(resultData200);
+            return _observableOf(result200);
+            }));
+        } else if (status !== 200 && status !== 204) {
+            return blobToText(responseBlob).pipe(_observableMergeMap(_responseText => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            }));
+        }
+        return _observableOf<RosterAndAvaiListDtosListResultDto>(<any>null);
     }
 
     /**
@@ -3876,6 +4207,57 @@ export interface ILeaveListDto {
     status: boolean;
 }
 
+export class LeaveListDtoListResultDto implements ILeaveListDtoListResultDto {
+    items: LeaveListDto[] | undefined;
+
+    constructor(data?: ILeaveListDtoListResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(LeaveListDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): LeaveListDtoListResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new LeaveListDtoListResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone(): LeaveListDtoListResultDto {
+        const json = this.toJSON();
+        let result = new LeaveListDtoListResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface ILeaveListDtoListResultDto {
+    items: LeaveListDto[] | undefined;
+}
+
 export class LeaveListDtoPagedResultDto implements ILeaveListDtoPagedResultDto {
     items: LeaveListDto[] | undefined;
     totalCount: number;
@@ -4004,6 +4386,57 @@ export interface INotificationListDto {
     endTime: moment.Moment;
     content: string | undefined;
     timeResgister: moment.Moment;
+}
+
+export class NotificationListDtoListResultDto implements INotificationListDtoListResultDto {
+    items: NotificationListDto[] | undefined;
+
+    constructor(data?: INotificationListDtoListResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(NotificationListDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): NotificationListDtoListResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new NotificationListDtoListResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone(): NotificationListDtoListResultDto {
+        const json = this.toJSON();
+        let result = new NotificationListDtoListResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface INotificationListDtoListResultDto {
+    items: NotificationListDto[] | undefined;
 }
 
 export class NotificationListDtoPagedResultDto implements INotificationListDtoPagedResultDto {
@@ -4735,6 +5168,57 @@ export interface IRosterAndAvaiListDtos {
     toTime: moment.Moment;
     date: moment.Moment;
     type: string | undefined;
+}
+
+export class RosterAndAvaiListDtosListResultDto implements IRosterAndAvaiListDtosListResultDto {
+    items: RosterAndAvaiListDtos[] | undefined;
+
+    constructor(data?: IRosterAndAvaiListDtosListResultDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(_data?: any) {
+        if (_data) {
+            if (Array.isArray(_data["items"])) {
+                this.items = [] as any;
+                for (let item of _data["items"])
+                    this.items.push(RosterAndAvaiListDtos.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): RosterAndAvaiListDtosListResultDto {
+        data = typeof data === 'object' ? data : {};
+        let result = new RosterAndAvaiListDtosListResultDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        if (Array.isArray(this.items)) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone(): RosterAndAvaiListDtosListResultDto {
+        const json = this.toJSON();
+        let result = new RosterAndAvaiListDtosListResultDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IRosterAndAvaiListDtosListResultDto {
+    items: RosterAndAvaiListDtos[] | undefined;
 }
 
 export class RosterAndAvaiListDtosPagedResultDto implements IRosterAndAvaiListDtosPagedResultDto {
