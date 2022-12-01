@@ -49,4 +49,19 @@ export class UpdateImageModalComponent extends AppComponentBase implements OnIni
         this.modal.hide();
     }
 
+    onFileSelected(event) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]);
+
+      reader.onload = (event: any) => {
+        this.user.image = event.target.result as string;
+      };
+
+      reader.onerror = (event: any) => {
+        console.log("File could not be read: " + event.target.error.code);
+      };    
+
+  }
+
 }

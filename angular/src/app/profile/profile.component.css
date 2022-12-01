@@ -4,9 +4,10 @@
     background-color: white;
 }
 
-.col-8 {
+.column-8 {
     margin-top: 30px;
-    display: flex;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
 .mx-8{
@@ -81,7 +82,6 @@
 }
 
 .div-form {
-    margin-right: 40px;
     width: 100%;
 }
 
@@ -341,7 +341,7 @@ ul{
 }
 
 .max-w-4xl {
-    max-width: 100%;
+    max-width: 60rem;
 }
 
 @media (min-width: 1024px){

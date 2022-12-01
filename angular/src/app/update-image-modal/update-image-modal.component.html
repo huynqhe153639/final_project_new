@@ -28,7 +28,11 @@ aria-hidden="true"
                     <div class="col-md-12">
                         <label>{{l("Avatar")}}</label>
                         <div class="form-group form-md-line-input form-md-floating-label no-hint">
-                            <input type="text" name="image" class="form-control" [ngClass]="{'edited':user.image}" [(ngModel)]="user.image">      
+                            <input type="text" name="image" class="form-control" [ngClass]="{'edited':user.image}" [(ngModel)]="user.image"> 
+                            <div class="text-center" [style]="'margin-top : 10px'">
+                                <input class="form-control" type="file" 
+                                    (change)="onFileSelected($event)">
+                            </div>      
                         </div>
                     </div>
                 </div>
