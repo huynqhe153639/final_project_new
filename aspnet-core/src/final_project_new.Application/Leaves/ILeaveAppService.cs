@@ -13,7 +13,8 @@ namespace final_project_new.Leaves
     {
         Task<ListResultDto<LeaveListDto>> GetAllByDate(DateTime start, DateTime end);
         Task<ListResultDto<LeaveListDto>> GetAllCustom();
-
+        Task<ListResultDto<LeaveListDto>> GetLeaveByPaging(int currentPage, int pageSize, int sortBy);
+             
 
     }
 }

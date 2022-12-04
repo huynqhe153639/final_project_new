@@ -142,8 +142,11 @@ li>a>input {
     background-color: #31303A;
     color: white;
     border: none;
-    margin-left: 3%;
-    margin-top: 2%;
+    margin-left: 7%;
+    /* margin-top: 2%; */
+    position: fixed;
+    bottom: 10%;
+
 
 }
 
