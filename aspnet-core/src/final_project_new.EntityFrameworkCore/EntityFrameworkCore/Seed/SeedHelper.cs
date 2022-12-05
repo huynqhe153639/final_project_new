@@ -7,6 +7,9 @@ using Abp.EntityFrameworkCore.Uow;
 using Abp.MultiTenancy;
 using final_project_new.EntityFrameworkCore.Seed.Host;
 using final_project_new.EntityFrameworkCore.Seed.Tenants;
+using final_project_new.EntityFrameworkCore.Seed.ShiftOffers;
+using final_project_new.EntityFrameworkCore.Seed.RosterAndAvais;
+using final_project_new.EntityFrameworkCore.Seed.Leaves;
 
 namespace final_project_new.EntityFrameworkCore.Seed
 {
@@ -27,6 +30,9 @@ namespace final_project_new.EntityFrameworkCore.Seed
             // Default tenant seed (in host database).
             new DefaultTenantBuilder(context).Create();
             new TenantRoleAndUserBuilder(context, 1).Create();
+            new DefaultShiftOfferBuilder(context, 1).Create();
+            new DefaultRosterAndAvaisBuilder(context, 1).Create();
+            new DefaultLeavesBuilder(context, 1).Create();
             
         }
 
