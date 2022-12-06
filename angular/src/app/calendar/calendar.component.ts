@@ -41,6 +41,7 @@ export class CalendarComponent extends AppComponentBase implements OnInit {
   getAllLeaves() {
     this.leaveService.getAllCustom().subscribe((result) => {
       this.leaves = result.items;
+      console.log("conmeno " + this.leaves.length)
     });
   }
   getAllRosters() {

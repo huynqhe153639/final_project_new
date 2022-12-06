@@ -65,6 +65,10 @@ import { PopupNotificationComponent } from './popup-notification/popup-notificat
 import { ShiftOfferModalComponent } from './shift-offer-modal/shift-offer-modal.component';
 import {DataService} from './data.service';
 import { NavbarCustomComponent } from './navbar-custom/navbar-custom.component';
+import {FileUploadService} from './file-upload.service';
+// import { ImageCropperModule } from  './';
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -133,9 +137,10 @@ import { NavbarCustomComponent } from './navbar-custom/navbar-custom.component';
     SharedModule,
     AgGridModule,
     NgxPaginationModule,
-    ClickOutsideModule
+    ClickOutsideModule,
+    ImageCropperModule
   ],
-  providers: [ShiftOfferServiceProxy,RosterAndAvaiServiceProxy,LeaveServiceProxy,NotificationServiceProxy,DataService,UserServiceProxy],
+  providers: [ShiftOfferServiceProxy,RosterAndAvaiServiceProxy,LeaveServiceProxy,NotificationServiceProxy,DataService,UserServiceProxy,FileUploadService],
   entryComponents: [
     // tenants
     CreateTenantDialogComponent,
