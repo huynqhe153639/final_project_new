@@ -1,0 +1,10 @@
+
+<div class="form-forgot-passS">
+    <h1>Enter your email</h1>
+    <form #f="ngForm" (ngSubmit)="submit(f)">
+        <a style="color: black ;">We will send a mail to you through your email, so you must enter your email right now</a> <br/>
+        <label for="email">Email: </label><br/>
+        <input type="email" name="email" [(ngModel)]="email"/><br/>
+        <button class="btn-submit">Submit</button>
+    </form>
+</div>

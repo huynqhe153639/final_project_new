@@ -1,0 +1,12 @@
+button.btn-submit {
+    border: none;
+    background-color: orangered;
+    color: white;
+    width: 100px;
+    height: 30px;
+    border-radius: 30px;
+    margin-top: 20px;
+}
+label {
+    margin-top: 20px;
+}

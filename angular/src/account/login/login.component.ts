@@ -1,25 +1,36 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { AbpSessionService } from 'abp-ng2-module';
 import { AppComponentBase } from '@shared/app-component-base';
 import { accountModuleAnimation } from '@shared/animations/routerTransition';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormConfirmEmailComponent } from 'account/form-confirm-email/form-confirm-email.component';
+import { AccountServiceProxy } from '@shared/service-proxies/service-proxies';
 
 @Component({
   styleUrls: ['./login.component.css'],
   templateUrl: './login.component.html',
   animations: [accountModuleAnimation()]
 })
-export class LoginComponent extends AppComponentBase {
+export class LoginComponent extends AppComponentBase implements OnInit {
   submitting = false;
+
 
   constructor(
     injector: Injector,
     public authService: AppAuthService,
-    private _sessionService: AbpSessionService
+    private _sessionService: AbpSessionService,
+    private _accountService: AccountServiceProxy
   ) {
     super(injector);
   }
+  ngOnInit(): void {
+    this.checkFormForgot  = 1 ;
+
+      this.SendToMail();
+  }
+  
+  
 
   get multiTenancySideIsTeanant(): boolean {
     return this._sessionService.tenantId > 0;
@@ -46,30 +57,24 @@ export class LoginComponent extends AppComponentBase {
   get email() { return this.loginForm.get('email'); }
   
   get password() { return this.loginForm.get('password'); }
-  checkClick = false;
-  CheckClick(){
-    this.checkClick = true;
-  }
-  checkClickOutside = false;
-  CheckClickOutside(){
-    if(this.checkClick == true){
-      this.checkClickOutside = true;
-    }
+
+  checkFormForgot : number ;
+  CheckFormForgot(){
+    this.checkFormForgot = 2;
   }
 
-  checkClick1 = false;
-  CheckClick1(){
-    this.checkClick1 = true;
+  mail: string = "";
+  getMail(input : string){
+    this.mail = input;
   }
-  checkClickOutside1 = false;
-  CheckClickOutside1(){
-    if(this.checkClick1 == true){
-      this.checkClickOutside1 = true;
+  code : string = "";
+  SendToMail(){
+    if(this.mail != ""){
+      this._accountService.sendEmail(this.mail).subscribe(result => {this.code = result});
+    this.mail = "";
+    this.checkFormForgot = 3;
     }
-  }
-  checkClick2 = false;
-  CheckClick2(){
-    this.checkClick2 = true;
+    
   }
 
 }

@@ -64,41 +64,52 @@
   </div>
   <div class="col form-login ">
     <div class="login">
-      <div [@routerTransition]>
-        <img class="logo" src="https://optimize-portal.vercel.app/_next/static/media/login-logo.cbf5804c.svg">
-        <br />
-        <span class="title">Sign in to your account</span>
-        <form class="form-log" novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()" > 
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" class="form-control" name="userNameOrEmailAddress" 
-                [(ngModel)]="authService.authenticateModel.userNameOrEmailAddress" [placeholder]="'Email' | localize"
-                maxlength="256" #userNameOrEmailAddressModel="ngModel" #userNameOrEmailAddressEl 
-                required/>
+      <div *ngIf="this.checkFormForgot == 1">
+        <div [@routerTransition]>
+          <img class="logo" src="https://optimize-portal.vercel.app/_next/static/media/login-logo.cbf5804c.svg">
+          <br />
+          <span class="title">Sign in to your account</span>
+          <form class="form-log" novalidate autocomplete="off" #loginForm="ngForm" (ngSubmit)="login()">
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" class="form-control" name="userNameOrEmailAddress"
+                  [(ngModel)]="authService.authenticateModel.userNameOrEmailAddress" [placeholder]="'Email' | localize"
+                  maxlength="256" #userNameOrEmailAddressModel="ngModel" #userNameOrEmailAddressEl required />
+              </div>
+              <abp-validation-summary [control]="userNameOrEmailAddressModel" [controlEl]="userNameOrEmailAddressEl">
+              </abp-validation-summary>
             </div>
-            <abp-validation-summary [control]="userNameOrEmailAddressModel" [controlEl]="userNameOrEmailAddressEl">
-            </abp-validation-summary>
-          </div>
-          <div class="form-group">
-            <div class="input-group">
-              <input type="password" class="form-control" name="password" 
-                [(ngModel)]="authService.authenticateModel.password" [placeholder]="'Password' | localize"
-                maxlength="32" #passwordModel="ngModel" #passwordEl 
-                required/>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="password" class="form-control" name="password"
+                  [(ngModel)]="authService.authenticateModel.password" [placeholder]="'Password' | localize"
+                  maxlength="32" #passwordModel="ngModel" #passwordEl required />
+              </div>
+              <abp-validation-summary [control]="passwordModel" [controlEl]="passwordEl"></abp-validation-summary>
             </div>
-            <abp-validation-summary [control]="passwordModel" [controlEl]="passwordEl"></abp-validation-summary>
-          </div>
-          <div class="form-group row">
-            <div class="col-md-4">
-              <button type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.form.valid || submitting">
-                {{ "Sign In" | localize }} <i class="bi bi-arrow-right"></i>
-              </button>
+            <a (click)="CheckFormForgot()">Forgot Password</a>
+            <div class="form-group row">
+              <div class="col-md-4">
+                <button type="submit" class="btn btn-primary btn-block"
+                  [disabled]="!loginForm.form.valid || submitting">
+                  {{ "Sign In" | localize }} <i class="bi bi-arrow-right"></i>
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
-
+          </form>
+        </div>
       </div>
-
+      {{this.SendToMail()}}
+      <div *ngIf="this.checkFormForgot == 2">
+        <app-form-confirm-email (truyenchobo)="getMail($event)" ></app-form-confirm-email>
+        
+      </div>
+      <div *ngIf="this.checkFormForgot == 3">
+        <app-form-change-password  ></app-form-change-password>
+        
+      </div>
     </div>
+
+    
   </div>
 </div>

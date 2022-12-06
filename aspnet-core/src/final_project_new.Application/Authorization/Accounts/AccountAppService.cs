@@ -1,3 +1,6 @@
+using System.Net.Mail;
+using System.Net;
+using System;
 using System.Threading.Tasks;
 using Abp.Configuration;
 using Abp.Zero.Configuration;
@@ -52,6 +55,41 @@ namespace final_project_new.Authorization.Accounts
             {
                 CanLogin = user.IsActive && (user.IsEmailConfirmed || !isEmailConfirmationRequiredForLogin)
             };
+        }
+
+        public Random r = new Random();
+        public string Randfunc()
+        {
+            string MaXacNhan = "";
+            for (int i = 1; i < 7; i++)
+            {
+                int n = r.Next(0, 9);
+                MaXacNhan += n;
+            }
+            return MaXacNhan;
+
+        }
+
+        public string SendEmail(string email)
+        {
+            var from = "luu.tung.lam@gosei.com.vn";
+            var pass = "lamdangcapvip";
+            string code = Randfunc();
+            //var user = await _userManager.FindByEmailAsync(email.Email);     
+            //var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.To.Add(email);
+            mailMessage.From = new MailAddress(from);
+            mailMessage.Subject = "Change your password in hehe ";
+            mailMessage.Body = "Here is your confirmation code: " + code;
+
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
+            smtp.EnableSsl = true;
+            smtp.Port = 587;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.Credentials = new NetworkCredential(from, pass);
+            smtp.Send(mailMessage);
+            return code;
         }
     }
 }

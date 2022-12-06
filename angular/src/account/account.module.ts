@@ -17,6 +17,8 @@ import { AccountFooterComponent } from './layout/account-footer.component';
 // tenants
 import { TenantChangeComponent } from './tenant/tenant-change.component';
 import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.component';
+import { FormChangePasswordComponent } from './form-change-password/form-change-password.component';
+import { FormConfirmEmailComponent } from './form-confirm-email/form-confirm-email.component';
 
 @NgModule({
     imports: [
@@ -39,6 +41,8 @@ import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.compo
         // tenant
         TenantChangeComponent,
         TenantChangeDialogComponent,
+        FormChangePasswordComponent,
+        FormConfirmEmailComponent,
     ],
     entryComponents: [
         // tenant
