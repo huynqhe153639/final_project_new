@@ -1,28 +1,4 @@
-<!-- <ul class="d-flex justify-content-start mt-2 content-link">
-    <li class="pt-2 mx-3">
-        <a routerLinkActive="active" routerLink="profile" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" class="text-white ">
-            <i class="bi bi-person-fill fs-4 me-2"></i>
-            <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button" value="Profile">
-        </a>
-    </li>
-    <li class="pt-2 mx-3">
-        <a routerLinkActive="active" routerLink="calendar" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" class="text-white ">
-            <i class="bi bi-calendar-week fs-4 me-2"></i>
-            <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button" value="Calendar">
-        </a>
-    </li>
-    <li class="pt-2 mx-3">
-        <a routerLinkActive="active" routerLink="shiftOffer" routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" class="text-white ">
-            <i class="bi bi-window-dash fs-4 me-2"></i>
-            <input routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" type="button"
-                value="Shift Offers">
-        </a>
-    </li>
-</ul> -->
-<!-- <div *ngIf="isOpenNav === null">asdsa</div> -->
+
 <ul [ngClass]="{'d-flex justify-content-start mt-2 content-link':isOpenNav===null,'open-content-link ':isOpenNav}">
     <li
         [ngClass]="{'pt-2 mx-3 item-logo':isOpenNav===null,'w-100 mx-2 p-2 my-3 d-flex justify-content-between':isOpenNav}">

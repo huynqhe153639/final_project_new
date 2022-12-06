@@ -143,11 +143,8 @@ li>a>input {
     color: white;
     border: none;
     margin-left: 7%;
-    /* margin-top: 2%; */
     position: fixed;
     bottom: 10%;
-
-
 }
 
 .close-btn-logout {
